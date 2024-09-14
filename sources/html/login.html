@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
+        <link rel="stylesheet" href="../css/login.css" />
+        <title>MARVI - Login</title>
+    </head>
+    <body>
+        <div class="container-fluid">
+            <div class="vista">
+                <div class="row main">
+                    <div class="col form align-content-center" id="loginForm">
+                        <div class="container">
+                            <nav><img src="../img/logo.png" alt="Logo" width="200px" /></nav>
+                            <p style="margin-bottom: 24px"><strong>¡Bienvenido!</strong></p>
+                            <p style="margin-bottom: 40px">Inicia sesión en la plataforma para continuar</p>
+                            <form action="">
+                                <div class="input">
+                                    <label for="usuario" class="form-label">Usuario</label>
+                                    <input type="text" class="form-control focus-ring" id="usuario" placeholder="Escribe tu usuario" required />
+                                </div>
+                                <div class="input">
+                                    <div class="row justify-content-between">
+                                        <div class="col form-label align-content-center">
+                                            <label for="contrasena">Contraseña</label>
+                                        </div>
+                                        <div class="col form-label" style="text-align: right">
+                                            <a href="#">¿Olvidaste tu contraseña?</a>
+                                        </div>
+                                    </div>
+                                    <div class="input-group">
+                                        <input type="password" class="form-control focus-ring" id="contrasena" placeholder="Escribe tu contraseña" required />
+                                        <button type="button" class="btn border-secondary border-opacity-25 mostrar" onmousedown="mostrarContrasena('contrasena')" onmouseup="mostrarContrasena('contrasena')">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye" viewBox="0 0 16 16">
+                                                <path d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8M1.173 8a13 13 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5s3.879 1.168 5.168 2.457A13 13 0 0 1 14.828 8q-.086.13-.195.288c-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5s-3.879-1.168-5.168-2.457A13 13 0 0 1 1.172 8z"></path>
+                                                <path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5M4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0"></path>
+                                            </svg>
+                                            <span class="visually-hidden">Button</span>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="d-grid gap-3">
+                                    <button class="btn iniciar" type="submit">Iniciar sesión</button>
+                                    <button class="btn registrar" type="button" id="registrarBtn">Registrarme</button>
+                                </div>
+                            </form>
+                        </div>
+                        <footer>
+                            <p class="m-0">&copy; 2024 Lavandería MARVI.</p>
+                        </footer>
+                    </div>
+                    <div class="col img">
+                        <img src="../img/lavadoras.jpeg" alt="Fondo" />
+                    </div>
+                    <div class="col form align-content-center" id="registroForm">
+                        <div class="container">
+                            <nav><h1>Registro de usuarios</h1></nav>
+                            <p style="margin-bottom: 40px; text-align: right">Captura tu información para poder acceder</p>
+                            <form action="">
+                                <div class="input-r">
+                                    <label for="usuario" class="form-label">Correo electrónico</label>
+                                    <input type="text" class="form-control focus-ring" id="usuario" placeholder="alguien@ejemplo.com" required />
+                                </div>
+                                <div class="input-r">
+                                    <label for="usuario" class="form-label">Crea un usuario</label>
+                                    <input type="text" class="form-control focus-ring" id="usuario" placeholder="Escribe tu usuario" required />
+                                </div>
+                                <div class="input-r">
+                                    <label for="usuario" class="form-label">Tipo de usuario</label>
+                                    <select class="form-select focus-ring" aria-label="Default select example">
+                                        <option value="1" selected>Administrador</option>
+                                        <option value="2">Consultor</option>
+                                    </select>
+                                </div>
+                                <div class="input-r">
+                                    <label for="contrasena" class="form-label">Crea una contraseña</label>
+                                    <div class="input-group mb-3">
+                                        <input type="password" class="form-control focus-ring" id="new-contrasena" placeholder="Escribe tu contraseña" required />
+                                        <button type="button" class="btn border-secondary border-opacity-25 mostrar" onmousedown="mostrarContrasena('new-contrasena')" onmouseup="mostrarContrasena('new-contrasena')">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye" viewBox="0 0 16 16">
+                                                <path d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8M1.173 8a13 13 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5s3.879 1.168 5.168 2.457A13 13 0 0 1 14.828 8q-.086.13-.195.288c-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5s-3.879-1.168-5.168-2.457A13 13 0 0 1 1.172 8z"></path>
+                                                <path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5M4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0"></path>
+                                            </svg>
+                                            <span class="visually-hidden">Button</span>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="d-grid gap-3">
+                                    <button class="btn iniciar" type="submit">Registrarme</button>
+                                    <button class="btn registrar" type="button" id="cancelarBtn">Cancelar</button>
+                                </div>
+                            </form>
+                        </div>
+                        <footer>
+                            <p class="m-0" style="text-align: right">&copy; 2024 Lavandería MARVI.</p>
+                        </footer>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            document.addEventListener("DOMContentLoaded", () => {
+                const rowMain = document.querySelector(".row.main");
+                const registrarBtn = document.getElementById("registrarBtn");
+                const cancelarBtn = document.getElementById("cancelarBtn");
+
+                registrarBtn.addEventListener("click", () => {
+                    if (window.innerWidth <= 768) {
+                        rowMain.style.transform = "translateX(-100vw)";
+                    } else {
+                        rowMain.style.transform = "translateX(-50vw)";
+                    }
+                });
+
+                cancelarBtn.addEventListener("click", () => {
+                    rowMain.style.transform = "translateX(0)";
+                });
+            });
+
+            function mostrarContrasena(id) {
+                var input = document.getElementById(id);
+                if (input.type === "password") {
+                    input.type = "text";
+                } else {
+                    input.type = "password";
+                }
+            }
+        </script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
+    </body>
+</html>
