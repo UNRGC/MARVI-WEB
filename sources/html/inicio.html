@@ -1,0 +1,36 @@
+<!-- En las paginas dentro de iframe no es necesaria toda la estructura de html -->
+<head>
+    <link rel="stylesheet" href="../css/inicio.css" />
+</head>
+<body>
+    <div class="grafica-ventas">
+        <canvas id="salesChart"></canvas>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        var ctx = document.getElementById("salesChart").getContext("2d");
+        var salesChart = new Chart(ctx, {
+            type: "bar",
+            data: {
+                labels: ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio"],
+                datasets: [
+                    {
+                        label: "Ventas",
+                        data: [120, 150, 180, 200, 170, 210],
+                        backgroundColor: ["rgba(255, 159, 64, 0.2)", "rgba(255, 159, 64, 0.2)", "rgba(255, 159, 64, 0.2)", "rgba(255, 159, 64, 0.2)", "rgba(255, 159, 64, 0.2)", "rgba(255, 159, 64, 0.2)"],
+                        borderColor: ["rgba(255, 159, 64, 1)", "rgba(255, 159, 64, 1)", "rgba(255, 159, 64, 1)", "rgba(255, 159, 64, 1)", "rgba(255, 159, 64, 1)", "rgba(255, 159, 64, 1)"],
+                        borderWidth: 1,
+                    },
+                ],
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                    },
+                },
+            },
+        });
+    </script>
+</body>
