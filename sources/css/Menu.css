@@ -237,3 +237,13 @@ nav ul li.active {
    align-items: center; 
    margin-left: 30px; /* mueve la gráfica a la derecha */
 }
+
+button a {
+   color: inherit;                 /* quitar color de hipervinculo al boton */
+   text-decoration: none;          /* quitar color de hipervinculo al boton */
+}
+
+button a:hover {
+   color: inherit;                 /* quitar color de hipervinculo al boton */
+   text-decoration: none;          /* quitar color de hipervinculo al boton */
+}

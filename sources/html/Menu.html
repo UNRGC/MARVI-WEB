@@ -4,6 +4,7 @@
         <meta charset="UTF-8">
         <title>Inicio</title>
         <link rel="stylesheet" href="../css/Menu.css" />
+        <link rel="stylesheet" href="../css/pedidos.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     </head>
 <body>  
@@ -96,10 +97,74 @@
             <tr>
                 <td>
                     <button type="button" class="añadir-boton">
-                        <i class="fa fa-plus"></i> &nbsp&nbsp Crear Pedido
+                            <i class="fa fa-plus"></i> &nbsp&nbsp Crear Pedido
                     </button>
                 </td>
             </tr>
+                <td>
+                        <div class="formulario-pedido"  >
+                            <form action="submit_pedido.html" method="post">
+                                <button type="button" class="cancelar-boton" onclick="document.querySelector('.formulario-pedido').style.display='none'">✖</button> 
+                                <div>
+                                    <h1 class="encabezado">CREAR UN NUEVO PEDIDO</h1>
+                                    <p class="descripcion">En esta seccion vamos a crear un pedido nuevo, a continuacion llena la informacion solicitada para crear el pedido.</p>
+                                </div>
+                                
+
+                                <div class="formulario-label">
+                                    <label for="kilo">Costo por kilo:</label>
+                                    <input type="text" id="kilo" name="kilo" placeholder="$ 17.00" style="width: 50%;" required><br>
+                                </div>
+                            
+                            <div class="formulario-label">
+                                <label for="pesaje">Pesaje:</label>
+                                <input type="text" id="pesaje" name="pesaje" placeholder="7 kg." style="width: 50%;" required><br>
+                            </div>
+                                
+                            <div class="formulario-label">
+                                <label for="observaciones">detalles del pedido:</label>
+                                <textarea id="observaciones" name="observaciones" placeholder="ropa de algodon, delicado, etc."  rows="4" cols="50"></textarea><br>
+                            </div>
+                                
+                            <div  class="formulario-label">
+                                <label for="tipo-servicio">Tipo de Servicio:</label>
+                                <select id="tipo-servicio" name="tipo-servicio" style="width: 50%;" required>
+                                    <option value="lavado">Lavado</option>
+                                    <option value="planchado">Planchado</option>
+                                    <option value="lavado-planchado">Lavado y Planchado</option>
+                                </select><br>
+                            </div>
+                                
+                                <div class="formulario-label">
+                                    <label for="fecha">Fecha:</label>
+                                    <input type="date" id="fecha" name="fecha" style="width: 50%;" required><br>
+                                </div>
+                        
+                            <div class="formulario-label">
+                                <label for="cliente">Cliente:</label>
+                                <input type="text" id="cliente" name="cliente" placeholder="Manuel Garay" style="width: 50%;" required><br><br>
+                            </div>
+                                
+                        
+                                <button type="submit" class="submit-boton">Crear Pedido</button>
+                            </form>
+                        </div>
+                </td>
+            </tr>
+            
+            <script>
+                document.addEventListener('DOMContentLoaded', function() {
+                    const form = document.querySelector('.formulario-pedido');
+                    const createButton = document.querySelector('.añadir-boton');
+                    
+                    createButton.addEventListener('click', function() {
+                        form.style.display = 'block';
+                        setTimeout(() => {
+                            form.classList.add('active');
+                        }, 1000); // Adjust the delay as needed
+                    });
+                });
+            </script>
         </tbody>
     </table>
     <br>

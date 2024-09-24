@@ -224,4 +224,14 @@
        background-color: #ffffff; 
        color:  #f37362;
     }
+
+    button a {
+      color: inherit;                 /* quitar color de hipervinculo al boton */
+      text-decoration: none;          /* quitar color de hipervinculo al boton */
+   }
+   
+   button a:hover {
+      color: inherit;                 /* quitar color de hipervinculo al boton */
+      text-decoration: none;          /* quitar color de hipervinculo al boton */
+   }
     

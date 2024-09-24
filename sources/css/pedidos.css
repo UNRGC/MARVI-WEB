@@ -224,4 +224,96 @@
        background-color: #ffffff; 
        color:  #f37362;
     }
-    
+
+ 
+
+  .formulario-label label {
+   font-weight: bold;
+      display: block;
+      margin-bottom: 5px;
+      font-size: 16px;
+      color: #333;
+  }
+
+  .formulario-pedido input,
+  .formulario-pedido select,
+  .formulario-pedido textarea {
+      width: 80%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+  }
+
+ 
+  .formulario-pedido .submit-boton {
+      background-color: #dd5746;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+  }
+
+  .formulario-pedido .submit-boton:hover {
+      background-color: #45a049;
+      background-color: #ffffff; 
+      color:  #f37362;
+  }
+
+  .encabezado {
+   color:  #f37362;
+   font-size: 30px;
+   font-weight: bold;
+   
+  }
+
+.descripcion {
+ font-size: 20px;
+ font-weight: arial;
+}
+
+
+  .formulario-pedido {
+   position: fixed;
+   top: 0;
+   right: -100%;
+   width: 450px;
+   height: 96%;
+   background-color: white;
+   box-shadow: -2px 0 5px #f37362;
+   transition: right 0.3s ease-in-out;
+   padding: 20px;
+   z-index: 1000;
+}
+
+.formulario-pedido.active {
+   right: 0;
+}
+
+.cancelar-boton {
+   position: absolute;
+   top: 10px;
+   right: 10px;
+   background-color: #dd5746;
+   color: white;
+   padding: 5px 10px;
+   border: none;
+   border-radius: 5px;
+   cursor: pointer;
+}
+
+.cancelar-boton:hover {
+   background-color: #ffffff; 
+   color:  #f37362;
+}
+
+
+
+
+
+
+
+
+
