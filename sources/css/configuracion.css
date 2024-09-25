@@ -1,0 +1,48 @@
+@import url(variables.css); /* Importa las variables de colores */
+
+h2 {
+    color: var(--color-primario);
+    font-weight: bold;
+}
+input {
+    width: 100px !important;
+    border: solid 1px #d4d4d4;
+    border-radius: 8px !important;
+}
+input:hover {
+    border: solid 1px #bbbbbb;
+}
+input:focus {
+    --bs-focus-ring-color: transparent;
+    border: solid 1px #bbbbbb !important;
+    transform: scale(1.05);
+}
+.btn {
+    border: none;
+    border-radius: 8px;
+    padding: 10px 20px;
+}
+.aplicar {
+    background-color: var(--color-primario);
+    color: var(--texto-primario);
+}
+.aplicar:hover {
+    background-color: var(--hover-color-p);
+    color: var(--texto-primario);
+}
+.aplicar:active {
+    background-color: var(--color-primario) !important;
+    color: var(--texto-primario) !important;
+}
+.restablecer {
+    background-color: var(--color-secundario);
+    color: var(--color-primario);
+}
+.restablecer:hover {
+    background-color: var(--hover-color-s);
+    color: var(--color-primario);
+}
+.restablecer:active {
+    background-color: var(--color-secundario) !important;
+    color: var(--color-primario) !important;
+}

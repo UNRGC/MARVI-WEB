@@ -1,0 +1,32 @@
+:root {
+    --color-primario: #dd5746;
+    --color-secundario: #ffe1c0;
+    --hover-color-p: #ff7a69;
+    --hover-color-s: #ebcdac;
+    --texto-primario: #ffffff;
+    --texto-secundario: #dd5746;
+}
+
+/* ------------- Tipo de fuente ------------- */
+* {
+    font-family: "Inter", sans-serif;
+}
+/* ------------- Tipo de fuente ------------- */
+
+/* ------------- Logo ------------- */
+.svg-icon path {
+    fill: var(--color-primario);
+}
+/* ------------- Logo ------------- */
+
+/* ------------- Se mostrara hasta que termine de cargar los colores ------------- */
+html {
+    display: none;
+}
+/* ------------- Se mostrara hasta que termine de cargar los colores ------------- */
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+}

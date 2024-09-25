@@ -1,6 +1,8 @@
 <!-- En las paginas dentro de iframe no es necesaria toda la estructura de html -->
 <head>
     <link rel="stylesheet" href="../css/inicio.css" />
+    <!-- Script del tema -->
+    <script src="../js/temas.js"></script>
 </head>
 <body>
     <div class="grafica-ventas">
@@ -9,6 +11,9 @@
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
+        const colorPrimario = localStorage.getItem("colorPrimario") || "#dd5746";
+        const colorSecundario = localStorage.getItem("colorSecundario") || "#ffe1c0";
+
         var ctx = document.getElementById("salesChart").getContext("2d");
         var salesChart = new Chart(ctx, {
             type: "bar",
@@ -18,8 +23,8 @@
                     {
                         label: "Ventas",
                         data: [120, 150, 180, 200, 170, 210],
-                        backgroundColor: ["rgba(255, 159, 64, 0.2)", "rgba(255, 159, 64, 0.2)", "rgba(255, 159, 64, 0.2)", "rgba(255, 159, 64, 0.2)", "rgba(255, 159, 64, 0.2)", "rgba(255, 159, 64, 0.2)"],
-                        borderColor: ["rgba(255, 159, 64, 1)", "rgba(255, 159, 64, 1)", "rgba(255, 159, 64, 1)", "rgba(255, 159, 64, 1)", "rgba(255, 159, 64, 1)", "rgba(255, 159, 64, 1)"],
+                        backgroundColor: [colorSecundario + "80"],
+                        borderColor: [colorPrimario + "80"],
                         borderWidth: 1,
                     },
                 ],

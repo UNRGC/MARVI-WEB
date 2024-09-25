@@ -1,7 +1,6 @@
 /*---------------- Login ----------------*/
-* {
-    font-family: "Inter", sans-serif;
-}
+@import url(variables.css);
+
 .vista {
     width: 100%;
     overflow: hidden;
@@ -57,7 +56,7 @@ a {
     text-decoration: none;
 }
 a:hover {
-    color: #dd5746;
+    color: var(--color-primario);
     text-decoration: underline;
 }
 input,
@@ -71,40 +70,41 @@ select:hover,
 }
 input:focus,
 select:focus {
-    border-color: #dd5746 !important;
+    border-color: var(--color-primario) !important;
 }
 .mostrar:hover svg {
     transform: scale(1.2);
 }
 .mostrar:active {
-    color: #dd5746 !important;
-    border-color: #dd5746 !important;
+    color: var(--color-primario) !important;
+    border-color: var(--color-primario) !important;
 }
 .iniciar {
-    background: #dd5746;
-    color: white;
+    background: var(--color-primario) !important;
+    color: var(--texto-primario) !important;
+    border: none;
 }
 .iniciar:hover {
-    background: #ff6f50;
-    color: white;
+    background: var(--hover-color-p);
+    color: var(--texto-primario);
 }
 .iniciar:active {
-    background: #dd5746 !important;
-    color: white !important;
+    background: var(--color-primario) !important;
+    color: var(--texto-primario) !important;
 }
 .registrar {
     background: transparent;
-    color: #dd5746;
+    color: var(--color-primario);
 }
 .registrar:hover {
-    color: #ff6f50;
+    color: var(--hover-color-p);
 }
 .registrar:active {
     background: transparent !important;
-    color: #dd5746 !important;
+    color: var(--color-primario) !important;
 }
 h1 {
-    color: #dd5746;
+    color: var(--color-primario);
     font-weight: bolder;
     text-align: right;
 }
@@ -115,7 +115,9 @@ h1 {
     width: 100%;
     height: 100vh;
     overflow: hidden;
-    background: #dd5746;
+    background: url("../img/lavando.jpg");
+    background-size: cover;
+    background-position: center;
 }
 .bubble {
     position: absolute;
@@ -203,12 +205,18 @@ h1 {
 .fondo {
     text-align: center;
     width: 60%;
-    background-color: white;
+    background-color: rgba(255, 255, 255, 0.95);
     border-radius: 10px;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+}
+.fondo input {
+    background-color: transparent;
+}
+.fondo input:focus {
+    background-color: transparent;
 }
 /*---------------- Recovery ----------------*/
 @media screen and (max-width: 1366px) {
