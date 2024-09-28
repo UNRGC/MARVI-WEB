@@ -10,7 +10,7 @@
 </head>
 <body>
     <div class="container text-center">
-        <h2 class="mt-4">Personaliza tu sistema</h2>
+        <h2 class="mt-5">Personaliza tu sistema</h2>
         <p>El sistema se reiniciara al aplicar o restablecer los colores del tema.</p>
         <div class="row row-cols-auto my-5 justify-content-center">
             <div class="col d-flex gap-3 justify-content-center align-items-center">
@@ -20,6 +20,12 @@
             <div class="col d-flex gap-3 justify-content-center align-items-center">
                 <label for="colorSecundario" class="form-label">Color secundario</label>
                 <input type="color" class="form-control form-control-color focus-ring" id="colorSecundario" value="#ffe1c0" title="Elige tu color favorito" />
+            </div>
+        </div>
+        <div class="row row-cols-auto mb-5 justify-content-center">
+            <div class="col d-flex justify-content-center align-items-center">
+                <label for="mOscuro">Modo oscuro</label>
+                <input type="checkbox" id="mOscuro" onclick="modoOscuroEvent(this.checked)" />
             </div>
         </div>
         <div class="row">
@@ -38,6 +44,12 @@
             aplicarColores(document.getElementById("colorPrincipal").value, this.value);
         });
 
+        function modoOscuroEvent(checked) {
+            modoOscuro(checked);
+            if (checked === true) window.parent.postMessage("oscuro", "*");
+            else window.parent.postMessage("claro", "*");
+        }
+
         function restablecerColores() {
             document.getElementById("colorPrincipal").value = "#dd5746";
             document.getElementById("colorSecundario").value = "#ffe1c0";
@@ -47,13 +59,19 @@
         document.addEventListener("DOMContentLoaded", function () {
             const sColorPrimario = localStorage.getItem("colorPrimario");
             const sColorSecundario = localStorage.getItem("colorSecundario");
+            const sModoOscuro = localStorage.getItem("modoOscuro");
 
+            if (sModoOscuro === "true") {
+                document.getElementById("mOscuro").checked = true;
+            }
             if (sColorPrimario) {
                 document.getElementById("colorPrincipal").value = sColorPrimario;
             }
             if (sColorSecundario) {
                 document.getElementById("colorSecundario").value = sColorSecundario;
             }
+
+            modoOscuro(sModoOscuro);
         });
     </script>
 

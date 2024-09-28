@@ -6,16 +6,29 @@ h2 {
 }
 input {
     width: 100px !important;
-    border: solid 1px #d4d4d4;
+    background: var(--fondo) !important;
+    border: solid 1px var(--borde) !important;
     border-radius: 8px !important;
 }
 input:hover {
-    border: solid 1px #bbbbbb;
+    border: solid 1px var(--hover-borde);
 }
 input:focus {
     --bs-focus-ring-color: transparent;
-    border: solid 1px #bbbbbb !important;
+    border: solid 1px var(--hover-borde) !important;
     transform: scale(1.05);
+}
+#mOscuro {
+    height: 100%;
+    border: 1px solid var(--borde);
+    accent-color: var(--color-primario);
+}
+#mOscuro:hover {
+    border: 1px solid var(--hover-borde);
+    transform: scale(1.05);
+}
+#mOscuro:focus {
+    border: 1px solid var(--hover-borde);
 }
 .btn {
     border: none;

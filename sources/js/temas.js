@@ -33,9 +33,10 @@ function colorContraste(color) {
 }
 
 // Carga los colores guardados en el localStorage
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", () => {
     const sColorPrimario = localStorage.getItem("colorPrimario");
     const sColorSecundario = localStorage.getItem("colorSecundario");
+    const sModoOscuro = localStorage.getItem("modoOscuro");
 
     if (sColorPrimario) {
         document.documentElement.style.setProperty("--color-primario", sColorPrimario);
@@ -49,6 +50,7 @@ document.addEventListener("DOMContentLoaded", function () {
         document.documentElement.style.setProperty("--texto-secundario", sColorPrimario);
     } else localStorage.setItem("colorSecundario", "#ffe1c0");
 
+    modoOscuro(sModoOscuro);
     document.documentElement.style.display = "block";
 });
 
@@ -56,12 +58,6 @@ document.addEventListener("DOMContentLoaded", function () {
 function guardarColores(colorPrimario, colorSecundario) {
     localStorage.setItem("colorPrimario", colorPrimario);
     localStorage.setItem("colorSecundario", colorSecundario);
-    document.documentElement.style.setProperty("--color-primario", colorPrimario);
-    document.documentElement.style.setProperty("--hover-color-p", ajustarColor(colorPrimario));
-    document.documentElement.style.setProperty("--texto-primario", colorContraste(colorPrimario));
-    document.documentElement.style.setProperty("--color-secundario", colorSecundario);
-    document.documentElement.style.setProperty("--hover-color-s", ajustarColor(colorSecundario));
-    document.documentElement.style.setProperty("--texto-secundario", colorPrimario);
 
     // Enviar mensaje a la página contenedora
     if (window.parent && window.parent !== window) {
@@ -78,10 +74,34 @@ function aplicarColores(colorPrimario, colorSecundario) {
     document.documentElement.style.setProperty("--hover-color-s", ajustarColor(colorSecundario));
     document.documentElement.style.setProperty("--texto-secundario", colorPrimario);
 }
+function modoOscuro(activo) {
+    if (activo == "true" || activo === true) {
+        document.documentElement.style.setProperty("--fondo", "var(--fondo-oscuro)");
+        document.documentElement.style.setProperty("--borde", "var(--borde-oscuro)");
+        document.documentElement.style.setProperty("--hover-borde", "var(--hover-borde-oscuro)");
+        document.documentElement.style.setProperty("--texto", "var(--texto-oscuro)");
+        document.documentElement.style.setProperty("--placeholder", "var(--placeholder-oscuro)");
+        document.documentElement.style.setProperty("--fondo-recovery", "var(--fondo-oscuro)");
+    } else {
+        document.documentElement.style.setProperty("--fondo", "var(--fondo-claro)");
+        document.documentElement.style.setProperty("--borde", "var(--borde-claro)");
+        document.documentElement.style.setProperty("--hover-borde", "var(--hover-borde-claro)");
+        document.documentElement.style.setProperty("--texto", "var(--texto-claro)");
+        document.documentElement.style.setProperty("--placeholder", "var(--placeholder-claro)");
+        document.documentElement.style.setProperty("--fondo-recovery", "var(--fondo-img)");
+    }
+    localStorage.setItem("modoOscuro", activo);
+}
 
 // Agrega un listener para recibir el mensaje y recargar la página
-window.addEventListener("message", function (event) {
+window.addEventListener("message", (event) => {
     if (event.data === "recargar") {
         location.reload();
+    }
+    if (event.data === "oscuro") {
+        modoOscuro(true);
+    }
+    if (event.data === "claro") {
+        modoOscuro(false);
     }
 });

@@ -1,3 +1,4 @@
+/* ------------- Variables ------------- */
 :root {
     --color-primario: #dd5746;
     --color-secundario: #ffe1c0;
@@ -5,7 +6,29 @@
     --hover-color-s: #ebcdac;
     --texto-primario: #ffffff;
     --texto-secundario: #dd5746;
+
+    --fondo: #ffffff;
+    --borde: #e4e7ec;
+    --hover-borde: #c2c7cc;
+    --texto: #394a66;
+    --placeholder: #747474;
+
+    --fondo-recovery: url("../img/lavando.jpg");
+
+    --fondo-oscuro: #242424;
+    --borde-oscuro: #3b3b3b;
+    --fondo-claro: #ffffff;
+    --borde-claro: #e4e7ec;
+    --hover-borde-oscuro: #4a4a4a;
+    --hover-borde-claro: #c2c7cc;
+    --texto-oscuro: #e0e0e0;
+    --texto-claro: #394a66;
+    --placeholder-oscuro: #8a8a8a;
+    --placeholder-claro: #747474;
+
+    --fondo-img: url("../img/lavando.jpg");
 }
+/* ------------- Variables ------------- */
 
 /* ------------- Tipo de fuente ------------- */
 * {
@@ -25,8 +48,12 @@ html {
 }
 /* ------------- Se mostrara hasta que termine de cargar los colores ------------- */
 
+/* ------------- Generales ------------- */
 html,
 body {
+    background: var(--fondo);
+    color: var(--texto);
     margin: 0;
     padding: 0;
 }
+/* ------------- Generales ------------- */

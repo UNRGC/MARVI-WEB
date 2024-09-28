@@ -111,6 +111,7 @@ nav a:hover {
     margin-top: 56px;
 }
 
+/* ------------- Para pantallas de 768px ------------- */
 @media screen and (max-width: 768px) {
     nav {
         top: -56px !important;
@@ -168,3 +169,4 @@ nav a:hover {
         margin-top: 16px;
     }
 }
+/* ------------- Para pantallas de 768px ------------- */
