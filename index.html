@@ -5,7 +5,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Lavandería MARVI</title>
         <link rel="icon" href="sources/img/logo2.png" />
+        <!-- Estilos de bootstrap -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
+        <!-- Iconos de bootstrap -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
         <link rel="stylesheet" href="sources/css/landing.css" />
     </head>
     <body>
@@ -18,12 +21,12 @@
                     <ul class="list-unstyled gap-4 d-flex justify-content-center m-0">
                         <li><a href="#inicio">INICIO</a></li>
                         <li><a href="#nosotros">NOSOTROS</a></li>
-                        <li><a href="#">VALORES</a></li>
-                        <li><a href="#">SERVICIO</a></li>
+                        <li><a href="#valores">VALORES</a></li>
+                        <li><a href="#servicios">SERVICIO</a></li>
                     </ul>
                 </div>
                 <div class="contacto col text-end">
-                    <button type="button" class="btn">Contacto</button>
+                    <button type="button" class="btn" onclick="window.location.href='#contacto'">Contacto</button>
                 </div>
             </div>
         </nav>
@@ -38,7 +41,7 @@
                     </div>
                     <div class="col">
                         <p>Bienvenidos a Lavandería MARVI, su destino confiable para el cuidado de su ropa. Somos una lavandería familiar ubicada en la cuidad de Cordoba, dedicada a ofrecer servicios de lavado y planchado de alta calidad a precios accesibles.</p>
-                        <button type="button" class="btn">Conoce más</button>
+                        <button type="button" class="btn btn-border">Conoce más</button>
                     </div>
                 </div>
             </header>
@@ -47,7 +50,7 @@
         <div class="triangulo"></div>
         <!-- No borrar este div -->
 
-        <section class="nosotros container-fluid p-0" id="nosotros">
+        <section class="nosotros container-fluid m-0" id="nosotros">
             <div class="row-nosotros row">
                 <div class="col-6">
                     <h1>SOBRE NOSOTROS</h1>
@@ -71,6 +74,153 @@
                 </div>
             </div>
         </section>
+
+        <section class="estatico d-flex align-items-center justify-content-center">
+            <div class="text-center">
+                <p>EN LAVANDERÍA MARVI, NO SOLO LAVAMOS ROPA; CUIDAMOS DE SU BIENESTAR Y COMODIDAD.</p>
+            </div>
+        </section>
+
+        <section class="frame">
+            <img src="sources/img/frame.png" alt="Frame" />
+        </section>
+
+        <div class="triangulo2"></div>
+        <!-- No borrar este div -->
+
+        <section class="valores" id="valores">
+            <div class="row">
+                <h1>NUESTROS VALORES:</h1>
+            </div>
+            <div class="carrousel-btn">
+                <ul class="list-unstyled d-flex justify-content-between">
+                    <li onclick="izq()"><i class="bi bi-arrow-left-circle-fill"></i></li>
+                    <li onclick="der()"><i class="bi bi-arrow-right-circle-fill"></i></li>
+                </ul>
+            </div>
+            <div class="carrousel row justify-content-center">
+                <div class="col">
+                    <img src="sources/img/calidad.png" alt="Valor 1" />
+                    <h2>CALIDAD</h2>
+                    <p>Nos comprometemos a utilizar los mejores productos y tecnologías para garantizar que su ropa reciba el mejor tratamiento posible.</p>
+                </div>
+                <div class="col">
+                    <img src="sources/img/confianza.png" alt="Valor 2" />
+                    <h2>CONFIANZA</h2>
+                    <p>Nos enorgullece ser un nombre en el que puede confiar para el cuidado de sus prendas más preciadas.</p>
+                </div>
+                <div class="col">
+                    <img src="sources/img/sostenibilidad.png" alt="Valor 3" />
+                    <h2>SOSTENIBILIDAD</h2>
+                    <p>Adoptamos prácticas respetuosas con el medio ambiente para minimizar nuestro impacto ecológico.</p>
+                </div>
+                <div class="col">
+                    <img src="sources/img/atencion.png" alt="Valor 4" />
+                    <h2>ATENCIÓN AL CLIENTE</h2>
+                    <p>Nuestro equipo está siempre disponible para escuchar sus necesidades y asegurarse de que esté completamente satisfecho con nuestro servicio.</p>
+                </div>
+            </div>
+        </section>
+
+        <div class="triangulo3"></div>
+        <!-- No borrar este div -->
+
+        <section class="servicios container-fluid m-0 text-center" id="servicios">
+            <h1>SERVICIOS</h1>
+            <div style="width: 634px; margin: auto">
+                <p>Nuestro servicios cumple con los mas altos estándares de calidad para brindarle al cliente la satisfacción total en su servicio, asi como la mejor atención brindada.</p>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <h2>Lavado</h2>
+                    <img src="sources/img/lavado.png" alt="Lavado" />
+                </div>
+                <div class="col">
+                    <h2>Secado</h2>
+                    <img src="sources/img/secado.png" alt="Secado" />
+                </div>
+                <div class="col">
+                    <h2>Planchado</h2>
+                    <img src="sources/img/planchado.png" alt="Planchado" />
+                </div>
+            </div>
+        </section>
+
+        <section class="fila1">
+            <div class="li-izq">
+                <ul class="d-flex">
+                    <li>LAVANDERÍA MARVI</li>
+                    <li>LAVANDERÍA MARVI</li>
+                </ul>
+            </div>
+        </section>
+        <section class="fila2">
+            <div class="li-der">
+                <ul class="d-flex">
+                    <li>LAVANDERÍA MARVI</li>
+                    <li>LAVANDERÍA MARVI</li>
+                </ul>
+            </div>
+        </section>
+        <section class="fila3">
+            <div class="li-izq">
+                <ul class="d-flex">
+                    <li>LAVANDERÍA MARVI</li>
+                    <li>LAVANDERÍA MARVI</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="contacto-info container-fluid m-0" id="contacto">
+            <div class="row">
+                <div class="logo col">
+                    <img src="sources/img/logo.png" alt="Logo" height="60px" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <h2>Contacto</h2>
+                    <p>1800 123 4567</p>
+                    <p>info@lavanderiamavi.com.mx</p>
+                    <div class="d-flex gap-3">
+                        <i class="bi bi-facebook"></i>
+                        <i class="bi bi-instagram"></i>
+                    </div>
+                </div>
+                <div class="col text-center">
+                    <h2>Dirección</h2>
+                    <p style="margin-bottom: 40px">Level 1, 12 Sample St, Sydney NSW 2000</p>
+                    <button class="btn btn-border">Abrir en Google Maps</button>
+                </div>
+                <div class="col text-end">
+                    <h2>Secciones</h2>
+                    <ul class="list-unstyled">
+                        <li><a href="#inicio">Inicio</a></li>
+                        <li><a href="#nosotros">Nosotros</a></li>
+                        <li><a href="#valores">Valores</a></li>
+                        <li><a href="#servicios">Servicios</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row">
+                <div class="copy col">
+                    <p>© 2024 Lavandería Marvi. Todos los derechos reservados</p>
+                </div>
+            </div>
+        </section>
+
+        <script>
+            function izq() {
+                let carrousel = document.querySelector(".carrousel");
+                carrousel.style.transition = "transform 0.5s ease-in-out";
+                carrousel.style.transform = "translateX(0)";
+            }
+            function der() {
+                let carrousel = document.querySelector(".carrousel");
+                carrousel.style.transition = "transform 0.5s ease-in-out";
+                carrousel.style.transform = "translateX(calc(-50vw - 102px))";
+            }
+        </script>
 
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>

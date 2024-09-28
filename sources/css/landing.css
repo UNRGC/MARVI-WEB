@@ -38,6 +38,12 @@ nav a:hover {
 .btn:active {
     background: #dd5746 !important;
     color: white !important;
+    border-color: #dd5746 !important;
+}
+.btn-border {
+    background: transparent;
+    border: solid 1px #dd5746;
+    color: #dd5746;
 }
 .header {
     padding: 32px !important;
@@ -109,6 +115,231 @@ nav a:hover {
     color: #dd5746;
     font-size: 16px;
     margin-top: 56px;
+}
+
+.estatico {
+    padding: 160px 0px;
+    height: 100vh;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+.estatico .text-center {
+    width: 50%;
+    color: #dd5746;
+    font-size: 32px;
+    font-weight: 900;
+}
+
+.frame {
+    width: 100%;
+    padding: 64px;
+    margin-bottom: 100vh;
+    position: relative;
+    z-index: 2;
+}
+.frame img {
+    width: 100%;
+    height: 100%;
+}
+
+.triangulo2 {
+    width: 100%;
+    height: 85px;
+    background: linear-gradient(to right bottom, #00000000 50%, #fcd8da 50%);
+    position: relative;
+    z-index: 2;
+}
+
+.valores {
+    padding: 120px 64px 160px 64px;
+    background: #fcd8da;
+    position: relative;
+    z-index: 2;
+    overflow: hidden;
+}
+.valores h1 {
+    color: #dd5746;
+    font-size: 32px;
+    font-weight: 900;
+    margin: 0px 0px 64px 0px;
+}
+.valores img {
+    width: 75px;
+}
+.valores .row {
+    width: 150vw !important;
+    gap: 48px;
+}
+.valores .col {
+    text-align: center;
+    background: #ffe4e5;
+    padding: 100px 48px 32px 48px !important;
+    height: 500px !important;
+    width: 45% !important;
+    border-radius: 15px !important;
+}
+.valores h2 {
+    color: #dd5746;
+    font-size: 32px;
+    font-weight: 900;
+    padding-top: 64px !important;
+    padding-bottom: 16px !important;
+}
+.valores p {
+    color: #dd5746;
+    font-size: 16px;
+}
+.carrousel-btn {
+    position: absolute;
+    top: 50%;
+    width: calc(100vw - 128px);
+    height: 100%;
+    z-index: 2;
+}
+.carrousel-btn li {
+    font-size: 2.5rem;
+    text-align: center;
+    color: #dd584620;
+    cursor: pointer;
+}
+.carrousel-btn li:hover {
+    color: #dd58464f;
+    transform: scale(1.1);
+}
+
+.triangulo3 {
+    width: 100%;
+    height: 85px;
+    background: linear-gradient(to right bottom, #fcd8da 50%, #e4e7ec 50%);
+    position: relative;
+    z-index: 2;
+}
+
+.servicios {
+    background: #e4e7ec !important;
+    padding: 100px 64px 180px 64px !important;
+    position: relative;
+    z-index: 2;
+}
+.servicios h1 {
+    color: #dd5746;
+    font-size: 32px;
+    font-weight: 900;
+    margin-bottom: 32px;
+}
+.servicios p {
+    color: #dd5746;
+    font-size: 16px;
+    margin-bottom: 80px;
+}
+.servicios .row {
+    gap: 48px;
+}
+.servicios .col {
+    background: #cbd2dc;
+    padding: 40px 32px;
+    border-radius: 15px;
+}
+.servicios h2 {
+    color: #dd5746;
+    font-size: 20px;
+    margin-bottom: 40px;
+}
+.servicios img {
+    width: 80px;
+    height: 80px;
+}
+
+.fila1,
+.fila2,
+.fila3 {
+    overflow: hidden;
+    white-space: nowrap;
+    box-sizing: border-box;
+    color: #dd5746;
+    font-size: 120px;
+    font-weight: 800;
+    position: relative;
+    z-index: 2;
+}
+.fila1 {
+    background: #fcd8da;
+}
+.fila2 {
+    background: #ffe1c0;
+}
+.fila3 {
+    background: #e4e7ec;
+}
+.li-izq {
+    width: 1467.88px;
+    display: inline-block;
+    animation: marquee 4s linear infinite;
+}
+.li-izq li {
+    margin-right: 130px;
+    padding: 40px 0px;
+}
+.li-der {
+    width: 1467.88px;
+    display: inline-block;
+    animation: marquee 4s linear infinite reverse;
+}
+.li-der li {
+    margin-left: 130px;
+    padding: 40px 0px;
+}
+
+.contacto-info {
+    background: #f7f2de;
+    padding: 80px 64px 48px 64px;
+    position: relative;
+    z-index: 2;
+}
+.contacto-info .logo {
+    margin-bottom: 48px;
+}
+.contacto-info h2 {
+    color: #dd5746;
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 40px !important;
+}
+.contacto-info p {
+    color: #dd5746;
+    font-size: 14px;
+    margin-bottom: 16px;
+}
+.contacto-info .d-flex {
+    margin-top: 40px;
+}
+.contacto-info i {
+    color: #dd5746;
+    font-size: 24px;
+}
+.contacto-info li {
+    margin-bottom: 24px !important;
+}
+.contacto-info a {
+    text-decoration: none;
+    color: #dd5746;
+}
+.copy {
+    margin-top: 48px;
+    border-top: #deb8b4 1px solid !important;
+}
+.copy p {
+    margin-top: 32px;
+}
+
+@keyframes marquee {
+    0% {
+        transform: translate(0, 0);
+    }
+    100% {
+        transform: translate(-100%, 0);
+    }
 }
 
 /* ------------- Para pantallas de 768px ------------- */
