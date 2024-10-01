@@ -23,6 +23,36 @@ nav a {
 nav a:hover {
     color: #ff6f50;
 }
+.offcanvas {
+    width: 594px !important;
+    padding: 24px 32px !important;
+    background: rgba(255, 255, 255, 0.7);
+    box-shadow: -16px 0px 40px 0px rgba(0, 0, 0, 0.06);
+    backdrop-filter: blur(50px);
+}
+.offcanvas h2 {
+    color: #dd5746;
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 24px;
+}
+.offcanvas p {
+    color: #dd5746;
+    font-size: 14px;
+    margin-bottom: 48px;
+}
+.offcanvas i {
+    cursor: pointer;
+    color: #dd5746;
+    font-size: 24px;
+}
+.offcanvas .btn,
+.offcanvas .btn:hover,
+.offcanvas .btn:active {
+    padding: 0px;
+    background: transparent !important;
+    border: none !important;
+}
 .btn {
     background: #dd5746;
     color: white;
@@ -168,7 +198,7 @@ nav a:hover {
     width: 75px;
 }
 .valores .row {
-    width: 150vw !important;
+    width: 300vw !important;
     gap: 48px;
 }
 .valores .col {
@@ -178,6 +208,7 @@ nav a:hover {
     height: 500px !important;
     width: 45% !important;
     border-radius: 15px !important;
+    animation: muestra 30s linear infinite;
 }
 .valores h2 {
     color: #dd5746;
@@ -198,9 +229,10 @@ nav a:hover {
     z-index: 2;
 }
 .carrousel-btn li {
+    cursor: pointer;
     font-size: 2.5rem;
     text-align: center;
-    color: #dd584620;
+    color: #ffffff20;
     cursor: pointer;
 }
 .carrousel-btn li:hover {
@@ -278,6 +310,7 @@ nav a:hover {
     animation: marquee 4s linear infinite;
 }
 .li-izq li {
+    cursor: pointer;
     margin-right: 130px;
     padding: 40px 0px;
 }
@@ -287,6 +320,7 @@ nav a:hover {
     animation: marquee 4s linear infinite reverse;
 }
 .li-der li {
+    cursor: pointer;
     margin-left: 130px;
     padding: 40px 0px;
 }
@@ -315,10 +349,12 @@ nav a:hover {
     margin-top: 40px;
 }
 .contacto-info i {
+    cursor: pointer;
     color: #dd5746;
     font-size: 24px;
 }
 .contacto-info li {
+    cursor: pointer;
     margin-bottom: 24px !important;
 }
 .contacto-info a {
@@ -339,6 +375,15 @@ nav a:hover {
     }
     100% {
         transform: translate(-100%, 0);
+    }
+}
+
+@keyframes muestra {
+    0% {
+        transform: translate(0, 0);
+    }
+    100% {
+        transform: translate(calc(-150vw - 24px), 0);
     }
 }
 

@@ -26,10 +26,38 @@
                     </ul>
                 </div>
                 <div class="contacto col text-end">
-                    <button type="button" class="btn" onclick="window.location.href='#contacto'">Contacto</button>
+                    <button type="button" class="btn" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">Contacto</button>
                 </div>
             </div>
         </nav>
+
+        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+            <div class="offcanvas-header">
+                <button type="button" class="btn" data-bs-dismiss="offcanvas" aria-label="Close"><i class="bi bi-x-lg"></i></button>
+                <div class="container-fluid text-center">
+                    <img src="sources/img/logo.png" height="50" alt="Logo" />
+                </div>
+            </div>
+            <div class="offcanvas-body">
+                <h2>Contacto</h2>
+                <div class="row">
+                    <div class="col">
+                        <p>1800 123 4567</p>
+                    </div>
+                    <div class="col text-center">
+                        <p>info@lavanderiamavi.com</p>
+                    </div>
+                    <div class="col text-end">
+                        <i class="bi bi-facebook me-3"></i>
+                        <i class="bi bi-instagram"></i>
+                    </div>
+                    <h2>Dirección</h2>
+                    <p>Level 1, 12 Sample St, Sydney NSW 2000</p>
+                    <img src="sources/img/map.png" alt="Map" width="530" />
+                </div>
+            </div>
+        </div>
+
         <section class="fondo-inicio" id="inicio">
             <header class="header container-fluid p-0">
                 <div class="img-header">
@@ -41,7 +69,7 @@
                     </div>
                     <div class="col">
                         <p>Bienvenidos a Lavandería MARVI, su destino confiable para el cuidado de su ropa. Somos una lavandería familiar ubicada en la cuidad de Cordoba, dedicada a ofrecer servicios de lavado y planchado de alta calidad a precios accesibles.</p>
-                        <button type="button" class="btn btn-border">Conoce más</button>
+                        <button type="button" class="btn btn-border" onclick="window.location.href = '#nosotros'">Conoce más</button>
                     </div>
                 </div>
             </header>
@@ -92,13 +120,27 @@
             <div class="row">
                 <h1>NUESTROS VALORES:</h1>
             </div>
-            <div class="carrousel-btn">
-                <ul class="list-unstyled d-flex justify-content-between">
-                    <li onclick="izq()"><i class="bi bi-arrow-left-circle-fill"></i></li>
-                    <li onclick="der()"><i class="bi bi-arrow-right-circle-fill"></i></li>
-                </ul>
-            </div>
             <div class="carrousel row justify-content-center">
+                <div class="col">
+                    <img src="sources/img/calidad.png" alt="Valor 1" />
+                    <h2>CALIDAD</h2>
+                    <p>Nos comprometemos a utilizar los mejores productos y tecnologías para garantizar que su ropa reciba el mejor tratamiento posible.</p>
+                </div>
+                <div class="col">
+                    <img src="sources/img/confianza.png" alt="Valor 2" />
+                    <h2>CONFIANZA</h2>
+                    <p>Nos enorgullece ser un nombre en el que puede confiar para el cuidado de sus prendas más preciadas.</p>
+                </div>
+                <div class="col">
+                    <img src="sources/img/sostenibilidad.png" alt="Valor 3" />
+                    <h2>SOSTENIBILIDAD</h2>
+                    <p>Adoptamos prácticas respetuosas con el medio ambiente para minimizar nuestro impacto ecológico.</p>
+                </div>
+                <div class="col">
+                    <img src="sources/img/atencion.png" alt="Valor 4" />
+                    <h2>ATENCIÓN AL CLIENTE</h2>
+                    <p>Nuestro equipo está siempre disponible para escuchar sus necesidades y asegurarse de que esté completamente satisfecho con nuestro servicio.</p>
+                </div>
                 <div class="col">
                     <img src="sources/img/calidad.png" alt="Valor 1" />
                     <h2>CALIDAD</h2>
@@ -190,7 +232,7 @@
                 <div class="col text-center">
                     <h2>Dirección</h2>
                     <p style="margin-bottom: 40px">Level 1, 12 Sample St, Sydney NSW 2000</p>
-                    <button class="btn btn-border">Abrir en Google Maps</button>
+                    <button class="btn btn-border" onclick="window.open('https://www.google.com.mx/maps/preview', '_blank')">Abrir en Google Maps</button>
                 </div>
                 <div class="col text-end">
                     <h2>Secciones</h2>
@@ -208,19 +250,6 @@
                 </div>
             </div>
         </section>
-
-        <script>
-            function izq() {
-                let carrousel = document.querySelector(".carrousel");
-                carrousel.style.transition = "transform 0.5s ease-in-out";
-                carrousel.style.transform = "translateX(0)";
-            }
-            function der() {
-                let carrousel = document.querySelector(".carrousel");
-                carrousel.style.transition = "transform 0.5s ease-in-out";
-                carrousel.style.transform = "translateX(calc(-50vw - 102px))";
-            }
-        </script>
 
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
