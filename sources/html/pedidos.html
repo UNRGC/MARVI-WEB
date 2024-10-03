@@ -1,13 +1,104 @@
 <!DOCTYPE html>
 <html lang="es">
+
     <head>
         <meta charset="UTF-8">
         <title>Pedidos</title>
         <link rel="stylesheet" href="../css/pedidos.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     </head>
+
 <body>
-    
-        
+
+<style>
+body{
+background-color: rgb(250, 251, 252);
+font-family: Arial, sans-serif; 
+}
+</style>
+
+
+    <div class="header">
+        <p style="font-weight: bold; margin-top: 1%; margin-left: 0.5%;">Lista de pedidos</p>
+        <button class="filtro" type="button" onclick="Filtros()">
+            <i class="fa fa-filter"></i> Filtros
+        </button>
+        <button class="ordenar" onclick="Ordenar()">
+            <i class="fa fa-sort"></i> Ordenar por
+        </button></button>
+        <div style="display: none;" id="action-button">
+            <button type="button" class="delete-button"></button>
+             
+            </button>
+        </div>
+
+    </div>
+   
+    <div class="table-container">
+        <table class="table table-sm">
+            <tbody>
+                <tr>
+                    <th>
+                        <input type="checkbox" class="select-checkbox" onclick="toggleButton()"> 
+                    </th>
+                    <th scope="col">ID</th>
+                    <th scope="col">Cliente</th>
+                    <th scope="col">Costo</th>
+                    <th scope="col">Pesaje</th>
+                    <th scope="col">Detalles</th>
+                    <th scope="col">Estado</th>
+                    <th scope="col">Fecha</th>
+                    <th scope="col">Opciones</th>
+                </tr>
+                <tr>
+                    <th>
+                        <input type="checkbox" class="select-checkbox" onclick="toggleButton()"> 
+                    </th>        
+                    <td>2324324</td>
+                    <td>Otto</td>
+                    <td>$323</td>
+                    <td>12 KG</td>
+                    <td>Lavar con ropa oscura</td>
+                    <td>Pagado</td>
+                    <td>17/09/2024</td>
+                    <td>
+                        <button class="opcion" type="button">
+                            <i class="fa fa-ellipsis-v"></i>
+                        </button>
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        <input type="checkbox" class="select-checkbox" onclick="toggleButton()"> 
+                    </th>
+                    <td>2324324</td>
+                    <td>Otto</td>
+                    <td>$323</td>
+                    <td>12 KG</td>
+                    <td>Lavar con ropa oscura</td>
+                    <td>Pagado</td>
+                    <td>17/09/2024</td>
+                    <td> 
+                        <button class="opcion" type="button">
+                            <i class="fa fa-ellipsis-v"></i>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        function toggleButton() {
+            var checkboxes = document.querySelectorAll('.select-checkbox');
+            var button = document.getElementById("action-button");
+            var isChecked = Array.from(checkboxes).some(checkbox => checkbox.checked);
+            button.style.display = isChecked ? "block" : "none";
+        }
+    </script>
+
+   
+
+
 </body>
 </html>   
