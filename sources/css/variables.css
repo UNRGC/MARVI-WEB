@@ -8,6 +8,7 @@
     --texto-secundario: #dd5746;
 
     --fondo: #ffffff;
+    --fondo-contenido: #f5f6f7;
     --borde: #e4e7ec;
     --hover-borde: #c2c7cc;
     --texto: #394a66;
@@ -15,7 +16,9 @@
 
     --fondo-recovery: url("../img/lavando.jpg");
 
-    --fondo-oscuro: #242424;
+    --fondo-oscuro: #2a2a2a;
+    --fondo-contenido-oscuro: #242424;
+    --fondo-contenido-claro: #f5f6f7;
     --borde-oscuro: #3b3b3b;
     --fondo-claro: #ffffff;
     --borde-claro: #e4e7ec;
@@ -45,15 +48,17 @@
 /* ------------- Se mostrara hasta que termine de cargar los colores ------------- */
 html {
     display: none;
+    scroll-behavior: smooth;
 }
 /* ------------- Se mostrara hasta que termine de cargar los colores ------------- */
 
 /* ------------- Generales ------------- */
 html,
 body {
-    background: var(--fondo);
+    background: var(--fondo-contenido);
     color: var(--texto);
     margin: 0;
     padding: 0;
+    scrollbar-color: var(--color-primario) var(--fondo-contenido);
 }
 /* ------------- Generales ------------- */

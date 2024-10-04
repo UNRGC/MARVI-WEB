@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .logo {
   margin-left: 0px;
 }
@@ -329,3 +330,6 @@ th {
   border-top: 1px solid var(--linea-1, #E4E7EC);
   background: var(--Blanco, #FFF);
 }
+=======
+@import url(variables.css);
+>>>>>>> 37904c91bc28eed852ac65ffde0020b2cb6e6f94

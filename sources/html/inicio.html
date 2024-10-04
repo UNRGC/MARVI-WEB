@@ -1,41 +1,170 @@
-<!-- En las paginas dentro de iframe no es necesaria toda la estructura de html -->
-<head>
-    <link rel="stylesheet" href="../css/inicio.css" />
-    <!-- Script del tema -->
-    <script src="../js/temas.js"></script>
-</head>
-<body>
-    <div class="grafica-ventas">
-        <canvas id="salesChart"></canvas>
-    </div>
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Inicio</title>
+        <!-- Estilos de bootstrap -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
+        <!-- Iconos de bootstrap -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+        <!-- Estilo propio -->
+        <link rel="stylesheet" href="../css/inicio.css" />
+        <!-- Script del tema -->
+        <script src="../js/temas.js"></script>
+    </head>
+    <body>
+        <div class="container-fluid p-0 mb-3">
+            <div class="resumen row gap-3 m-0">
+                <div class="col">
+                    <div class="row align-items-center">
+                        <div class="col-3">
+                            <i class="icon bi bi-journal-text"></i>
+                        </div>
+                        <div class="col-9">
+                            <p>Total de pedidos</p>
+                            <div class="d-flex gap-3 align-items-center">
+                                <span class="n-estadistica" id="n-pedidos">45</span>
+                                <small style="color: #65b741"><i class="bi bi-arrow-up"></i><span id="n-alsa-pedidos">12</span><i class="bi bi-percent"></i></small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="row align-items-center">
+                        <div class="col-3">
+                            <i class="icon bi bi-cart-dash"></i>
+                        </div>
+                        <div class="col-9">
+                            <p>Ventas realizadas</p>
+                            <div class="d-flex gap-3 align-items-center">
+                                <span class="n-estadistica" id="n-ventas">42</span>
+                                <small style="color: #65b741"><i class="bi bi-arrow-up"></i><span id="n-alsa-ventas">22</span><i class="bi bi-percent"></i></small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="row align-items-center">
+                        <div class="col-3">
+                            <i class="icon bi bi-wallet"></i>
+                        </div>
+                        <div class="col-9">
+                            <p>Ingreso</p>
+                            <div class="d-flex gap-3 align-items-center">
+                                <span class="n-estadistica">$<span id="n-ingreso">42</span></span>
+                                <small style="color: #ff6868"><i class="bi bi-arrow-down"></i><span id="n-alsa-ingreso">35</span><i class="bi bi-percent"></i></small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script>
-        const colorPrimario = localStorage.getItem("colorPrimario") || "#dd5746";
-        const colorSecundario = localStorage.getItem("colorSecundario") || "#ffe1c0";
+        <div class="container-fluid p-0">
+            <div class="resumen row gap-3 m-0">
+                <div class="col">
+                    <p>Pedidos por periodo</p>
+                    <div class="d-flex gap-3 align-items-center mb-3">
+                        <span class="n-estadistica" id="n-pedidos-p">32</span>
+                        <small style="color: #65b741"><i class="bi bi-arrow-up"></i><span id="n-alsa-ventas">12</span><i class="bi bi-percent"></i></small>
+                    </div>
+                    <canvas id="areaChart"></canvas>
+                </div>
+                <div class="col">
+                    <p>Calculo de ingreso por periodo</p>
+                    <div class="d-flex gap-3 align-items-center mb-3">
+                        <span class="n-estadistica">$<span id="n-ingreso-p">5,234</span></span>
+                        <small style="color: #ff6868"><i class="bi bi-arrow-down"></i><span id="n-alsa-ingreso">12</span><i class="bi bi-percent"></i></small>
+                    </div>
+                    <canvas id="barChart"></canvas>
+                </div>
+            </div>
+        </div>
 
-        var ctx = document.getElementById("salesChart").getContext("2d");
-        var salesChart = new Chart(ctx, {
-            type: "bar",
-            data: {
-                labels: ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio"],
-                datasets: [
-                    {
-                        label: "Ventas",
-                        data: [120, 150, 180, 200, 170, 210],
-                        backgroundColor: [colorSecundario + "80"],
-                        borderColor: [colorPrimario + "80"],
-                        borderWidth: 1,
+        <!-- script de Charts.js para las gráficas -->
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script>
+            setTimeout(() => {
+                muestras();
+            }, 1);
+
+            function muestras() {
+                //obtiene el color primario y secundario del local storage
+                const colorPrimario = localStorage.getItem("colorPrimario");
+                const colorSecundario = localStorage.getItem("colorSecundario");
+
+                // Gráfico de Área
+                const areaCtx = document.getElementById("areaChart").getContext("2d");
+                // Crear el degradado
+                const degradado = areaCtx.createLinearGradient(0, 0, 0, 400);
+                degradado.addColorStop(0, hexToRgba(colorSecundario, 0.8));
+                degradado.addColorStop(1, hexToRgba(colorSecundario, 0));
+                const areaData = {
+                    labels: ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado", "Domingo"],
+                    datasets: [
+                        {
+                            label: "Pedidos por día",
+                            data: [12, 19, 3, 5, 2, 3, 7], // Datos para cada día
+                            backgroundColor: degradado,
+                            borderColor: colorPrimario,
+                            borderWidth: 2,
+                            fill: true, // Rellenar el área bajo la línea
+                            tension: 0.4, // Curvatura de la línea
+                        },
+                    ],
+                };
+                const areaConfig = {
+                    type: "line",
+                    data: areaData,
+                    options: {
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                            },
+                        },
+                        animation: {
+                            easing: "easeInQuad", // Tipo de animación
+                        },
                     },
-                ],
-            },
-            options: {
-                scales: {
-                    y: {
-                        beginAtZero: true,
+                };
+                const areaChart = new Chart(areaCtx, areaConfig);
+
+                // Gráfico de Barras
+                const barCtx = document.getElementById("barChart").getContext("2d");
+                const barData = {
+                    labels: ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado", "Domingo"],
+                    datasets: [
+                        {
+                            label: "Ingresos por día",
+                            data: [1000, 589, 307, 1430, 2000, 1300, 2005], // Datos para cada día
+                            backgroundColor: degradado,
+                            borderColor: colorPrimario,
+                            borderWidth: 2,
+                            borderRadius: 15, // Radio para redondear las esquinas de las barras
+                        },
+                    ],
+                };
+                const barConfig = {
+                    type: "bar",
+                    data: barData,
+                    options: {
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                            },
+                        },
+                        animation: {
+                            easing: "easeInQuad",
+                        },
                     },
-                },
-            },
-        });
-    </script>
-</body>
+                };
+                const barChart = new Chart(barCtx, barConfig);
+            }
+        </script>
+
+        <!-- Scripts de bootstrap -->
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
+    </body>
+</html>

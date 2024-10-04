@@ -1,9 +1,12 @@
 * {
     font-family: "Inter", sans-serif;
+    scrollbar-width: thin;
+    scrollbar-color: #dd5746 transparent;
 }
 html,
 body {
     background: #ffe1c0;
+    scroll-behavior: smooth;
 }
 .fondo-inicio {
     background: #fbecdc;
@@ -367,6 +370,21 @@ nav a:hover {
 }
 .copy p {
     margin-top: 32px;
+}
+
+.regreso {
+    width: 52px !important;
+    background: #dd5746;
+    border-radius: 50%;
+    color: white;
+    font-size: 24px;
+    padding: 8px;
+    cursor: pointer;
+    z-index: 2;
+}
+.regreso:hover {
+    background: #ff6f50;
+    transform: scale(1.1);
 }
 
 @keyframes marquee {
