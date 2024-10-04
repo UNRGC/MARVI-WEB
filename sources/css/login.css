@@ -1,6 +1,10 @@
 /* ------------- Login ------------- */
 @import url(variables.css);
 
+html,
+body {
+    background: var(--fondo);
+}
 .vista {
     width: 100%;
     overflow: hidden;
