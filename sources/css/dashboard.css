@@ -155,6 +155,7 @@ iframe {
     color: var(--texto-primario) !important;
 }
 .bell {
+    position: relative ;
     background: var(--color-secundario);
     color: var(--color-primario);
     width: 48px;

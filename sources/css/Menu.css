@@ -1,0 +1,249 @@
+.logo{
+
+margin-left: 0px;
+  
+    
+}
+
+nav{
+    width: 300px;
+    background-color: #ffffffe3;
+    padding: 10px;
+    top: 0px;
+    left: 0;
+    height: 100vh;
+    position: fixed;
+    overflow-y: auto;
+ }
+ 
+ nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+ }
+ 
+ nav ul li {
+    padding: 15px 20px;
+    cursor: pointer;
+    border-bottom: 1px solid #e9e3e3;
+ }
+ 
+nav ul li.active {
+   background-color: #dd5746;
+   text-decoration: none;
+   color: #ffffff;
+   border-radius: 15px;
+}
+ 
+ nav ul li:hover {
+    background-color: #dd5746;
+    text-decoration: none;
+    color: #fdfdfd;
+    border-radius: 15px;
+ }
+ 
+ nav ul li a {
+    margin-right: 10px;
+ }
+ 
+ nav a {
+    text-decoration: none;
+    color:#dd5746;
+ }
+
+ nav a:hover {
+   text-decoration: none;
+   color:#ffffff;
+}
+ 
+ .contenido{
+    margin-left: 300px;
+    padding: 20px;
+    background-color: #f5f0f0e3;
+ }
+
+#siuu {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   text-decoration: none;
+   color: hsl(0, 0%, 0%);
+   width: 160px;
+}
+  
+
+
+.salir-tabla{
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   text-decoration: none;
+   color: hsl(0, 0%, 0%);
+   width: 100px;
+   
+}
+
+.salir-boton{
+   width: 10px; 
+   height: 40px; 
+ 
+   border: none;
+   border-radius: 10px;
+   color: #f7f7f7; 
+   cursor: pointer; 
+   display: flex; 
+   justify-content: center; 
+   align-items: center; 
+}
+
+
+.search-table {
+   border-radius: 10px;
+   width: 100%;
+   border-collapse: collapse;
+   margin-top: 0%;
+   font-size: 0px;
+   text-align: left;
+   
+}
+
+
+
+.search-table, .search-table td  {
+   border-radius: 10px;
+   height: 70px; /* tamaño de la tabla */
+   width: 75%; /* tamaño de la tabla*/
+   border-collapse: collapse;
+   margin-top: 0%;
+   font-size: 42px;
+   text-align: left;
+   position: absolute;
+   top: 0;
+   left: 180px; /* mueve la barra de busqueda a la derecha a tu antojo */
+   background-color: #ffffffe3;
+}
+
+
+.search-table th {
+   background-color: #dd5746;
+   color: #ffffff;
+}
+
+.search-table tr:nth-child(even) {
+   background-color: #fdf4f4e3;
+}
+
+.notificacion-tabla{
+   border-radius: 10px;
+   width: 10%; /* tamaño del la tabla */
+   border-collapse: collapse;
+   margin-top: 0.8%;
+   font-size: 0px;
+   text-align: left;
+   position: absolute;
+   top: 0;
+   left: 1090px; /* mueve la barra de busqueda a la derecha a tu antojo */
+
+}
+
+.crearpedido-tabla{
+   border-radius: 10px;
+   width: 10%; /* tamaño de la tabla */
+   border-collapse: collapse;
+   margin-top: 0.8%;
+   font-size: 0px;
+   text-align: left;
+   position: absolute;
+   top: 0;
+   left: 1150px; /* mueve la barra de busqueda a la derecha a tu antojo */
+
+}
+
+
+.search-bar input[type="text"] {
+   width: 50%;
+   padding: 10px;
+   border: 1px solid #e9e3e3;
+   border-radius: 5px;
+   outline: none;
+   
+}
+
+.search-bar input[type="text"]:focus {
+   border-color: #dd5746;
+}
+
+.search-bar button {
+   padding: 10px 15px;
+   margin-left: 10px;
+   background-color: #dd5746;
+   border: none;
+   border-radius: 5px;
+   color: #ffffff;
+   cursor: pointer;
+}
+
+.search-bar button:hover {
+   background-color: #ffffff;
+   color: #dd5746;
+}
+
+.notificacion-boton {
+   width: 40px; 
+   height: 40px; 
+   background-color: #ffe7a7; 
+   border: none;
+   border-radius: 50%; 
+   color: #dd5746; 
+   cursor: pointer; 
+   display: flex; 
+   justify-content: center; 
+   align-items: center; 
+}
+
+.notificacion-boton:hover {
+   background-color: #dd5746; 
+   color: #ffffff;
+}
+
+
+.añadir-boton{
+   width: 150px; 
+   height: 40px; 
+   background-color: #dd5746; 
+   border: none;
+   border-radius: 10px;
+   color: #f7f7f7; 
+   cursor: pointer; 
+   display: flex; 
+   justify-content: center; 
+   align-items: center; 
+}
+
+.añadir-boton:hover {
+   background-color: #ffffff; 
+   color:  #f37362;
+}
+
+.grafica-ventas{
+   width: 50%; 
+   height: 100%; 
+   background-color: #ffffffe3; 
+   border: none;
+   color: #000000; 
+   cursor: pointer; 
+   display: flex; 
+   justify-content: center; 
+   align-items: center; 
+   margin-left: 30px; /* mueve la gráfica a la derecha */
+}
+
+button a {
+   color: inherit;                 /* quitar color de hipervinculo al boton */
+   text-decoration: none;          /* quitar color de hipervinculo al boton */
+}
+
+button a:hover {
+   color: inherit;                 /* quitar color de hipervinculo al boton */
+   text-decoration: none;          /* quitar color de hipervinculo al boton */
+}

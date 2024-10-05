@@ -1,17 +1,25 @@
 @import url(variables.css);
 
 .header {
-    position: relative;
-    margin-bottom: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
+.header p{
+    font-size: 14px;
+    font-weight: bold;
+    color: var(--texto);
+    margin: 0px;
+    
+}
+
 
 .filtro {
     background: var(--fondo);
     color: var(--texto);
     font-size: 14px;
-    position: absolute;
-    top: -3%;
-    right: 10%;
+ 
+   
     padding: 10px 16px;
     border: 1px solid var(--borde);
     border-radius: 8px;
@@ -22,9 +30,7 @@
     background: var(--fondo);
     color: var(--texto);
     font-size: 14px;
-    position: absolute;
-    top: -3%;
-    right: 1%;
+   
     padding: 10px 16px;
     border: 1px solid var(--borde);
     border-radius: 8px;
@@ -75,10 +81,7 @@
     border: 1px solid var(--borde);
     border-radius: 8px;
     cursor: pointer;
-    transition: background-color 1s ease;
-    position: absolute;
-    top: -25%;
-    left: 10%;
+    transition: background-color 0.4s ease;
 }
 
 .delete-button:hover {

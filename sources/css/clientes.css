@@ -1,87 +1,98 @@
 @import url(variables.css);
 
-.lista-clientes {
-    position: relative;
-}
-
-.header-titulo {
+.header {
     display: flex;
-    height: 64px;
-    align-items: center;
-    gap: 16px;
-}
-
-.contenedor-tabla {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    align-self: stretch;
-    border-radius: 10px;
-    border: 1px solid var(--borde);
-}
-
-.titulo {
-    font-weight: 600;
-}
-
-.acciones {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    gap: 16px;
-}
-
-.btn-opciones {
-    border-radius: 8px;
-    color: var(--texto);
-    background: var(--fondo) !important;
-    border: 1px solid var(--borde);
-    background: none;
-    padding: 10px 16px;
-}
-
-.header-tabla {
-    background: var(--fondo);
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 10px;
-}
-
-.fila-titulo {
-    display: flex;
-    width: 1058px;
-    height: 64px;
-    padding: 0px 24px;
-    align-items: center;
-    gap: 16px;
-}
-
-.fila {
-    display: flex;
-    width: 1058px;
-    height: 64px;
-    padding: 0px 24px;
-    align-items: center;
-    gap: 16px;
-    flex-shrink: 0;
-    border-bottom: 1px solid var(--fondo-contenido);
-    background: var(--fondo);
-}
-
-th {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    flex: 1 0 0;
-}
-
-.paginacion {
-    display: flex;
-    padding: 16px 24px;
     justify-content: space-between;
     align-items: center;
-    align-self: stretch;
-    border-top: 1px solid var(--fondo-contenido);
+}
+.header p {
+    font-size: 14px;
+    font-weight: bold;
+    color: var(--texto);
+    margin: 0px;
+}
+
+.btn-registrar-cliente {
     background: var(--fondo);
+    color: var(--texto);
+    font-size: 14px;
+
+    padding: 10px 16px;
+    border: 1px solid var(--borde);
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.filtro {
+    background: var(--fondo);
+    color: var(--texto);
+    font-size: 14px;
+
+    padding: 10px 16px;
+    border: 1px solid var(--borde);
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.ordenar {
+    background: var(--fondo);
+    color: var(--texto);
+    font-size: 14px;
+
+    padding: 10px 16px;
+    border: 1px solid var(--borde);
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.opcion {
+    background: none;
+    color: var(--texto);
+    padding: 1px 10px;
+    border: none;
+    cursor: pointer;
+}
+
+.table {
+    width: 100%; /* Ajusta el ancho de la tabla al 100% del contenedor */
+    border-collapse: separate; /* Cambia a 'separate' para permitir el espaciado entre celdas */
+    border-spacing: 0 3px; /* Añade espacio entre las filas */
+    margin: 20px 0; /* Añade un margen superior e inferior */
+    font-size: 90%; /* Ajusta el tamaño de la fuente */
+    text-align: left; /* Alinea el texto a la izquierda */
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 10px;
+    overflow: hidden;
+    background-color: var(--fondo-contenido); /* Cambia el color de fondo de la tabla */
+}
+
+.table th,
+.table td {
+    padding: 12px 15px; /* Añade relleno a las celdas */
+    background-color: var(--fondo); /* Cambia el color de fondo de las celdas */
+}
+
+.table th {
+    font-weight: bold; /* Hace el texto de los encabezados en negrita */
+}
+
+.table tr:nth-child(even) {
+    background-color: var(--fondo); /* Cambia el color de fondo de las filas pares */
+}
+
+.delete-button {
+    background: var(--fondo);
+    color: var(--color-primario);
+    font-size: 14px;
+    padding: 10px 16px;
+    border: 1px solid var(--borde);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.4s ease;
+}
+
+.delete-button:hover {
+    background-color: #f00a0ae8;
+    color: rgb(255, 255, 255);
 }
