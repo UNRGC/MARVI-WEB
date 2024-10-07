@@ -56,7 +56,7 @@
 .table {
     width: 100%; /* Ajusta el ancho de la tabla al 100% del contenedor */
     border-collapse: separate; /* Cambia a 'separate' para permitir el espaciado entre celdas */
-    border-spacing: 0 3px; /* Añade espacio entre las filas */
+    border-spacing: 0 4px; /* Añade espacio entre las filas */
     margin: 20px 0; /* Añade un margen superior e inferior */
     font-size: 90%; /* Ajusta el tamaño de la fuente */
     text-align: left; /* Alinea el texto a la izquierda */
@@ -69,8 +69,10 @@
 
 .table th,
 .table td {
+    color: var(--texto);
     padding: 12px 15px; /* Añade relleno a las celdas */
     background-color: var(--fondo); /* Cambia el color de fondo de las celdas */
+    border-color: transparent;
 }
 
 .table th {

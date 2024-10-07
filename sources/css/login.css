@@ -86,12 +86,11 @@ input:focus,
 select:focus {
     border-color: var(--color-primario) !important;
 }
-.mostrar svg {
-    fill: var(--texto) !important;
+.mostrar i {
+    color: var(--texto) !important;
 }
-.mostrar:hover svg {
-    fill: var(--color-primario) !important;
-    transform: scale(1.2);
+.mostrar:hover i {
+    color: var(--color-primario) !important;
 }
 .mostrar:active {
     color: var(--color-primario) !important;
@@ -103,7 +102,7 @@ select:focus {
     border: none;
 }
 .iniciar:hover {
-    background: var(--hover-color-p);
+    background: var(--hover-color-p) !important;
     color: var(--texto-primario);
 }
 .iniciar:active {
@@ -232,11 +231,8 @@ h1 {
     left: 50%;
     transform: translate(-50%, -50%);
 }
-.fondo input {
-    background-color: transparent;
-}
-.fondo input:focus {
-    background-color: transparent;
+.fondo p {
+    margin-bottom: 64px;
 }
 /* ------------- Recovery ------------- */
 
@@ -259,7 +255,7 @@ h1 {
         margin-bottom: 28px;
     }
     .input-r {
-        margin-bottom: 18px;
+        margin-bottom: 28px;
     }
     .container {
         width: 95%;

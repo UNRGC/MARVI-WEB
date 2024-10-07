@@ -20,7 +20,7 @@ nav {
 nav a {
     text-decoration: none;
     color: #dd5746;
-    font-size: 16px;
+    font-size: 18px;
     font-weight: 700;
 }
 nav a:hover {
@@ -61,7 +61,7 @@ nav a:hover {
     color: white;
     padding: 8px 20px;
     border-radius: 5px;
-    font-size: 16px;
+    font-size: 18px;
     font-weight: 400;
 }
 .btn:hover {
@@ -146,8 +146,15 @@ nav a:hover {
 }
 .row-n-bloques p {
     color: #dd5746;
-    font-size: 16px;
+    font-size: 18px;
     margin-top: 56px;
+}
+
+.regreso {
+    position: sticky;
+    top: calc(100vh - 67px);
+    left: calc(100vw - 24px);
+    z-index: 3 !important;
 }
 
 .estatico {
@@ -222,7 +229,7 @@ nav a:hover {
 }
 .valores p {
     color: #dd5746;
-    font-size: 16px;
+    font-size: 18px;
 }
 .carrousel-btn {
     position: absolute;
@@ -257,6 +264,10 @@ nav a:hover {
     position: relative;
     z-index: 2;
 }
+.servicios .msj {
+    width: 80%;
+    margin: 0 auto;
+}
 .servicios h1 {
     color: #dd5746;
     font-size: 32px;
@@ -265,7 +276,7 @@ nav a:hover {
 }
 .servicios p {
     color: #dd5746;
-    font-size: 16px;
+    font-size: 18px;
     margin-bottom: 80px;
 }
 .servicios .row {

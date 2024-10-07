@@ -36,6 +36,8 @@
 /* ------------- Tipo de fuente ------------- */
 * {
     font-family: "Inter", sans-serif;
+    scrollbar-color: var(--color-primario) var(--fondo-contenido);
+    scroll-behavior: smooth;
 }
 /* ------------- Tipo de fuente ------------- */
 
@@ -48,17 +50,15 @@
 /* ------------- Se mostrara hasta que termine de cargar los colores ------------- */
 html {
     display: none;
-    scroll-behavior: smooth;
 }
 /* ------------- Se mostrara hasta que termine de cargar los colores ------------- */
 
 /* ------------- Generales ------------- */
 html,
 body {
-    background: var(--fondo-contenido);
     color: var(--texto);
+    background: var(--fondo-contenido);
     margin: 0;
     padding: 0;
-    scrollbar-color: var(--color-primario) var(--fondo-contenido);
 }
 /* ------------- Generales ------------- */
