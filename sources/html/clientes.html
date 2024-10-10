@@ -20,7 +20,83 @@
             </div>
             <div class="d-flex gap-3">
                 <button type="button" id="eliminar" class="visually-hidden delete-button"><i class="bi bi-trash"></i> Eliminar</button>
-                <button class="btn-registrar-cliente"><i class="bi bi-plus-lg"></i> Registrar cliente</button>
+
+
+
+                <!-- boton para registrar un nuevo cliente -->
+                
+                <button class="btn-registrar-cliente" "btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"><i class="bi bi-plus-lg"></i> Registrar cliente</button>
+                <div class="offcanvas form-pedido offcanvas-end" data-bs-backdrop="static" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+                    <div class="offcanvas-header">
+                        <button type="button" class="btn" data-bs-dismiss="offcanvas" aria-label="Close"><i class="bi bi-x-lg"></i></button>
+                        <p class="offcanvas-title" id="offcanvasRightLabel">Registrar Nuevo Cliente</p>
+                    </div>
+                    <div class="offcanvas-body">
+                        <p>En esta sección vamos a Registrar a un Cliente Nuevo, a continuación llena la información solicitada para registrar la cliente.</p>
+                        <form action="">
+                            <div class="row">
+                                <div class="col">
+                                    <div class="input">
+                                        <label for="usuario" class="form-label">Nombre</label>
+                                        <input type="text" class="form-control focus-ring" id="usuario" placeholder="Escribe tu nombre(s)" required />
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <label for="pesaje" class="form-label">Pesaje</label>
+                                    <div class="input-group flex-nowrap">
+                                        <input type="number" class="form-control focus-ring" id="pesaje" min="0" placeholder="0" required />
+                                        <span class="input-group-text" id="addon-wrapping">Kg</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <label for="detalles" class="form-label">Detalles del pedido</label>
+                                    <textarea class="form-control focus-ring" id="detalles" rows="3" placeholder="Escribe aquí los detalles del pedido"></textarea>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <label for="estado" class="form-label">Estado</label>
+                                    <select class="form-select focus-ring" id="estado" aria-label="Default select example" required>
+                                        <option value="1" selected>Iniciando lavado</option>
+                                        <option value="2">Iniciando planchado</option>
+                                        <option value="3">Iniciando secado</option>
+                                    </select>
+                                </div>
+                                <div class="col">
+                                    <label for="fecha" class="form-label">Fecha de entrega estimada</label>
+                                    <input type="date" class="form-control focus-ring" id="fecha" required />
+                                </div>
+                            </div>
+                            <div class="row align-items-end">
+                                <div class="col-9">
+                                    <label for="cliente" class="form-label">Cliente</label>
+                                    <select class="form-select focus-ring" id="cliente" aria-label="Default select example" required>
+                                        <option value="" disabled selected>Selecciona un cliente</option>
+                                        <option value="1">Andres</option>
+                                        <option value="2">Juan</option>
+                                        <option value="3">Pedro</option>
+                                    </select>
+                                </div>
+                                <div class="col">
+                                    <button type="button" class="btn bell">Nuevo cliente</button>
+                                </div>
+                            </div>
+                            <div class="row m-0">
+                                <div class="col">
+                                    <button class="btn bell" type="button" data-bs-dismiss="offcanvas">Cancelar</button>
+                                </div>
+                                <div class="col">
+                                    <button class="btn pedido" type="submit">Crear pedido</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                  </div>
+                  <!--fin del boton  para registrar nuevo cliente-->
+
+
                 <button class="filtro" type="button" onclick="Filtros()"><i class="bi bi-filter"></i> Filtros</button>
                 <button class="ordenar" onclick="Ordenar()"><i class="bi bi-arrow-down-up"></i> Ordenar por</button>
             </div>
