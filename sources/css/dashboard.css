@@ -21,6 +21,35 @@ iframe {
     height: 100%;
     padding: 32px;
 }
+
+.swal2-popup {
+    background: var(--fondo) !important;
+    border: solid 1px var(--borde) !important;
+    color: var(--texto) !important;
+}
+.swal2-popup h2 {
+    color: var(--color-primario) !important;
+}
+.swal2-confirm {
+    background: var(--color-primario) !important;
+    color: var(--texto-primario) !important;
+    box-shadow: none !important; /* Elimina el borde semi-transparente */
+    border-radius: 8px !important;
+}
+.swal2-confirm:hover {
+    background: var(--hover-color-p) !important;
+    color: var(--texto-primario) !important;
+}
+.swal2-cancel {
+    background: var(--color-secundario) !important;
+    color: var(--texto-secundario) !important;
+    box-shadow: none !important; /* Elimina el borde semi-transparente */
+    border-radius: 8px !important;
+}
+.swal2-cancel:hover {
+    background: var(--hover-color-s) !important;
+    color: var(--texto-secundario) !important;
+}
 /* ------------- Contenido ------------- */
 
 /* ------------- Navegadores ------------- */
@@ -144,6 +173,7 @@ iframe {
     border-radius: 6px;
     margin-bottom: 8px;
     color: var(--color-primario);
+    transition: background-color 0.2s ease;
 }
 .n-izquierda li:hover {
     background: var(--color-secundario);
@@ -155,7 +185,7 @@ iframe {
     color: var(--texto-primario) !important;
 }
 .bell {
-    position: relative ;
+    position: relative;
     background: var(--color-secundario);
     color: var(--color-primario);
     width: 48px;
@@ -267,13 +297,11 @@ iframe {
     width: 690px !important;
 }
 
-
-/*------------- Alerta para eliminar pedido -------------*/	
+/*------------- Alerta para eliminar pedido -------------*/
 .eliminar {
     align-items: center;
-    width: 30%  !important;
+    width: 30% !important;
     margin: 0 auto;
     border-radius: 16px;
     border: 2px solid var(--color-primario);
 }
-

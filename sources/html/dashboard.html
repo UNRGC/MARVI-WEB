@@ -13,6 +13,8 @@
         <link rel="stylesheet" href="../css/dashboard.css" />
         <!-- Script del tema -->
         <script src="../js/temas.js"></script>
+        <!-- Script para mostrar alertas -->
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     </head>
     <body>
         <!-- Barra de navegación superior -->
@@ -80,7 +82,7 @@
                         <li id="configuracion" onclick="cargarPagina(this.id)"><i class="bi bi-gear"></i>Configuración</li>
                     </ul>
                     <div class="hr"></div>
-                    <button type="button" class="btn p-0" onclick="window.location.href='login.html'">
+                    <button type="button" class="btn p-0" onclick="window.parent.postMessage('salir', '*');">
                         <div class="d-flex align-items-center justify-content-around">
                             <img src="../img/Andres.jpeg" alt="Perfil" width="44px" height="44px" class="object-fit-cover rounded-5" />
                             <div>
@@ -179,20 +181,11 @@
             </div>
         </div>
 
-        <!-- RELLENO XD -->
-        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasClientes" aria-labelledby="offcanvasClientesLabel">
-            <div class="offcanvas-header">
-                <h5 class="offcanvas-title" id="offcanvasClientesLabel">Offcanvas right kkkkk</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-            </div>
-            <div class="offcanvas-body">ulisex es god</div>
-        </div>
-
         <!-- FORMULARIO PARA REGISTRO Y EDICION DEL CLIENTE-->
         <div class="offcanvas form-registrar offcanvas-end" tabindex="-1" id="offcanvasRegistrarCliente" aria-labelledby="offcanvasRegistrarClienteLabel">
             <div class="offcanvas-header">
                 <button type="button" class="btn" data-bs-dismiss="offcanvas" aria-label="Close"><i class="bi bi-x-lg"></i></button>
-                <h5 class="offcanvas-title" id="offcanvasRegistrarClienteLabel">CLIENTES</h5>
+                <p class="offcanvas-title" id="offcanvasRegistrarClienteLabel">Clientes</p>
                 <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
             </div>
             <div class="offcanvas-body">
@@ -200,7 +193,7 @@
                 <form action="">
                     <div class="row">
                         <div class="col">
-                            <label for="Nombre" class="form-label">Nombre(s)</label>
+                            <label for="nombre" class="form-label">Nombre(s)</label>
                             <div class="input-group flex-nowrap">
                                 <input type="text" class="form-control focus-ring" id="nombre" placeholder="Argelia Mariel" required />
                             </div>
@@ -208,13 +201,13 @@
                     </div>
                     <div class="row">
                         <div class="col">
-                            <label for="ApellidoP" class="form-label">Apellido Paterno</label>
+                            <label for="apellidoP" class="form-label">Apellido Paterno</label>
                             <div class="input-group flex-nowrap">
                                 <input type="text" class="form-control focus-ring" id="apellidoP" placeholder="Espinoza" required />
                             </div>
                         </div>
                         <div class="col">
-                            <label for="ApellidoM" class="form-label">Apellido Materno</label>
+                            <label for="apellidoM" class="form-label">Apellido Materno</label>
                             <div class="input-group flex-nowrap">
                                 <input type="text" class="form-control focus-ring" id="apellidoM" placeholder="Gamboa" required />
                             </div>
@@ -222,20 +215,19 @@
                     </div>
                     <div class="row">
                         <div class="col">
-                            <label for="Correo" class="form-label">Correo Electronico</label>
+                            <label for="correo" class="form-label">Correo Electronico</label>
                             <div class="input-group flex-nowrap">
-                                <input type="email" class="form-control focus-ring" id="Correo" placeholder="nombre@example.com" required />
+                                <input type="email" class="form-control focus-ring" id="correo" placeholder="nombre@example.com" required />
                             </div>
-                        </div>  
+                        </div>
                     </div>
                     <div class="row">
                         <div class="col">
-                            <label for="Telefono" class="form-label">Telefono</label>
+                            <label for="telefono" class="form-label">Telefono</label>
                             <div class="input-group flex-nowrap">
-                                <input type="tel" class="form-control focus-ring" id="Telefono" placeholder="2293614861" required />
+                                <input type="tel" class="form-control focus-ring" id="telefono" placeholder="8001234567" required />
                             </div>
                         </div>
-                   
                     </div>
                     <div class="row m-0">
                         <div class="col">
@@ -249,46 +241,7 @@
             </div>
         </div>
 
-
-
-        <!--OFFCANVAS DE ALERTA AL HACER UNA ELIMINACION DE PEDIDO-->
-<div class="offcanvas offcanvas-top eliminar" tabindex="-1" id="offcanvasEliminarPedido" aria-labelledby="offcanvasEliminarPedidoLabel">
-  <div class="offcanvas-header">
-    <h5 class="offcanvas-title " id="offcanvasEliminarPedidoLabel">SEGURO QUE DESEAS ELIMINAR ESTE PEDIDO?</h5>
-    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-  </div>
-  <div class="offcanvas-body">
-    <div class="row m-0">
-        <div class="col">
-            <button class="btn bell" type="button" data-bs-dismiss="offcanvas">NO</button>
-        </div>
-        <div class="col">
-            <button class="btn pedido" type="button" data-bs-dismiss="offcanvas">SI</button>
-        </div>
-    </div>
-  </div>
-</div>
-
-
-
- <!--OFFCANVAS DE ALERTA AL HACER UNA ELIMINACION DE ClIENTE-->
- <div class="offcanvas offcanvas-top eliminar" tabindex="-1" id="offcanvasEliminarCliente" aria-labelledby="offcanvasEliminarClienteLabel">
-    <div class="offcanvas-header">
-      <h5 class="offcanvas-title " id="offcanvasEliminarClienteLabel">SEGURO QUE DESEAS ELIMINAR ESTE CLIENTE?</h5>
-      <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-    </div>
-    <div class="offcanvas-body">
-      <div class="row m-0">
-          <div class="col">
-              <button class="btn bell" type="button" data-bs-dismiss="offcanvas">NO</button>
-          </div>
-          <div class="col">
-              <button class="btn pedido" type="button" data-bs-dismiss="offcanvas">SI</button>
-          </div>
-      </div>
-    </div>
-  </div>
-        <!-- Script para cambiar contenido del iframe -->
+        <!-- Script de todo el dashboard-->
         <script src="../js/dasboard.js"></script>
         <!-- Scripts de bootstrap -->
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>

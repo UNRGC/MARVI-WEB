@@ -61,4 +61,16 @@ body {
     margin: 0;
     padding: 0;
 }
+
+.dropdown-menu {
+    background: var(--fondo) !important;
+    border: 1px solid var(--borde) !important;
+}
+.dropdown-menu button {
+    color: var(--texto) !important;
+}
+.dropdown-menu button:hover {
+    background: var(--color-primario) !important;
+    color: var(--texto-primario) !important;
+}
 /* ------------- Generales ------------- */
