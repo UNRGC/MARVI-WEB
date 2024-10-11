@@ -261,3 +261,19 @@ iframe {
     margin-bottom: 32px;
 }
 /* ------------- Menu lateral ------------- */
+
+/* ------------- Registrar Cliente ------------- */
+.form-registrar {
+    width: 690px !important;
+}
+
+
+/*------------- Alerta para eliminar pedido -------------*/	
+.eliminar {
+    align-items: center;
+    width: 30%  !important;
+    margin: 0 auto;
+    border-radius: 16px;
+    border: 2px solid var(--color-primario);
+}
+

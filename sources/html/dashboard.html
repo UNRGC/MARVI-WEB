@@ -179,15 +179,115 @@
             </div>
         </div>
 
-        <!-- Aquí se mostrara la información del cliente -->
+        <!-- RELLENO XD -->
         <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasClientes" aria-labelledby="offcanvasClientesLabel">
             <div class="offcanvas-header">
-                <h5 class="offcanvas-title" id="offcanvasClientesLabel">Offcanvas right</h5>
+                <h5 class="offcanvas-title" id="offcanvasClientesLabel">Offcanvas right kkkkk</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
             </div>
-            <div class="offcanvas-body">...</div>
+            <div class="offcanvas-body">ulisex es god</div>
         </div>
 
+        <!-- FORMULARIO PARA REGISTRO Y EDICION DEL CLIENTE-->
+        <div class="offcanvas form-registrar offcanvas-end" tabindex="-1" id="offcanvasRegistrarCliente" aria-labelledby="offcanvasRegistrarClienteLabel">
+            <div class="offcanvas-header">
+                <button type="button" class="btn" data-bs-dismiss="offcanvas" aria-label="Close"><i class="bi bi-x-lg"></i></button>
+                <h5 class="offcanvas-title" id="offcanvasRegistrarClienteLabel">CLIENTES</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+                <p>En esta seccion vamos a registar y editar la informacion de nuestros Clientes</p>
+                <form action="">
+                    <div class="row">
+                        <div class="col">
+                            <label for="Nombre" class="form-label">Nombre(s)</label>
+                            <div class="input-group flex-nowrap">
+                                <input type="text" class="form-control focus-ring" id="nombre" placeholder="Argelia Mariel" required />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <label for="ApellidoP" class="form-label">Apellido Paterno</label>
+                            <div class="input-group flex-nowrap">
+                                <input type="text" class="form-control focus-ring" id="apellidoP" placeholder="Espinoza" required />
+                            </div>
+                        </div>
+                        <div class="col">
+                            <label for="ApellidoM" class="form-label">Apellido Materno</label>
+                            <div class="input-group flex-nowrap">
+                                <input type="text" class="form-control focus-ring" id="apellidoM" placeholder="Gamboa" required />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <label for="Correo" class="form-label">Correo Electronico</label>
+                            <div class="input-group flex-nowrap">
+                                <input type="email" class="form-control focus-ring" id="Correo" placeholder="nombre@example.com" required />
+                            </div>
+                        </div>  
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <label for="Telefono" class="form-label">Telefono</label>
+                            <div class="input-group flex-nowrap">
+                                <input type="tel" class="form-control focus-ring" id="Telefono" placeholder="2293614861" required />
+                            </div>
+                        </div>
+                   
+                    </div>
+                    <div class="row m-0">
+                        <div class="col">
+                            <button class="btn bell" type="button" data-bs-dismiss="offcanvas">Cancelar</button>
+                        </div>
+                        <div class="col">
+                            <button class="btn pedido" type="submit">Registrar Cliente</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+
+
+        <!--OFFCANVAS DE ALERTA AL HACER UNA ELIMINACION DE PEDIDO-->
+<div class="offcanvas offcanvas-top eliminar" tabindex="-1" id="offcanvasEliminarPedido" aria-labelledby="offcanvasEliminarPedidoLabel">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title " id="offcanvasEliminarPedidoLabel">SEGURO QUE DESEAS ELIMINAR ESTE PEDIDO?</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+    <div class="row m-0">
+        <div class="col">
+            <button class="btn bell" type="button" data-bs-dismiss="offcanvas">NO</button>
+        </div>
+        <div class="col">
+            <button class="btn pedido" type="button" data-bs-dismiss="offcanvas">SI</button>
+        </div>
+    </div>
+  </div>
+</div>
+
+
+
+ <!--OFFCANVAS DE ALERTA AL HACER UNA ELIMINACION DE ClIENTE-->
+ <div class="offcanvas offcanvas-top eliminar" tabindex="-1" id="offcanvasEliminarCliente" aria-labelledby="offcanvasEliminarClienteLabel">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title " id="offcanvasEliminarClienteLabel">SEGURO QUE DESEAS ELIMINAR ESTE CLIENTE?</h5>
+      <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+      <div class="row m-0">
+          <div class="col">
+              <button class="btn bell" type="button" data-bs-dismiss="offcanvas">NO</button>
+          </div>
+          <div class="col">
+              <button class="btn pedido" type="button" data-bs-dismiss="offcanvas">SI</button>
+          </div>
+      </div>
+    </div>
+  </div>
         <!-- Script para cambiar contenido del iframe -->
         <script src="../js/dasboard.js"></script>
         <!-- Scripts de bootstrap -->
