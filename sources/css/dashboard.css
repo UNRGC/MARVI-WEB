@@ -50,6 +50,23 @@ iframe {
     background: var(--hover-color-s) !important;
     color: var(--texto-secundario) !important;
 }
+
+.card {
+    cursor: pointer;
+    background: var(--fondo);
+    color: var(--texto);
+    border: 1px solid var(--borde);
+    border-radius: 8px;
+}
+.card:hover {
+    border: 1px solid var(--hover-borde);
+}
+.card-header {
+    background: var(--fondo);
+    color: var(--color-primario);
+    border-bottom: 1px solid var(--borde);
+}
+
 /* ------------- Contenido ------------- */
 
 /* ------------- Navegadores ------------- */
@@ -165,6 +182,16 @@ iframe {
 /* ------------- inputs ------------- */
 
 /* ------------- Botones ------------- */
+.btn-link {
+    color: var(--color-primario);
+    text-decoration: none;
+}
+.btn-link:hover {
+    color: var(--hover-color-p);
+}
+.btn-link:active {
+    color: var(--color-primario) !important;
+}
 .n-izquierda i {
     margin-right: 16px;
 }
@@ -265,7 +292,7 @@ iframe {
 
 /* ------------- Menu lateral ------------- */
 .offcanvas {
-    background: var(--fondo);
+    background: var(--fondo-contenido);
     color: var(--texto);
 }
 .form-pedido {

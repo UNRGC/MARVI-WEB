@@ -3,23 +3,9 @@
 h2 {
     color: var(--color-primario);
     font-weight: bold;
-}
-input {
-    width: 100px !important;
-    background: var(--fondo) !important;
-    border: solid 1px var(--borde) !important;
-    border-radius: 8px !important;
-}
-input:hover {
-    border: solid 1px var(--hover-borde);
-}
-input:focus {
-    --bs-focus-ring-color: transparent;
-    border: solid 1px var(--hover-borde) !important;
-    transform: scale(1.05);
+    margin: 0;
 }
 #mOscuro {
-    height: 100%;
     border: 1px solid var(--borde);
     accent-color: var(--color-primario);
 }
@@ -29,6 +15,46 @@ input:focus {
 }
 #mOscuro:focus {
     border: 1px solid var(--hover-borde);
+}
+.perfil {
+    position: relative;
+}
+.perfil img {
+    width: 200px;
+    border-radius: 50%;
+}
+
+input {
+    background: var(--fondo) !important;
+    color: var(--texto) !important;
+    border-radius: 8px !important;
+    border: 1px solid var(--borde) !important;
+    font-size: 14px !important;
+    padding: 12px !important;
+    --bs-focus-ring-color: transparent;
+}
+input::placeholder {
+    color: var(--placeholder) !important;
+}
+input:hover {
+    border: 1px solid var(--hover-borde) !important;
+}
+input:focus {
+    background: var(--fondo) !important;
+    color: var(--texto) !important;
+    border: 1px solid var(--hover-borde) !important;
+}
+input:disabled {
+    background: var(--fondo-contenido) !important;
+    color: var(--placeholder) !important;
+    border: 1px solid var(--borde) !important;
+}
+label {
+    font-size: 14px;
+    color: var(--texto);
+}
+.mOscuro label {
+    font-size: 18px;
 }
 .btn {
     border: none;
@@ -58,4 +84,54 @@ input:focus {
 .restablecer:active {
     background-color: var(--color-secundario) !important;
     color: var(--color-primario) !important;
+}
+.foto {
+    position: absolute;
+    left: calc(50% + 100px);
+    top: calc(100% - 46px);
+    padding: 15px;
+    border-radius: 50% !important;
+    translate: -50%;
+}
+
+.mostrar input {
+    border-radius: 8px 0 0 8px !important;
+}
+.mostrar .btn {
+    background: var(--fondo) !important;
+    border: 1px solid var(--borde) !important;
+}
+.mostrar .btn:hover {
+    border: 1px solid var(--hover-borde) !important;
+}
+.mostrar .btn:active {
+    border: 1px solid var(--color-primario) !important;
+}
+.mostrar .btn:disabled {
+    background: var(--fondo-contenido) !important;
+}
+.mostrar i {
+    color: var(--texto) !important;
+}
+.mostrar .btn:hover i {
+    color: var(--color-primario) !important;
+}
+.mostrar .btn:active {
+    color: var(--color-primario) !important;
+    border-color: var(--color-primario) !important;
+}
+
+.modal-content {
+    background: var(--fondo-contenido) !important;
+}
+.modal-header,
+.modal-footer {
+    border-color: var(--borde) !important;
+}
+.modal-body button {
+    border: none;
+    background: transparent;
+}
+.modal-body button:hover {
+    transform: scale(1.02);
 }
