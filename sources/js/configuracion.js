@@ -70,7 +70,6 @@ function cambiarFoto(ruta) {
 
 window.addEventListener("message", function (event) {
     if (event.data === "cambiosAceptados") {
-        editar(false);
         this.localStorage.setItem("foto", document.getElementById("img").value);
         window.parent.postMessage("salirDelSistema", "*");
     }
