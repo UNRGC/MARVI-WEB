@@ -36,6 +36,24 @@ function mostrarRegistrarCliente() {
     offcanvas.show();
 }
 
+function mostrarCompra() {
+    var offcanvasElement = document.getElementById("offcanvasCompra");
+    var offcanvas = new bootstrap.Offcanvas(offcanvasElement);
+    offcanvas.show();
+}
+
+function mostrarServicios() {
+    var offcanvasElement = document.getElementById("offcanvasServicios");
+    var offcanvas = new bootstrap.Offcanvas(offcanvasElement);
+    offcanvas.show();
+}
+
+function mostrarRegistrarUsuario() {
+    var offcanvasElement = document.getElementById("offcanvasRegistrarUsuarios");
+    var offcanvas = new bootstrap.Offcanvas(offcanvasElement);
+    offcanvas.show();
+}
+
 /* ------- Función para escuchar el mensaje ------- */
 window.addEventListener("message", function (event) {
     if (event.data === "mostrarClientes") {
@@ -64,6 +82,15 @@ window.addEventListener("message", function (event) {
     }
     if (event.data === "salirDelSistema") {
         salirDelSistema();
+    }
+    if (event.data === "mostrarCompra") {
+        mostrarCompra();
+    }
+    if (event.data === "mostrarServicios") {
+        mostrarServicios();
+    }
+    if (event.data === "mostrarRegistrarUsuario") {
+        mostrarRegistrarUsuario();
     }
     /* En caso de haber más offcanvas condicionar aquí*/
 });

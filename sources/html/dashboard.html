@@ -130,7 +130,7 @@
                     <div class="row align-items-end">
                         <div class="col-3">
                             <label for="clienteSl" class="form-label">Cliente*</label>
-                            <button type="button" class="btn bell" id="clienteSl">Selección</button>
+                            <button type="button" class="btn bell" id="clienteSl"><i class="bi bi-search"></i></button>
                         </div>
                         <div class="col">
                             <label for="cliente" class="form-label visually-hidden">Cliente</label>
@@ -264,6 +264,187 @@
                 </form>
             </div>
         </div>
+
+
+
+   <!--FORMULARIO PARA REGISTRAR LAS COMPRAS-->
+        <div class="offcanvas  offcanvas-end" data-bs-backdrop="static" tabindex="-1" id="offcanvasCompra" aria-labelledby="offcanvasCompraLabel">
+            <div class="offcanvas-header">
+                <button type="button" class="btn" data-bs-dismiss="offcanvas" aria-label="Close" onclick="cancelarCliente()"><i class="bi bi-x-lg"></i></button>
+                <p class="offcanvas-title" id="offcanvasCompraLabel">Productos</p>
+            </div>
+            <div class="offcanvas-body">
+                <p>Seccion destinada al registro y actualización del catalogo del producto</p>
+                <form action="">
+                    <div class="row">
+                        <div class="col">
+                            <label for="nombre" class="form-label">Nombre*</label>
+                            <div class="input-group flex-nowrap">
+                                <input type="text" class="form-control focus-ring" id="nombre" placeholder="Ariel" required />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <label for="apellidoP" class="form-label">Cantidad</label>
+                            <div class="input-group flex-nowrap">
+                                <input type="number" class="form-control focus-ring" id="pesaje" min="0" placeholder="0" required />
+                                <span class="input-group-text" id="addon-wrapping">Kg</span>
+                            </div>
+                        </div>
+                       
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <label for="correo" class="form-label">Precio</label>
+                            <div class="input-group flex-nowrap">
+                                <input type="email" class="form-control focus-ring" id="correo" placeholder="$250" required />
+                                <span class="input-group-text" id="addon-wrapping">$</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <label for="telefono" class="form-label">Proveedor</label>
+                            <div class="input-group flex-nowrap">
+                                <input type="tel" class="form-control focus-ring" id="telefono" placeholder="Chedraui" required />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row m-0">
+                        <div class="col">
+                            <button class="btn bell" type="button" data-bs-dismiss="offcanvas" onclick="cancelarCliente()">Cancelar</button>
+                        </div>
+                        <div class="col">
+                            <button class="btn pedido" type="submit">Guardar Producto</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+
+
+
+
+        <!--FORMULARIO PARA REGISTRAR LOS SERVICIOS-->
+        <div class="offcanvas  offcanvas-end" data-bs-backdrop="static" tabindex="-1" id="offcanvasServicios" aria-labelledby="offcanvasServiciosLabel">
+            <div class="offcanvas-header">
+                <button type="button" class="btn" data-bs-dismiss="offcanvas" aria-label="Close" onclick="cancelarCliente()"><i class="bi bi-x-lg"></i></button>
+                <p class="offcanvas-title" id="offcanvasServiciosLabel">Servicios</p>
+            </div>
+            <div class="offcanvas-body">
+                <p>Seccion destinada al registro y actualización del catalogo del producto</p>
+                <form action="">
+                    <div class="row">
+                        <div class="col">
+                            <label for="nombre" class="form-label">Nombre*</label>
+                            <div class="input-group flex-nowrap">
+                                <input type="text" class="form-control focus-ring" id="nombre" placeholder="Ariel" required />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <label for="apellidoP" class="form-label">Detalles</label>
+                            <div class="input-group flex-nowrap">
+                                <input type="text" class="form-control focus-ring" id="detalles"  placeholder="detalles del servicio" required />
+                            </div>
+                        </div>
+                       
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <label for="correo" class="form-label">Precio</label>
+                            <div class="input-group flex-nowrap">
+                                <input type="number" class="form-control focus-ring" id="correo"  min="0" placeholder="$17" required />
+                                <span class="input-group-text" id="addon-wrapping">$</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="row m-0">
+                        <div class="col">
+                            <button class="btn bell" type="button" data-bs-dismiss="offcanvas" onclick="cancelarCliente()">Cancelar</button>
+                        </div>
+                        <div class="col">
+                            <button class="btn pedido" type="submit">Guardar Servicio</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+
+
+        <!--FORMULARIO PARA REGISTRAR USUARIOS-->
+        <div class="offcanvas form-registrar offcanvas-end" data-bs-backdrop="static" tabindex="-1" id="offcanvasRegistrarUsuarios" aria-labelledby="offcanvasRegistrarUsuariosLabel">
+            <div class="offcanvas-header">
+                <button type="button" class="btn" data-bs-dismiss="offcanvas" aria-label="Close" onclick="cancelarCliente()"><i class="bi bi-x-lg"></i></button>
+                <p class="offcanvas-title" id="offcanvasRegistrarUsuariosLabel">Usuarios</p>
+            </div>
+            <div class="offcanvas-body">
+                <p>En esta sección vamos a registrar a los nuevos usuarios con acceso al sistema</p>
+                <form action="">
+                    <div class="row">
+                        <div class="col">
+                            <label for="nombre" class="form-label">Nombre de usuasio</label>
+                            <div class="input-group flex-nowrap">
+                                <input type="text" class="form-control focus-ring" id="nombre" placeholder="GHOSTREX" required />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <label for="nombre" class="form-label">Nombre(s)</label>
+                            <div class="input-group flex-nowrap">
+                                <input type="text" class="form-control focus-ring" id="nombre" placeholder="Manuel" required />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <label for="apellidoP" class="form-label">Apellido Paterno*</label>
+                            <div class="input-group flex-nowrap">
+                                <input type="text" class="form-control focus-ring" id="apellidoP" placeholder="Espinoza" required />
+                            </div>
+                        </div>
+                        <div class="col">
+                            <label for="apellidoM" class="form-label">Apellido Materno</label>
+                            <div class="input-group flex-nowrap">
+                                <input type="text" class="form-control focus-ring" id="apellidoM" placeholder="Gamboa" required />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <label for="correo" class="form-label">Correo Electrónico</label>
+                            <div class="input-group flex-nowrap">
+                                <input type="email" class="form-control focus-ring" id="correo" placeholder="nombre@example.com" required />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <label for="telefono" class="form-label">Teléfono*</label>
+                            <div class="input-group flex-nowrap">
+                                <input type="tel" class="form-control focus-ring" id="telefono" placeholder="8001234567" required />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row m-0">
+                        <div class="col">
+                            <button class="btn bell" type="button" data-bs-dismiss="offcanvas" onclick="cancelarCliente()">Cancelar</button>
+                        </div>
+                        <div class="col">
+                            <button class="btn pedido" type="submit">Guardar Usuario</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+
 
         <!-- Script de todo el dashboard-->
         <script src="../js/dasboard.js"></script>

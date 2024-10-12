@@ -12,6 +12,143 @@
         <script src="../js/temas.js"></script>
     </head>
     <body>
+
+        <div class="header">
+            <div class="d-flex gap-3 align-items-center">
+                <p>Lista de Compras</p>
+            </div>
+            <div class="d-flex gap-3">
+                <button type="button" id="eliminar" class="visually-hidden delete-button" onclick="window.parent.postMessage('mostrarEliminarCliente', '*');"><i class="bi bi-trash"></i> Eliminar</button>
+
+                <!-- boton para registrar un nuevo cliente -->
+                
+                <button class="filtro" type="button" onclick="Filtros()"><i class="bi bi-filter"></i> Filtros</button>
+                <button class="ordenar" onclick="Ordenar()"><i class="bi bi-arrow-down-up"></i> Ordenar por</button>
+                <button class="btn-registrar-cliente" type="button" onclick="window.parent.postMessage('mostrarCompra', '*');"><i class="bi bi-plus-lg"></i>Agregar Compra</button>
+            </div>
+        </div>
+
+        <div class="table-container">
+            <table class="table">
+                <tbody>
+                    <tr>
+                        <th></th>
+                        <th scope="col">ID</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Cantidad</th>
+                        <th scope="col">Precio</th>
+                        <th scope="col">Proveedor</th>
+                        <th scope="col">Opciones</th>
+                    </tr>
+                    <tr>
+                        <th>
+                            <input type="checkbox" class="select-checkbox" onclick="mostrar()" />
+                        </th>
+                        <td>10122024</td>
+                        <td>Ariel</td>
+                        <td>30 KG</td>
+                        <td>$ 300</td>
+                        <td>Sams Club</td>
+                        <td>
+                            <button class="opcion" type="button" data-bs-toggle="dropdown">
+                                <i class="bi bi-three-dots-vertical"></i>
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><button class="dropdown-item" onclick="window.parent.postMessage('mostrarCompra', '*');">Ver Detalles</button></li>
+                                <li><button class="dropdown-item" onclick="window.parent.postMessage('mostrarEliminarCliente', '*');">Eliminar</button></li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            <input type="checkbox" class="select-checkbox" onclick="mostrar()" />
+                        </th>
+                        <td>10122024</td>
+                        <td>Ariel</td>
+                        <td>30 KG</td>
+                        <td>$ 300</td>
+                        <td>Sams Club</td>
+                        <td>
+                            <button class="opcion" type="button" data-bs-toggle="dropdown">
+                                <i class="bi bi-three-dots-vertical"></i>
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><button class="dropdown-item" onclick="window.parent.postMessage('mostrarCompra', '*');">Ver Detalles</button></li>
+                                <li><button class="dropdown-item" onclick="window.parent.postMessage('mostrarEliminarCliente', '*');">Eliminar</button></li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            <input type="checkbox" class="select-checkbox" onclick="mostrar()" />
+                        </th>
+                        <td>10122024</td>
+                        <td>Ariel</td>
+                        <td>30 KG</td>
+                        <td>$ 300</td>
+                        <td>Sams Club</td>
+                        <td>
+                            <button class="opcion" type="button" data-bs-toggle="dropdown">
+                                <i class="bi bi-three-dots-vertical"></i>
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><button class="dropdown-item" onclick="window.parent.postMessage('mostrarCompra', '*');">Ver Detalles</button></li>
+                                <li><button class="dropdown-item" onclick="window.parent.postMessage('mostrarEliminarCliente', '*');">Eliminar</button></li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            <input type="checkbox" class="select-checkbox" onclick="mostrar()" />
+                        </th>
+                        <td>10122024</td>
+                        <td>Ariel</td>
+                        <td>30 KG</td>
+                        <td>$ 300</td>
+                        <td>Sams Club</td>
+                        <td>
+                            <button class="opcion" type="button" data-bs-toggle="dropdown">
+                                <i class="bi bi-three-dots-vertical"></i>
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><button class="dropdown-item" onclick="window.parent.postMessage('mostrarCompra', '*');">Ver Detalles</button></li>
+                                <li><button class="dropdown-item" onclick="window.parent.postMessage('mostrarEliminarCliente', '*');">Eliminar</button></li>
+                    </tr>
+                    <tr>
+                        <th>
+                            <input type="checkbox" class="select-checkbox" onclick="mostrar()" />
+                        </th>
+                        <td>10122024</td>
+                        <td>Ariel</td>
+                        <td>30 KG</td>
+                        <td>$ 300</td>
+                        <td>Sams Club</td>
+                        <td>
+                            <button class="opcion" type="button" data-bs-toggle="dropdown">
+                                <i class="bi bi-three-dots-vertical"></i>
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><button class="dropdown-item" onclick="window.parent.postMessage('mostrarCompra', '*');">Ver Detalles</button></li>
+                                <li><button class="dropdown-item" onclick="window.parent.postMessage('mostrarEliminarCliente', '*');">Eliminar</button></li>
+                            </ul>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <script>
+            function mostrar() {
+                const boton = document.getElementById("eliminar");
+                const checkboxes = document.querySelectorAll(".select-checkbox");
+
+                if (Array.from(checkboxes).some((checkbox) => checkbox.checked)) {
+                    boton.classList.remove("visually-hidden");
+                } else {
+                    boton.classList.add("visually-hidden");
+                }
+            }
+        </script>
         <!-- Scripts de bootstrap -->
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
