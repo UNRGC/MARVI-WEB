@@ -16,86 +16,13 @@
     <body>
         <div class="header">
             <div class="d-flex gap-3 align-items-center">
-                <p>Lista de Clientes</p>
+                <p>Lista de clientes</p>
             </div>
             <div class="d-flex gap-3">
-                <button type="button" id="eliminar" class="visually-hidden delete-button"><i class="bi bi-trash"></i> Eliminar</button>
-
-
+                <button type="button" id="eliminar" class="visually-hidden delete-button" onclick="window.parent.postMessage('mostrarEliminarCliente', '*');"><i class="bi bi-trash"></i> Eliminar</button>
 
                 <!-- boton para registrar un nuevo cliente -->
-                
-                <button class="btn-registrar-cliente" "btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"><i class="bi bi-plus-lg"></i> Registrar cliente</button>
-                <div class="offcanvas form-pedido offcanvas-end" data-bs-backdrop="static" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
-                    <div class="offcanvas-header">
-                        <button type="button" class="btn" data-bs-dismiss="offcanvas" aria-label="Close"><i class="bi bi-x-lg"></i></button>
-                        <p class="offcanvas-title" id="offcanvasRightLabel">Registrar Nuevo Cliente</p>
-                    </div>
-                    <div class="offcanvas-body">
-                        <p>En esta sección vamos a Registrar a un Cliente Nuevo, a continuación llena la información solicitada para registrar la cliente.</p>
-                        <form action="">
-                            <div class="row">
-                                <div class="col">
-                                    <div class="input">
-                                        <label for="usuario" class="form-label">Nombre</label>
-                                        <input type="text" class="form-control focus-ring" id="usuario" placeholder="Escribe tu nombre(s)" required />
-                                    </div>
-                                </div>
-                                <div class="col">
-                                    <label for="pesaje" class="form-label">Pesaje</label>
-                                    <div class="input-group flex-nowrap">
-                                        <input type="number" class="form-control focus-ring" id="pesaje" min="0" placeholder="0" required />
-                                        <span class="input-group-text" id="addon-wrapping">Kg</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col">
-                                    <label for="detalles" class="form-label">Detalles del pedido</label>
-                                    <textarea class="form-control focus-ring" id="detalles" rows="3" placeholder="Escribe aquí los detalles del pedido"></textarea>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col">
-                                    <label for="estado" class="form-label">Estado</label>
-                                    <select class="form-select focus-ring" id="estado" aria-label="Default select example" required>
-                                        <option value="1" selected>Iniciando lavado</option>
-                                        <option value="2">Iniciando planchado</option>
-                                        <option value="3">Iniciando secado</option>
-                                    </select>
-                                </div>
-                                <div class="col">
-                                    <label for="fecha" class="form-label">Fecha de entrega estimada</label>
-                                    <input type="date" class="form-control focus-ring" id="fecha" required />
-                                </div>
-                            </div>
-                            <div class="row align-items-end">
-                                <div class="col-9">
-                                    <label for="cliente" class="form-label">Cliente</label>
-                                    <select class="form-select focus-ring" id="cliente" aria-label="Default select example" required>
-                                        <option value="" disabled selected>Selecciona un cliente</option>
-                                        <option value="1">Andres</option>
-                                        <option value="2">Juan</option>
-                                        <option value="3">Pedro</option>
-                                    </select>
-                                </div>
-                                <div class="col">
-                                    <button type="button" class="btn bell">Nuevo cliente</button>
-                                </div>
-                            </div>
-                            <div class="row m-0">
-                                <div class="col">
-                                    <button class="btn bell" type="button" data-bs-dismiss="offcanvas">Cancelar</button>
-                                </div>
-                                <div class="col">
-                                    <button class="btn pedido" type="submit">Crear pedido</button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                  </div>
-                  <!--fin del boton  para registrar nuevo cliente-->
-
+                <button class="btn-registrar-cliente" type="button" onclick="window.parent.postMessage('mostrarRegistrarCliente', '*');"><i class="bi bi-plus-lg"></i> Registrar cliente</button>
 
                 <button class="filtro" type="button" onclick="Filtros()"><i class="bi bi-filter"></i> Filtros</button>
                 <button class="ordenar" onclick="Ordenar()"><i class="bi bi-arrow-down-up"></i> Ordenar por</button>
@@ -106,101 +33,117 @@
             <table class="table">
                 <tbody>
                     <tr>
-                        <th>
-                            <input type="checkbox" class="select-checkbox" onclick="mostrar()" />
-                        </th>
+                        <th></th>
                         <th scope="col">ID</th>
                         <th scope="col">Nombre</th>
-                        <th scope="col">Apellidos</th>
+                        <th scope="col">Apellido P.</th>
+                        <th scope="col">Apellido M.</th>
                         <th scope="col">Correo</th>
                         <th scope="col">Telefono</th>
-                        <th scope="col">Fecha de creacion</th>
                         <th scope="col">Opciones</th>
                     </tr>
                     <tr>
                         <th>
                             <input type="checkbox" class="select-checkbox" onclick="mostrar()" />
                         </th>
-                        <td>696969</td>
-                        <td>Manuel</td>
-                        <td>Gamboa Gary</td>
-                        <td>gary822@gmail.com</td>
-                        <td>254634391</td>
-                        <td>10/10/2022</td>
-                      
-
-                        <td>
-                            <button class="opcion" type="button">
-                                <i class="bi bi-three-dots-vertical"></i>
-                            </button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
-                            <input type="checkbox" class="select-checkbox" onclick="mostrar()" />
-                        </th>
-                        <td>000117</td>
-                        <td>Cesar Jhovany</td>
-                        <td>Gomez Aguilar</td>
-                        <td>larmon117@gmail.com</td>
-                        <td>5574482934</td>
-                        <td>08/06/2002</td>
-
-                        <td>
-                            <button class="opcion" type="button">
-                                <i class="bi bi-three-dots-vertical"></i>
-                            </button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
-                            <input type="checkbox" class="select-checkbox" onclick="mostrar()" />
-                        </th>
-                        <td>9324829</td>
-                        <td>Aquiles</td>
-                        <td>Montalvo Lora</td>
-                        <td>aquilesfigma@gmail.com</td>
-                        <td>27189297</td>
-                        <td>20/01/2024</td>
-
-                        <td>
-                            <button class="opcion" type="button">
-                                <i class="bi bi-three-dots-vertical"></i>
-                            </button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
-                            <input type="checkbox" class="select-checkbox" onclick="mostrar()" />
-                        </th>
-                        <td>2328728</td>
+                        <td>2324324</td>
                         <td>Ulises</td>
-                        <td>Cortes Flex</td>
-                        <td>boostrap_flex@gmail.com</td>
-                        <td>11101110</td>
-                        <td>12/12/2012</td>
+                        <td>Gomez</td>
+                        <td>Aguilar</td>
+                        <td>ulisesgo@gmail.com</td>
+                        <td>2293614861</td>
 
                         <td>
-                            <button class="opcion" type="button">
+                            <button class="opcion" type="button" data-bs-toggle="dropdown">
                                 <i class="bi bi-three-dots-vertical"></i>
                             </button>
+                            <ul class="dropdown-menu">
+                                <li><button class="dropdown-item" onclick="window.parent.postMessage('mostrarRegistrarCliente', '*');">Ver Detalles</button></li>
+                                <li><button class="dropdown-item" onclick="window.parent.postMessage('mostrarEliminarCliente', '*');">Eliminar</button></li>
+                            </ul>
                         </td>
                     </tr>
                     <tr>
                         <th>
                             <input type="checkbox" class="select-checkbox" onclick="mostrar()" />
                         </th>
-                        <td>3923891</td>
-                        <td>Jorge</td>
-                        <td>Martin Martines</td>
-                        <td>JOrgdjwu@gmail.com</td>
-                        <td>27137389</td>
-                        <td>12/08/2002</td>
-
+                        <td>2324324</td>
+                        <td>Ulises</td>
+                        <td>Gomez</td>
+                        <td>Aguilar</td>
+                        <td>ulisesgo@gmail.com</td>
+                        <td>2293614861</td>
                         <td>
-                            <button class="opcion" type="button">
+                            <button class="opcion" type="button" data-bs-toggle="dropdown">
                                 <i class="bi bi-three-dots-vertical"></i>
                             </button>
+                            <ul class="dropdown-menu">
+                                <li><button class="dropdown-item" onclick="window.parent.postMessage('mostrarPedidos', '*');">Ver Detalles</button></li>
+                                <li><button class="dropdown-item" onclick="window.parent.postMessage('mostrarEliminarCliente', '*');">Eliminar</button></li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            <input type="checkbox" class="select-checkbox" onclick="mostrar()" />
+                        </th>
+                        <td>2324324</td>
+                        <td>Ulises</td>
+                        <td>Gomez</td>
+                        <td>Aguilar</td>
+                        <td>ulisesgo@gmail.com</td>
+                        <td>2293614861</td>
+
+                        <td>
+                            <button class="opcion" type="button" data-bs-toggle="dropdown">
+                                <i class="bi bi-three-dots-vertical"></i>
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><button class="dropdown-item" onclick="window.parent.postMessage('mostrarPedidos', '*');">Ver Detalles</button></li>
+                                <li><button class="dropdown-item" onclick="window.parent.postMessage('mostrarEliminarCliente', '*');">Eliminar</button></li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            <input type="checkbox" class="select-checkbox" onclick="mostrar()" />
+                        </th>
+                        <td>2324324</td>
+                        <td>Ulises</td>
+                        <td>Gomez</td>
+                        <td>Aguilar</td>
+                        <td>ulisesgo@gmail.com</td>
+                        <td>2293614861</td>
+
+                        <td>
+                            <button class="opcion" type="button" data-bs-toggle="dropdown">
+                                <i class="bi bi-three-dots-vertical"></i>
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><button class="dropdown-item" onclick="window.parent.postMessage('mostrarPedidos', '*');">Ver Detalles</button></li>
+                                <li><button class="dropdown-item" onclick="window.parent.postMessage('mostrarEliminarCliente', '*');">Eliminar</button></li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            <input type="checkbox" class="select-checkbox" onclick="mostrar()" />
+                        </th>
+                        <td>2324324</td>
+                        <td>Ulises</td>
+                        <td>Gomez</td>
+                        <td>Aguilar</td>
+                        <td>ulisesgo@gmail.com</td>
+                        <td>2293614861</td>
+
+                        <td>
+                            <button class="opcion" type="button" data-bs-toggle="dropdown">
+                                <i class="bi bi-three-dots-vertical"></i>
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><button class="dropdown-item" onclick="window.parent.postMessage('mostrarPedidos', '*');">Ver Detalles</button></li>
+                                <li><button class="dropdown-item" onclick="window.parent.postMessage('mostrarEliminarCliente', '*');">Eliminar</button></li>
+                            </ul>
                         </td>
                     </tr>
                 </tbody>

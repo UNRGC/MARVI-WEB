@@ -27,7 +27,7 @@
     --texto-oscuro: #e0e0e0;
     --texto-claro: #394a66;
     --placeholder-oscuro: #8a8a8a;
-    --placeholder-claro: #747474;
+    --placeholder-claro: #8a8a8a;
 
     --fondo-img: url("../img/lavando.jpg");
 }
@@ -60,5 +60,17 @@ body {
     background: var(--fondo-contenido);
     margin: 0;
     padding: 0;
+}
+
+.dropdown-menu {
+    background: var(--fondo) !important;
+    border: 1px solid var(--borde) !important;
+}
+.dropdown-menu button {
+    color: var(--texto) !important;
+}
+.dropdown-menu button:hover {
+    background: var(--color-primario) !important;
+    color: var(--texto-primario) !important;
 }
 /* ------------- Generales ------------- */

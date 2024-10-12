@@ -21,6 +21,52 @@ iframe {
     height: 100%;
     padding: 32px;
 }
+
+.swal2-popup {
+    background: var(--fondo) !important;
+    border: solid 1px var(--borde) !important;
+    color: var(--texto) !important;
+}
+.swal2-popup h2 {
+    color: var(--color-primario) !important;
+}
+.swal2-confirm {
+    background: var(--color-primario) !important;
+    color: var(--texto-primario) !important;
+    box-shadow: none !important; /* Elimina el borde semi-transparente */
+    border-radius: 8px !important;
+}
+.swal2-confirm:hover {
+    background: var(--hover-color-p) !important;
+    color: var(--texto-primario) !important;
+}
+.swal2-cancel {
+    background: var(--color-secundario) !important;
+    color: var(--texto-secundario) !important;
+    box-shadow: none !important; /* Elimina el borde semi-transparente */
+    border-radius: 8px !important;
+}
+.swal2-cancel:hover {
+    background: var(--hover-color-s) !important;
+    color: var(--texto-secundario) !important;
+}
+
+.card {
+    cursor: pointer;
+    background: var(--fondo);
+    color: var(--texto);
+    border: 1px solid var(--borde);
+    border-radius: 8px;
+}
+.card:hover {
+    border: 1px solid var(--hover-borde);
+}
+.card-header {
+    background: var(--fondo);
+    color: var(--color-primario);
+    border-bottom: 1px solid var(--borde);
+}
+
 /* ------------- Contenido ------------- */
 
 /* ------------- Navegadores ------------- */
@@ -136,6 +182,16 @@ iframe {
 /* ------------- inputs ------------- */
 
 /* ------------- Botones ------------- */
+.btn-link {
+    color: var(--color-primario);
+    text-decoration: none;
+}
+.btn-link:hover {
+    color: var(--hover-color-p);
+}
+.btn-link:active {
+    color: var(--color-primario) !important;
+}
 .n-izquierda i {
     margin-right: 16px;
 }
@@ -144,6 +200,7 @@ iframe {
     border-radius: 6px;
     margin-bottom: 8px;
     color: var(--color-primario);
+    transition: background-color 0.2s ease;
 }
 .n-izquierda li:hover {
     background: var(--color-secundario);
@@ -155,7 +212,7 @@ iframe {
     color: var(--texto-primario) !important;
 }
 .bell {
-    position: relative ;
+    position: relative;
     background: var(--color-secundario);
     color: var(--color-primario);
     width: 48px;
@@ -235,7 +292,7 @@ iframe {
 
 /* ------------- Menu lateral ------------- */
 .offcanvas {
-    background: var(--fondo);
+    background: var(--fondo-contenido);
     color: var(--texto);
 }
 .form-pedido {
@@ -261,3 +318,17 @@ iframe {
     margin-bottom: 32px;
 }
 /* ------------- Menu lateral ------------- */
+
+/* ------------- Registrar Cliente ------------- */
+.form-registrar {
+    width: 690px !important;
+}
+
+/*------------- Alerta para eliminar pedido -------------*/
+.eliminar {
+    align-items: center;
+    width: 30% !important;
+    margin: 0 auto;
+    border-radius: 16px;
+    border: 2px solid var(--color-primario);
+}

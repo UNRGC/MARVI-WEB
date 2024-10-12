@@ -6,7 +6,7 @@
     align-items: center;
 }
 .header p {
-    font-size: 14px;
+    font-size: 16px;
     font-weight: bold;
     color: var(--texto);
     margin: 0px;
@@ -47,12 +47,10 @@
     border-collapse: separate; /* Cambia a 'separate' para permitir el espaciado entre celdas */
     border-spacing: 0 4px; /* Añade espacio entre las filas */
     margin: 20px 0; /* Añade un margen superior e inferior */
-    font-size: 90%; /* Ajusta el tamaño de la fuente */
+    font-size: 15px; /* Ajusta el tamaño de la fuente */
     text-align: left; /* Alinea el texto a la izquierda */
-    margin-left: auto;
-    margin-right: auto;
     border-radius: 10px;
-    overflow: hidden;
+    overflow: auto;
     background-color: var(--fondo-contenido); /* Cambia el color de fondo de la tabla */
 }
 
@@ -80,10 +78,10 @@
     border: 1px solid var(--borde);
     border-radius: 8px;
     cursor: pointer;
-    transition: background-color 0.4s ease;
+    transition: background-color 0.2s ease;
 }
 
 .delete-button:hover {
-    background-color: #f00a0ae8;
-    color: rgb(255, 255, 255);
+    background-color: var(--color-primario);
+    color: var(--texto-primario);
 }
