@@ -14,8 +14,6 @@
         <script src="../js/temas.js"></script>
     </head>
     <body>
-
-
         <div class="header">
             <div class="d-flex gap-3 align-items-center">
                 <p>Lista de Usuarios</p>
@@ -24,10 +22,10 @@
                 <button type="button" id="eliminar" class="visually-hidden delete-button" onclick="window.parent.postMessage('mostrarEliminarCliente', '*');"><i class="bi bi-trash"></i> Eliminar</button>
 
                 <!-- boton para registrar un nuevo cliente -->
-                
+
                 <button class="filtro" type="button" onclick="Filtros()"><i class="bi bi-filter"></i> Filtros</button>
                 <button class="ordenar" onclick="Ordenar()"><i class="bi bi-arrow-down-up"></i> Ordenar por</button>
-                <button class="btn-registrar-cliente" type="button" onclick="window.parent.postMessage('mostrarRegistrarUsuario', '*');"><i class="bi bi-plus-lg"></i> Registrar Usuario</button>
+                <button class="btn-registrar-cliente" type="button" onclick="window.parent.postMessage('mostrarUsuarios', '*');"><i class="bi bi-plus-lg"></i> Registrar Usuario</button>
             </div>
         </div>
 
@@ -55,7 +53,6 @@
                         <td>Garay</td>
                         <td>ulisesgo@gmail.com</td>
                         <td>2293614861</td>
-
                     </tr>
                     <tr>
                         <th>

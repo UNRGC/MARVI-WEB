@@ -36,7 +36,7 @@
 /* ------------- Tipo de fuente ------------- */
 * {
     font-family: "Inter", sans-serif;
-    scrollbar-color: var(--color-primario) var(--fondo-contenido);
+    scrollbar-color: var(--color-primario) transparent;
     scroll-behavior: smooth;
 }
 /* ------------- Tipo de fuente ------------- */
@@ -58,8 +58,6 @@ html,
 body {
     color: var(--texto);
     background: var(--fondo-contenido);
-    margin: 0;
-    padding: 0;
 }
 
 .dropdown-menu {
@@ -72,5 +70,17 @@ body {
 .dropdown-menu button:hover {
     background: var(--color-primario) !important;
     color: var(--texto-primario) !important;
+}
+.visible {
+    animation: fadeIn 0.5s;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }
 /* ------------- Generales ------------- */

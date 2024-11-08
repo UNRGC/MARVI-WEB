@@ -12,14 +12,14 @@ body {
 
 /* ------------- Contenido ------------- */
 .contenido {
-    margin-left: 320px;
-    width: calc(100% - 320px);
+    margin-left: 260px;
+    width: calc(100% - 260px);
     height: calc(100vh - 80px);
 }
 iframe {
     width: 100%;
     height: 100%;
-    padding: 32px;
+    padding: 24px 32px;
 }
 
 .swal2-popup {
@@ -78,7 +78,7 @@ iframe {
 .n-izquierda {
     background: var(--fondo);
     float: left;
-    width: 320px;
+    width: 260px;
     height: calc(100vh - 80px);
     border-right: 1px solid var(--borde);
     padding: 32px 24px;
@@ -98,6 +98,9 @@ iframe {
 }
 .input-group:hover {
     border: solid 1px var(--hover-borde);
+}
+.input-group:focus-within {
+    border: 1px solid var(--color-primario);
 }
 .input-group input {
     border-radius: 8px !important;
@@ -147,51 +150,45 @@ iframe {
 .offcanvas-body textarea:focus {
     background: var(--fondo);
     color: var(--texto);
-    border: 1px solid var(--hover-borde);
+    border: 1px solid var(--color-primario);
+}
+.offcanvas-body input:disabled,
+.offcanvas-body select:disabled,
+.offcanvas-body textarea:disabled {
+    background: var(--fondo-contenido);
 }
 .offcanvas-body label {
     font-size: 14px;
     color: var(--texto);
 }
 .offcanvas-body .input-group {
+    background: var(--fondo);
     border-radius: 8px;
     border: 1px solid var(--borde);
+    overflow: hidden;
+}
+.offcanvas-body .input-group:has(input:disabled) {
+    background: var(--fondo-contenido);
 }
 .offcanvas-body .input-group:hover {
     border: 1px solid var(--hover-borde);
 }
+.offcanvas-body .input-group:focus-within {
+    border: 1px solid var(--color-primario);
+}
 .offcanvas-body .input-group input {
-    border: none;
-}
-.offcanvas-body .input-group input:hover {
-    border: none;
-}
-.offcanvas-body .input-group input:focus {
+    background: transparent;
+    border-radius: 0 !important;
     border: none;
 }
 .offcanvas-body .input-group-text {
     border: none;
-    background: white;
-    color: #747474;
-}
-.offcanvas-body span {
-    background: var(--fondo) !important;
-    color: var(--texto);
-    border-radius: 8px;
+    background: transparent;
+    color: var(--placeholder);
 }
 /* ------------- inputs ------------- */
 
 /* ------------- Botones ------------- */
-.btn-link {
-    color: var(--color-primario);
-    text-decoration: none;
-}
-.btn-link:hover {
-    color: var(--hover-color-p);
-}
-.btn-link:active {
-    color: var(--color-primario) !important;
-}
 .n-izquierda i {
     margin-right: 16px;
 }
@@ -243,6 +240,48 @@ iframe {
     background: var(--color-primario) !important;
     color: var(--texto-primario) !important;
 }
+.pedido:disabled {
+    background: var(--fondo-contenido) !important;
+    color: var(--texto) !important;
+    border: 1px solid var(--hover-borde);
+}
+.search {
+    background: var(--fondo);
+    color: var(--texto);
+    height: 48px;
+}
+.search:hover {
+    background: var(--fondo);
+    border-color: var(--hover-borde);
+}
+.add {
+    width: 48px;
+    background: var(--color-secundario);
+    color: var(--color-primario);
+    border-radius: 8px;
+    border: none;
+}
+.add:hover {
+    background: var(--hover-color-s);
+    color: var(--color-primario);
+}
+.add:active {
+    background: var(--color-secundario) !important;
+    color: var(--color-primario) !important;
+}
+.add:disabled {
+    color: var(--texto);
+    border: 1px solid var(--hover-borde);
+}
+.del {
+    width: 48px;
+    border-radius: 8px;
+    border: none;
+}
+.del:hover {
+    transform: scale(1.05);
+    color: var(--texto-secundario);
+}
 .input-group button:hover {
     color: var(--color-primario) !important;
 }
@@ -272,9 +311,21 @@ iframe {
 }
 .offcanvas-header button {
     color: #9098aa;
+    font-size: 20px;
     border: none;
     background: transparent;
-    margin-right: 32px;
+}
+.offcanvas-header .edit {
+    color: var(--color-primario);
+}
+.offcanvas-header .edit:hover {
+    color: var(--hover-color-p);
+}
+.offcanvas-header .edit:active {
+    color: var(--color-primario);
+}
+.offcanvas-header .edit:disabled {
+    color: #9098aa;
 }
 .offcanvas-body .bell {
     width: 100%;
@@ -311,11 +362,32 @@ iframe {
 .offcanvas-body {
     padding: 32px 24px;
 }
+.offcanvas-body .row,
+.offcanvas-body table,
 .offcanvas-body p {
     margin-bottom: 32px;
 }
-.offcanvas-body .row {
-    margin-bottom: 32px;
+.offcanvas-body table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 16px;
+}
+.offcanvas-body td {
+    min-width: 80px;
+    background: var(--fondo);
+    padding: 4px 8px;
+    color: var(--texto);
+}
+.offcanvas-body tr td:first-child {
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+    padding-left: 24px;
+}
+
+.offcanvas-body tr td:last-child {
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+    padding-right: 24px;
 }
 /* ------------- Menu lateral ------------- */
 

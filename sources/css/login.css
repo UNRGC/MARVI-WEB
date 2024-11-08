@@ -3,7 +3,7 @@
 
 html,
 body {
-    background: var(--fondo);
+    background: var(--fondo-contenido);
 }
 .vista {
     width: 100%;
@@ -63,38 +63,43 @@ a:hover {
     color: var(--color-primario);
     text-decoration: underline;
 }
-input,
-select {
+input {
     background: var(--fondo) !important;
     color: var(--texto) !important;
     border: solid 1px var(--borde) !important;
     --bs-focus-ring-color: transparent;
+    border-radius: 8px !important;
+    padding: 10px 16px !important;
 }
-input::placeholder,
-select::placeholder {
+input::placeholder {
     color: var(--placeholder) !important;
 }
-input[type="file"]::-webkit-file-upload-button {
-    display: none;
-}
-input:hover,
-select:hover,
-.mostrar:hover {
+input:hover {
     border-color: var(--hover-borde) !important;
 }
 input:focus,
 select:focus {
     border-color: var(--color-primario) !important;
 }
-.mostrar i {
-    color: var(--texto) !important;
+.input-group input {
+    border: none !important;
+    border-radius: 0 !important;
 }
-.mostrar:hover i {
+.input-group:has(input:focus),
+.input-group:has(button:focus) {
+    border-color: var(--color-primario) !important;
+}
+.mostrar {
+    background: var(--fondo) !important;
+    color: var(--placeholder) !important;
+    border: none !important;
+}
+.mostrar:hover {
     color: var(--color-primario) !important;
 }
 .mostrar:active {
-    color: var(--color-primario) !important;
-    border-color: var(--color-primario) !important;
+    background: var(--color-primario) !important;
+    color: var(--texto-primario) !important;
 }
 .iniciar {
     background: var(--color-primario) !important;

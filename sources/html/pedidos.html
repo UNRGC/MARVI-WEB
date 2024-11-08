@@ -19,154 +19,360 @@
                 <p>Lista de Pedidos</p>
             </div>
             <div class="d-flex gap-3">
-                <button type="button" id="eliminar" class="visually-hidden delete-button" onclick="window.parent.postMessage('mostrarEliminarPedido', '*');"><i class="bi bi-trash"></i> Eliminar</button>
-                <button class="filtro" type="button" onclick="Filtros()"><i class="bi bi-filter"></i> Filtros</button>
-                <button class="ordenar" onclick="Ordenar()"><i class="bi bi-arrow-down-up"></i> Ordenar por</button>
+                <button type="button" id="eliminar" class="visually-hidden action delete" onclick="window.parent.postMessage('mostrarEliminarPedido', '*');"><i class="bi bi-trash3"></i> Eliminar</button>
+                <button class="action" type="button" id="filtro" data-bs-toggle="dropdown"><i class="bi bi-filter"></i> Filtros</button>
+                <ul class="dropdown-menu">
+                    <li>
+                        <button class="dropdown-item" onclick="filtro('pd')"><i class="bi bi-filter-left"></i> Pedido</button>
+                    </li>
+                    <li>
+                        <button class="dropdown-item" onclick="filtro('fh')"><i class="bi bi-filter-left"></i> Fecha</button>
+                    </li>
+                    <li>
+                        <button class="dropdown-item" onclick="filtro('cl')"><i class="bi bi-filter-left"></i> Cliente</button>
+                    </li>
+                    <li>
+                        <button class="dropdown-item" onclick="filtro('ps')"><i class="bi bi-filter-left"></i> Peso</button>
+                    </li>
+                    <li>
+                        <button class="dropdown-item" onclick="filtro('cs')"><i class="bi bi-filter-left"></i> Costo</button>
+                    </li>
+                </ul>
+
+                <button class="action" id="orden" onclick="orden()"><i class="bi bi-arrow-down-up"></i> Ordenar por</button>
             </div>
         </div>
 
         <div class="table-container">
-            <table class="table">
-                <tbody>
-                    <tr>
-                        <th></th>
-                        <th scope="col">No. Pedido</th>
-                        <th scope="col">Fecha</th>
-                        <th scope="col">Cliente</th>
-                        <th scope="col">Peso</th>
-                        <th scope="col">Costo</th>
-                        <th scope="col">Estado</th>
-                        <th scope="col">Opciones</th>
-                    </tr>
-                    <tr>
-                        <th>
-                            <input type="checkbox" class="select-checkbox" onclick="mostrar()" />
-                        </th>
-                        <td>2324324</td>
-                        <td>17/09/2024</td>
-                        <td>Otto</td>
-                        <td>12 KG</td>
-                        <td>$323</td>
-
-                        <td>Pagado</td>
-
-                        <td>
-                            <button class="opcion" type="button" data-bs-toggle="dropdown">
-                                <i class="bi bi-three-dots-vertical"></i>
-                            </button>
-
-                            <ul class="dropdown-menu">
-                                <li><button class="dropdown-item" onclick="window.parent.postMessage('mostrarPedidos', '*');">Ver Detalles</button></li>
-                                <li><button class="dropdown-item" onclick="window.parent.postMessage('cancelarPedido', '*');">Cancelar</button></li>
-                                <li><button class="dropdown-item" onclick="window.parent.postMessage('mostrarEliminarCliente', '*');">Eliminar</button></li>
-                            </ul>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
-                            <input type="checkbox" class="select-checkbox" onclick="mostrar()" />
-                        </th>
-                        <td>2324324</td>
-                        <td>17/09/2024</td>
-                        <td>Otto</td>
-                        <td>12 KG</td>
-                        <td>$323</td>
-                        <td>Pagado</td>
-
-                        <td>
-                            <button class="opcion" type="button" data-bs-toggle="dropdown">
-                                <i class="bi bi-three-dots-vertical"></i>
-                            </button>
-
-                            <ul class="dropdown-menu">
-                                <li><button class="dropdown-item" onclick="window.parent.postMessage('mostrarPedidos', '*');">Ver Detalles</button></li>
-                                <li><button class="dropdown-item" onclick="window.parent.postMessage('cancelarPedido', '*');">Cancelar</button></li>
-                                <li><button class="dropdown-item" onclick="window.parent.postMessage('mostrarEliminarCliente', '*');">Eliminar</button></li>
-                            </ul>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
-                            <input type="checkbox" class="select-checkbox" onclick="mostrar()" />
-                        </th>
-                        <td>2324324</td>
-                        <td>17/09/2024</td>
-                        <td>Otto</td>
-                        <td>12 KG</td>
-                        <td>$323</td>
-                        <td>Pagado</td>
-
-                        <td>
-                            <button class="opcion" type="button" data-bs-toggle="dropdown">
-                                <i class="bi bi-three-dots-vertical"></i>
-                            </button>
-                            <ul class="dropdown-menu">
-                                <li><button class="dropdown-item" onclick="window.parent.postMessage('mostrarPedidos', '*');">Ver Detalles</button></li>
-                                <li><button class="dropdown-item" onclick="window.parent.postMessage('cancelarPedido', '*');">Cancelar</button></li>
-                                <li><button class="dropdown-item" onclick="window.parent.postMessage('mostrarEliminarCliente', '*');">Eliminar</button></li>
-                            </ul>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
-                            <input type="checkbox" class="select-checkbox" onclick="mostrar()" />
-                        </th>
-                        <td>2324324</td>
-                        <td>17/09/2024</td>
-                        <td>Otto</td>
-                        <td>12 KG</td>
-                        <td>$323</td>
-                        <td>Pagado</td>
-
-                        <td>
-                            <button class="opcion" type="button" data-bs-toggle="dropdown">
-                                <i class="bi bi-three-dots-vertical"></i>
-                            </button>
-                            <ul class="dropdown-menu">
-                                <li><button class="dropdown-item" onclick="window.parent.postMessage('mostrarPedidos', '*');">Ver Detalles</button></li>
-                                <li><button class="dropdown-item" onclick="window.parent.postMessage('cancelarPedido', '*');">Cancelar</button></li>
-                                <li><button class="dropdown-item" onclick="window.parent.postMessage('mostrarEliminarCliente', '*');">Eliminar</button></li>
-                            </ul>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
-                            <input type="checkbox" class="select-checkbox" onclick="mostrar()" />
-                        </th>
-                        <td>2324324</td>
-                        <td>17/09/2024</td>
-                        <td>Otto</td>
-                        <td>12 KG</td>
-                        <td>$323</td>
-                        <td>Pagado</td>
-
-                        <td>
-                            <button class="opcion" type="button" data-bs-toggle="dropdown">
-                                <i class="bi bi-three-dots-vertical"></i>
-                            </button>
-                            <ul class="dropdown-menu">
-                                <li><button class="dropdown-item" onclick="window.parent.postMessage('mostrarPedidos', '*');">Ver Detalles</button></li>
-                                <li><button class="dropdown-item" onclick="window.parent.postMessage('cancelarPedido', '*');">Cancelar</button></li>
-                                <li><button class="dropdown-item" onclick="window.parent.postMessage('mostrarEliminarCliente', '*');">Eliminar</button></li>
-                            </ul>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+            <div class="table-expand">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th scope="col" class="text-center"><i class="bi bi-check-square"></i></th>
+                            <th scope="col">No. Pedido</th>
+                            <th scope="col">Fecha</th>
+                            <th scope="col">Cliente</th>
+                            <th scope="col">Peso</th>
+                            <th scope="col">Costo</th>
+                            <th scope="col">Estado</th>
+                            <th scope="col" class="text-center"><i class="bi bi-nut"></i></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row" class="text-center">
+                                <input type="checkbox" class="select-checkbox" onclick="mostrar(this)" />
+                            </th>
+                            <td class="pedido">9876543</td>
+                            <td class="fecha">01/11/2024</td>
+                            <td class="cliente">Carlos Ramírez</td>
+                            <td class="peso">18 Kg</td>
+                            <td>$<span class="costo"> 475</span></td>
+                            <td><span name="estado">En Proceso</span></td>
+                            <td class="text-center">
+                                <button class="options" type="button" data-bs-toggle="dropdown">
+                                    <i class="bi bi-three-dots-vertical"></i>
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <button class="dropdown-item" onclick="window.parent.postMessage('mostrarPedidos', '*');"><i class="bi bi-pencil-square"></i> Ver Detalles</button>
+                                    </li>
+                                    <li>
+                                        <button class="dropdown-item" onclick="window.parent.postMessage('cancelarPedido', '*');"><i class="bi bi-x-square"></i> Cancelar pedido</button>
+                                    </li>
+                                    <li>
+                                        <button class="dropdown-item" onclick="window.parent.postMessage('mostrarEliminarCliente', '*');"><i class="bi bi-trash3"></i> Eliminar pedido</button>
+                                    </li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row" class="text-center">
+                                <input type="checkbox" class="select-checkbox" onclick="mostrar(this)" />
+                            </th>
+                            <td class="pedido">8765432</td>
+                            <td class="fecha">25/10/2024</td>
+                            <td class="cliente">María Gómez</td>
+                            <td class="peso">14 Kg</td>
+                            <td>$<span class="costo"> 300</span></td>
+                            <td><span name="estado">Pagado</span></td>
+                            <td class="text-center">
+                                <button class="options" type="button" data-bs-toggle="dropdown">
+                                    <i class="bi bi-three-dots-vertical"></i>
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <button class="dropdown-item" onclick="window.parent.postMessage('mostrarPedidos', '*');"><i class="bi bi-pencil-square"></i> Ver Detalles</button>
+                                    </li>
+                                    <li>
+                                        <button class="dropdown-item" onclick="window.parent.postMessage('cancelarPedido', '*');"><i class="bi bi-x-square"></i> Cancelar pedido</button>
+                                    </li>
+                                    <li>
+                                        <button class="dropdown-item" onclick="window.parent.postMessage('mostrarEliminarCliente', '*');"><i class="bi bi-trash3"></i> Eliminar pedido</button>
+                                    </li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row" class="text-center">
+                                <input type="checkbox" class="select-checkbox" onclick="mostrar(this)" />
+                            </th>
+                            <td class="pedido">7654321</td>
+                            <td class="fecha">10/10/2024</td>
+                            <td class="cliente">Pedro López</td>
+                            <td class="peso">25 Kg</td>
+                            <td>$<span class="costo"> 525</span></td>
+                            <td><span name="estado">Entregado</span></td>
+                            <td class="text-center">
+                                <button class="options" type="button" data-bs-toggle="dropdown">
+                                    <i class="bi bi-three-dots-vertical"></i>
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <button class="dropdown-item" onclick="window.parent.postMessage('mostrarPedidos', '*');"><i class="bi bi-pencil-square"></i> Ver Detalles</button>
+                                    </li>
+                                    <li>
+                                        <button class="dropdown-item" onclick="window.parent.postMessage('cancelarPedido', '*');"><i class="bi bi-x-square"></i> Cancelar pedido</button>
+                                    </li>
+                                    <li>
+                                        <button class="dropdown-item" onclick="window.parent.postMessage('mostrarEliminarCliente', '*');"><i class="bi bi-trash3"></i> Eliminar pedido</button>
+                                    </li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row" class="text-center">
+                                <input type="checkbox" class="select-checkbox" onclick="mostrar(this)" />
+                            </th>
+                            <td class="pedido">6543210</td>
+                            <td class="fecha">02/09/2024</td>
+                            <td class="cliente">Lucía Fernández</td>
+                            <td class="peso">22 Kg</td>
+                            <td>$<span class="costo"> 600</span></td>
+                            <td><span name="estado">Cancelado</span></td>
+                            <td class="text-center">
+                                <button class="options" type="button" data-bs-toggle="dropdown">
+                                    <i class="bi bi-three-dots-vertical"></i>
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <button class="dropdown-item" onclick="window.parent.postMessage('mostrarPedidos', '*');"><i class="bi bi-pencil-square"></i> Ver Detalles</button>
+                                    </li>
+                                    <li>
+                                        <button class="dropdown-item" onclick="window.parent.postMessage('cancelarPedido', '*');"><i class="bi bi-x-square"></i> Cancelar pedido</button>
+                                    </li>
+                                    <li>
+                                        <button class="dropdown-item" onclick="window.parent.postMessage('mostrarEliminarCliente', '*');"><i class="bi bi-trash3"></i> Eliminar pedido</button>
+                                    </li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row" class="text-center">
+                                <input type="checkbox" class="select-checkbox" onclick="mostrar(this)" />
+                            </th>
+                            <td class="pedido">5432109</td>
+                            <td class="fecha">15/08/2024</td>
+                            <td class="cliente">Juan Pérez</td>
+                            <td class="peso">12 Kg</td>
+                            <td>$<span class="costo"> 400</span></td>
+                            <td><span name="estado">Pagado</span></td>
+                            <td class="text-center">
+                                <button class="options" type="button" data-bs-toggle="dropdown">
+                                    <i class="bi bi-three-dots-vertical"></i>
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <button class="dropdown-item" onclick="window.parent.postMessage('mostrarPedidos', '*');"><i class="bi bi-pencil-square"></i> Ver Detalles</button>
+                                    </li>
+                                    <li>
+                                        <button class="dropdown-item" onclick="window.parent.postMessage('cancelarPedido', '*');"><i class="bi bi-x-square"></i> Cancelar pedido</button>
+                                    </li>
+                                    <li>
+                                        <button class="dropdown-item" onclick="window.parent.postMessage('mostrarEliminarCliente', '*');"><i class="bi bi-trash3"></i> Eliminar pedido</button>
+                                    </li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row" class="text-center">
+                                <input type="checkbox" class="select-checkbox" onclick="mostrar(this)" />
+                            </th>
+                            <td class="pedido">3456789</td>
+                            <td class="fecha">05/12/2024</td>
+                            <td class="cliente">Adriana Torres</td>
+                            <td class="peso">10 Kg</td>
+                            <td>$<span class="costo"> 250</span></td>
+                            <td><span name="estado">En Proceso</span></td>
+                            <td class="text-center">
+                                <button class="options" type="button" data-bs-toggle="dropdown">
+                                    <i class="bi bi-three-dots-vertical"></i>
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <button class="dropdown-item" onclick="window.parent.postMessage('mostrarPedidos', '*');"><i class="bi bi-pencil-square"></i> Ver Detalles</button>
+                                    </li>
+                                    <li>
+                                        <button class="dropdown-item" onclick="window.parent.postMessage('cancelarPedido', '*');"><i class="bi bi-x-square"></i> Cancelar pedido</button>
+                                    </li>
+                                    <li>
+                                        <button class="dropdown-item" onclick="window.parent.postMessage('mostrarEliminarCliente', '*');"><i class="bi bi-trash3"></i> Eliminar pedido</button>
+                                    </li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row" class="text-center">
+                                <input type="checkbox" class="select-checkbox" onclick="mostrar(this)" />
+                            </th>
+                            <td class="pedido">4567890</td>
+                            <td class="fecha">22/11/2024</td>
+                            <td class="cliente">Diego Martínez</td>
+                            <td class="peso">8 Kg</td>
+                            <td>$<span class="costo"> 180</span></td>
+                            <td><span name="estado">Entregado</span></td>
+                            <td class="text-center">
+                                <button class="options" type="button" data-bs-toggle="dropdown">
+                                    <i class="bi bi-three-dots-vertical"></i>
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <button class="dropdown-item" onclick="window.parent.postMessage('mostrarPedidos', '*');"><i class="bi bi-pencil-square"></i> Ver Detalles</button>
+                                    </li>
+                                    <li>
+                                        <button class="dropdown-item" onclick="window.parent.postMessage('cancelarPedido', '*');"><i class="bi bi-x-square"></i> Cancelar pedido</button>
+                                    </li>
+                                    <li>
+                                        <button class="dropdown-item" onclick="window.parent.postMessage('mostrarEliminarCliente', '*');"><i class="bi bi-trash3"></i> Eliminar pedido</button>
+                                    </li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row" class="text-center">
+                                <input type="checkbox" class="select-checkbox" onclick="mostrar(this)" />
+                            </th>
+                            <td class="pedido">5678901</td>
+                            <td class="fecha">30/10/2024</td>
+                            <td class="cliente">Sofia Castillo</td>
+                            <td class="peso">15 Kg</td>
+                            <td>$<span class="costo"> 370</span></td>
+                            <td><span name="estado">Pagado</span></td>
+                            <td class="text-center">
+                                <button class="options" type="button" data-bs-toggle="dropdown">
+                                    <i class="bi bi-three-dots-vertical"></i>
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <button class="dropdown-item" onclick="window.parent.postMessage('mostrarPedidos', '*');"><i class="bi bi-pencil-square"></i> Ver Detalles</button>
+                                    </li>
+                                    <li>
+                                        <button class="dropdown-item" onclick="window.parent.postMessage('cancelarPedido', '*');"><i class="bi bi-x-square"></i> Cancelar pedido</button>
+                                    </li>
+                                    <li>
+                                        <button class="dropdown-item" onclick="window.parent.postMessage('mostrarEliminarCliente', '*');"><i class="bi bi-trash3"></i> Eliminar pedido</button>
+                                    </li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row" class="text-center">
+                                <input type="checkbox" class="select-checkbox" onclick="mostrar(this)" />
+                            </th>
+                            <td class="pedido">6789012</td>
+                            <td class="fecha">12/09/2024</td>
+                            <td class="cliente">Ricardo Navarro</td>
+                            <td class="peso">20 Kg</td>
+                            <td>$<span class="costo"> 480</span></td>
+                            <td><span name="estado">Cancelado</span></td>
+                            <td class="text-center">
+                                <button class="options" type="button" data-bs-toggle="dropdown">
+                                    <i class="bi bi-three-dots-vertical"></i>
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <button class="dropdown-item" onclick="window.parent.postMessage('mostrarPedidos', '*');"><i class="bi bi-pencil-square"></i> Ver Detalles</button>
+                                    </li>
+                                    <li>
+                                        <button class="dropdown-item" onclick="window.parent.postMessage('cancelarPedido', '*');"><i class="bi bi-x-square"></i> Cancelar pedido</button>
+                                    </li>
+                                    <li>
+                                        <button class="dropdown-item" onclick="window.parent.postMessage('mostrarEliminarCliente', '*');"><i class="bi bi-trash3"></i> Eliminar pedido</button>
+                                    </li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row" class="text-center">
+                                <input type="checkbox" class="select-checkbox" onclick="mostrar(this)" />
+                            </th>
+                            <td class="pedido">7890123</td>
+                            <td class="fecha">18/08/2024</td>
+                            <td class="cliente">Elena Morales</td>
+                            <td class="peso">18 Kg</td>
+                            <td>$<span class="costo"> 450</span></td>
+                            <td><span name="estado">Entregado</span></td>
+                            <td class="text-center">
+                                <button class="options" type="button" data-bs-toggle="dropdown">
+                                    <i class="bi bi-three-dots-vertical"></i>
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <button class="dropdown-item" onclick="window.parent.postMessage('mostrarPedidos', '*');"><i class="bi bi-pencil-square"></i> Ver Detalles</button>
+                                    </li>
+                                    <li>
+                                        <button class="dropdown-item" onclick="window.parent.postMessage('cancelarPedido', '*');"><i class="bi bi-x-square"></i> Cancelar pedido</button>
+                                    </li>
+                                    <li>
+                                        <button class="dropdown-item" onclick="window.parent.postMessage('mostrarEliminarCliente', '*');"><i class="bi bi-trash3"></i> Eliminar pedido</button>
+                                    </li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row" class="text-center">
+                                <input type="checkbox" class="select-checkbox" onclick="mostrar(this)" />
+                            </th>
+                            <td class="pedido">8901234</td>
+                            <td class="fecha">10/10/2024</td>
+                            <td class="cliente">Javier Pérez</td>
+                            <td class="peso">25 Kg</td>
+                            <td>$<span class="costo"> 500</span></td>
+                            <td><span name="estado">Pagado</span></td>
+                            <td class="text-center">
+                                <button class="options" type="button" data-bs-toggle="dropdown">
+                                    <i class="bi bi-three-dots-vertical"></i>
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <button class="dropdown-item" onclick="window.parent.postMessage('mostrarPedidos', '*');"><i class="bi bi-pencil-square"></i> Ver Detalles</button>
+                                    </li>
+                                    <li>
+                                        <button class="dropdown-item" onclick="window.parent.postMessage('cancelarPedido', '*');"><i class="bi bi-x-square"></i> Cancelar pedido</button>
+                                    </li>
+                                    <li>
+                                        <button class="dropdown-item" onclick="window.parent.postMessage('mostrarEliminarCliente', '*');"><i class="bi bi-trash3"></i> Eliminar pedido</button>
+                                    </li>
+                                </ul>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <footer>
+                <p><span id="filasSelectNum">0</span> de <span id="filasTotalesNum">11</span> filas seleccionadas</p>
+                <div class="d-flex gap-3 align-items-center">
+                    <p>Página <span id="pagActNum">1</span> de <span id="pagTotalesNum">1</span></p>
+                    <button class="action" id="pagStart"><i class="bi bi-chevron-double-left"></i></button>
+                    <button class="action" id="pagAnt"><i class="bi bi-chevron-left"></i></button>
+                    <button class="action" id="pagSig"><i class="bi bi-chevron-right"></i></button>
+                    <button class="action" id="pagEnd"><i class="bi bi-chevron-double-right"></i></button>
+                </div>
+            </footer>
         </div>
 
-        <script>
-            function mostrar() {
-                const boton = document.getElementById("eliminar");
-                const checkboxes = document.querySelectorAll(".select-checkbox");
-
-                if (Array.from(checkboxes).some((checkbox) => checkbox.checked)) {
-                    boton.classList.remove("visually-hidden");
-                } else {
-                    boton.classList.add("visually-hidden");
-                }
-            }
-        </script>
+        <!-- Script de los pedidos -->
+        <script src="../js/pedidos.js"></script>
 
         <!-- Scripts de bootstrap -->
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>

@@ -1,7 +1,9 @@
+const searchBar = document.getElementById("searchBar");
+const searchBarInput = document.getElementById("searchBarInput");
 const iframe = document.getElementById("iframe");
-var paginaActiva = "inicio";
+let paginaActiva = "inicio";
 
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", () => {
     const sFoto = localStorage.getItem("foto");
     if (sFoto) {
         document.getElementById("img-perfil").src = sFoto;
@@ -9,95 +11,173 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 function cargarPagina(pagina) {
-    if (paginaActiva != pagina) {
-        iframe.src = "../html/" + pagina + ".html";
+    switch (pagina) {
+        case "pedidos":
+            searchBar.classList.remove("visually-hidden");
+            searchBarInput.placeholder = "Buscar en pedidos";
+            break;
+        case "clientes":
+            searchBar.classList.remove("visually-hidden");
+            searchBarInput.placeholder = "Buscar en clientes";
+            break;
+        case "servicios":
+            searchBar.classList.remove("visually-hidden");
+            searchBarInput.placeholder = "Buscar en servicios";
+            break;
+        case "compras":
+            searchBar.classList.remove("visually-hidden");
+            searchBarInput.placeholder = "Buscar en compras";
+            break;
+        case "usuarios":
+            searchBar.classList.remove("visually-hidden");
+            searchBarInput.placeholder = "Buscar en usuarios";
+            break;
+        default:
+            searchBar.classList.add("visually-hidden");
+            searchBarInput.placeholder = "";
+            break;
+    }
+
+    if (paginaActiva !== pagina) {
+        iframe.src = `../html/${pagina}.html`;
         document.getElementById(paginaActiva).classList.remove("activo");
         document.getElementById(pagina).classList.add("activo");
         paginaActiva = pagina;
     }
 }
 
-/* ------- Funciones para mostrar el offcanvas ------- */
-function mostrarClientes() {
-    var offcanvasElement = document.getElementById("offcanvasClientes");
-    var offcanvas = new bootstrap.Offcanvas(offcanvasElement);
-    offcanvas.show();
+/* ------- Formulario de pedidos ------- */
+const editButton = document.getElementById("editPedido");
+const clienteInput = document.getElementById("cliente");
+const clienteButton = document.getElementById("searchCliente");
+const nuevoClienteButton = document.getElementById("nuevoCliente");
+const servicioInput = document.getElementById("servicio");
+const servicioButton = document.getElementById("searchServicio");
+const serviciosContainer = document.getElementById("masServicios");
+const pesajeInput = document.getElementById("pesaje");
+const costoInput = document.getElementById("costo");
+const servicioButtonAdd = document.getElementById("addServicio");
+const detallesInput = document.getElementById("detalles");
+const estadoInput = document.getElementById("estado");
+const fechaInput = document.getElementById("fecha");
+const serviciosNum = document.getElementById("serviciosNum");
+const totalNum = document.getElementById("total");
+
+function desactivarPedidos() {
+    editButton.disabled = true;
+    clienteInput.disabled = true;
+    clienteButton.disabled = true;
+    nuevoClienteButton.disabled = true;
+    servicioInput.disabled = true;
+    servicioButton.disabled = true;
+    pesajeInput.disabled = true;
+    costoInput.disabled = true;
+    servicioButtonAdd.disabled = true;
+    detallesInput.disabled = true;
+    estadoInput.disabled = true;
+    fechaInput.disabled = true;
 }
 
-function mostrarPedidos() {
-    var offcanvasElement = document.getElementById("offcanvasRight");
-    var offcanvas = new bootstrap.Offcanvas(offcanvasElement);
-    offcanvas.show();
+function activarPedidos() {
+    editButton.disabled = false;
+    clienteInput.disabled = false;
+    clienteButton.disabled = false;
+    nuevoClienteButton.disabled = false;
+    servicioInput.disabled = false;
+    servicioButton.disabled = false;
+    pesajeInput.disabled = false;
+    costoInput.disabled = false;
+    servicioButtonAdd.disabled = false;
+    detallesInput.disabled = false;
+    estadoInput.disabled = false;
+    fechaInput.disabled = false;
 }
 
-function mostrarRegistrarCliente() {
-    var offcanvasElement = document.getElementById("offcanvasRegistrarCliente");
-    var offcanvas = new bootstrap.Offcanvas(offcanvasElement);
-    offcanvas.show();
+function limpiarPedidos() {
+    clienteInput.value = "";
+    servicioInput.value = "";
+    serviciosContainer.innerHTML = "";
+    pesajeInput.value = "";
+    costoInput.value = "";
+    detallesInput.value = "";
+    estadoInput.value = 1;
+    calcularFecha();
+    serviciosNum.innerText = 0;
+    totalNum.innerText = 0;
 }
 
-function mostrarCompra() {
-    var offcanvasElement = document.getElementById("offcanvasCompra");
-    var offcanvas = new bootstrap.Offcanvas(offcanvasElement);
-    offcanvas.show();
+function llenarPedidos(cliente, servicio, serviciosHTML, pesaje, costo, detalles, estado, fecha) {
+    clienteInput.value = cliente;
+    servicioInput.value = servicio;
+    serviciosContainer.innerHTML = serviciosHTML;
+    pesajeInput.value = pesaje;
+    costoInput.value = costo;
+    detallesInput.value = detalles;
+    estadoInput.value = estado;
+    fechaInput.value = fecha;
 }
 
-function mostrarServicios() {
-    var offcanvasElement = document.getElementById("offcanvasServicios");
-    var offcanvas = new bootstrap.Offcanvas(offcanvasElement);
-    offcanvas.show();
+function editPedido() {
+    detallesInput.disabled = false;
+    estadoInput.disabled = false;
+    fechaInput.disabled = false;
+    editButton.disabled = true;
 }
 
-function mostrarRegistrarUsuario() {
-    var offcanvasElement = document.getElementById("offcanvasRegistrarUsuarios");
-    var offcanvas = new bootstrap.Offcanvas(offcanvasElement);
-    offcanvas.show();
+function cancelarPedido() {
+    limpiarPedidos();
+    activarPedidos();
+    editButton.disabled = true;
 }
 
-/* ------- Función para escuchar el mensaje ------- */
-window.addEventListener("message", function (event) {
-    if (event.data === "mostrarClientes") {
-        mostrarClientes();
-    }
-    if (event.data === "mostrarPedidos") {
-        mostrarPedidos();
-    }
-    if (event.data === "mostrarRegistrarCliente") {
-        mostrarRegistrarCliente();
-    }
-    if (event.data === "mostrarEliminarPedido") {
-        eliminarRegistro();
-    }
-    if (event.data === "mostrarEliminarCliente") {
-        eliminarRegistro();
-    }
-    if (event.data === "cancelarPedido") {
-        cancelarRegistro();
-    }
-    if (event.data === "salir") {
-        salir();
-    }
-    if (event.data === "guardarRegistro") {
-        guardarRegistro();
-    }
-    if (event.data === "salirDelSistema") {
-        salirDelSistema();
-    }
-    if (event.data === "mostrarCompra") {
-        mostrarCompra();
-    }
-    if (event.data === "mostrarServicios") {
-        mostrarServicios();
-    }
-    if (event.data === "mostrarRegistrarUsuario") {
-        mostrarRegistrarUsuario();
-    }
-    /* En caso de haber más offcanvas condicionar aquí*/
-});
+function calcularFecha() {
+    const fechaActual = new Date();
+    fechaActual.setDate(fechaActual.getDate() + 2);
+    const dia = String(fechaActual.getDate()).padStart(2, "0");
+    const mes = String(fechaActual.getMonth() + 1).padStart(2, "0");
+    const anio = fechaActual.getFullYear();
+    fechaInput.value = `${anio}-${mes}-${dia}`;
+}
 
-/* ------- Funciones para crear alertas ------- */
-function eliminarRegistro() {
-    Swal.fire({
+function agregarServicio() {
+    let contador = serviciosNum.innerText;
+    let total = 0;
+    contador++;
+
+    if (servicioInput.value === "" || pesajeInput.value === "" || costoInput.value === "") {
+        camposIncompletos();
+        return;
+    }
+
+    serviciosContainer.innerHTML += `
+        <tr>
+            <td>${contador}</td>
+            <td>${servicioInput.value}</td>
+            <td>${pesajeInput.value} Kg</td>
+            <td name="total">$ ${costoInput.value}</td>
+            <td class="text-center">
+                <button type="button" class="btn search del" onclick="eliminarServicio(this)"><i class="bi bi-trash"></i></button>
+            </td>
+        </tr>
+    `;
+    servicioInput.value = "";
+    pesajeInput.value = "";
+    costoInput.value = "";
+
+    serviciosNum.innerText = contador;
+
+    let totales = document.getElementsByName("total");
+    for (let i = 0; i < totales.length; i++) {
+        total += parseFloat(totales[i].innerText.replace("$", ""));
+    }
+    totalNum.innerText = total;
+}
+
+function eliminarServicio(btn) {
+    let contador = serviciosNum.innerText;
+    let total = 0;
+
+    swal.fire({
         title: "¿Estás seguro?",
         text: "No podrás revertir esto.",
         icon: "warning",
@@ -107,126 +187,92 @@ function eliminarRegistro() {
         cancelButtonText: "Cancelar",
     }).then((result) => {
         if (result.isConfirmed) {
-            const Toast = Swal.mixin({
-                toast: true,
-                position: "bottom-end",
-                showConfirmButton: false,
-                timer: 2000,
-                timerProgressBar: true,
-                didOpen: (toast) => {
-                    toast.onmouseenter = Swal.stopTimer;
-                    toast.onmouseleave = Swal.resumeTimer;
-                },
-            });
-            Toast.fire({
-                icon: "success",
-                iconColor: "#4caf50",
-                title: "Registro eliminado con éxito.",
-            });
+            btn.parentElement.parentElement.remove();
+
+            contador--;
+            serviciosNum.innerText = contador;
+
+            const totales = document.getElementsByName("total");
+            for (let i = 0; i < totales.length; i++) {
+                total += parseFloat(totales[i].innerText.replace("$", ""));
+            }
+            totalNum.innerText = total;
         }
     });
 }
 
-function cancelarRegistro() {
-    Swal.fire({
-        title: "¿Estás seguro?",
-        text: "No podrás revertir esto.",
-        icon: "warning",
-        iconColor: "#dd5746",
-        showCancelButton: true,
-        confirmButtonText: "Sí, cancelar",
-        cancelButtonText: "Cancelar",
-    }).then((result) => {
-        if (result.isConfirmed) {
-            const Toast = Swal.mixin({
-                toast: true,
-                position: "bottom-end",
-                showConfirmButton: false,
-                timer: 2000,
-                timerProgressBar: true,
-                didOpen: (toast) => {
-                    toast.onmouseenter = Swal.stopTimer;
-                    toast.onmouseleave = Swal.resumeTimer;
-                },
-            });
-            Toast.fire({
-                icon: "success",
-                iconColor: "#4caf50",
-                title: "Registro actualizado con éxito.",
-            });
-        }
-    });
+function calcularCosto() {
+    costoInput.value = (18 * pesajeInput.value).toFixed(2);
 }
+/* ------- Formulario de pedidos ------- */
 
-function guardarRegistro() {
-    Swal.fire({
-        title: "¿Estás seguro?",
-        text: "No podrás revertir esto.",
-        icon: "warning",
-        iconColor: "#dd5746",
-        showCancelButton: true,
-        confirmButtonText: "Sí, Guardar",
-        cancelButtonText: "Cancelar",
-    }).then((result) => {
-        if (result.isConfirmed) {
-            iframe.contentWindow.postMessage("cambiosAceptados", "*");
-            const Toast = Swal.mixin({
-                toast: true,
-                position: "bottom-end",
-                showConfirmButton: false,
-                timer: 2000,
-                timerProgressBar: true,
-                didOpen: (toast) => {
-                    toast.onmouseenter = Swal.stopTimer;
-                    toast.onmouseleave = Swal.resumeTimer;
-                },
-            });
-            Toast.fire({
-                icon: "success",
-                iconColor: "#4caf50",
-                title: "Registro guardado con éxito.",
-            });
-        }
-    });
+/* ------- Función para mostrar el offcanvas ------- */
+function mostrarOffcanvas(id) {
+    const offcanvasElement = document.getElementById(id);
+    const offcanvas = new bootstrap.Offcanvas(offcanvasElement);
+
+    switch (id) {
+        case "offcanvasPedidos":
+            desactivarPedidos();
+            editButton.disabled = false;
+            break;
+        case "offcanvasClientes":
+            break;
+        case "offcanvasServicios":
+            break;
+        case "offcanvasCompras":
+            break;
+        case "offcanvasUsuarios":
+            break;
+        default:
+            break;
+    }
+
+    offcanvas.show();
 }
+/* ------- Función para mostrar el offcanvas ------- */
 
-function salir() {
-    Swal.fire({
-        title: "¿Quieres cerrar sesión?",
-        text: "Estas a punto de salir del sistema.",
-        icon: "question",
-        iconColor: "#dd5746",
-        showCancelButton: true,
-        confirmButtonText: "Si, salir",
-        cancelButtonText: "Cancelar",
-    }).then((result) => {
-        if (result.isConfirmed) {
+/* ------- Función para escuchar el mensaje ------- */
+window.addEventListener("message", (event) => {
+    switch (event.data) {
+        case "mostrarPedidos":
+            mostrarOffcanvas("offcanvasPedidos");
+            break;
+        case "mostrarClientes":
+            mostrarOffcanvas("offcanvasClientes");
+            break;
+        case "mostrarServicios":
+            mostrarOffcanvas("offcanvasServicios");
+            break;
+        case "mostrarCompras":
+            mostrarOffcanvas("offcanvasCompras");
+            break;
+        case "mostrarUsuarios":
+            mostrarOffcanvas("offcanvasUsuarios");
+            break;
+        case "mostrarEliminarPedido":
+        case "mostrarEliminarCliente":
+            eliminarRegistro();
+            break;
+        case "cancelarPedido":
+            cancelarRegistro();
+            break;
+        case "salir":
+            salir();
+            break;
+        case "guardarRegistro":
+            guardarRegistro();
+            break;
+        case "salirDelSistema":
             salirDelSistema();
-        }
-    });
-}
-
-function salirDelSistema() {
-    const Toast = Swal.mixin({
-        toast: true,
-        position: "bottom-end",
-        showConfirmButton: false,
-        timer: 2000,
-        timerProgressBar: true,
-        didOpen: (toast) => {
-            toast.onmouseenter = Swal.stopTimer;
-            toast.onmouseleave = Swal.resumeTimer;
-        },
-        didClose: () => {
-            window.location.href = "login.html";
-        },
-    });
-    Toast.fire({
-        icon: "info",
-        iconColor: "#4caf50",
-        title: "Saliendo del sistema...",
-    });
-}
+            break;
+        case "recargar":
+            location.reload();
+            break;
+        default:
+            break;
+    }
+});
 
 function limpiarNotify(id) {
     const mensaje = document.getElementById("msjN");
@@ -236,67 +282,4 @@ function limpiarNotify(id) {
 
     mensaje.classList.remove("visually-hidden");
     aviso.remove();
-}
-
-function cancelarPedido() {
-    const contenedor = document.getElementById("masServicios");
-    const serviciosNum = document.getElementById("serviciosNum");
-
-    document.getElementById("cliente").value = "";
-    document.getElementById("servicio").value = "";
-    document.getElementById("pesaje").value = "";
-    document.getElementById("detalles").value = "";
-    document.getElementById("fecha").value = "";
-    document.getElementById("estado").value = 1;
-
-    contenedor.innerHTML = ``;
-    serviciosNum.innerText = 1;
-}
-
-function cancelarCliente() {
-    document.getElementById("nombre").value = "";
-    document.getElementById("apellidoP").value = "";
-    document.getElementById("apellidoM").value = "";
-    document.getElementById("correo").value = "";
-    document.getElementById("telefono").value = "";
-}
-
-function agregarServicio() {
-    const serviciosNum = document.getElementById("serviciosNum");
-    const contenedor = document.getElementById("masServicios");
-    var contador = serviciosNum.innerText;
-
-    contenedor.innerHTML += `
-        <div class="row align-items-end">
-            <div class="col-3">
-                <label for="servicioSl" class="form-label">Servicio adicional*</label>
-                <button type="button" class="btn bell">Selección</button>
-            </div>
-            <div class="col text-center">
-                <label for="servicio${contador}" class="form-label visually-hidden">Servicio</label>
-                <button class="btn btn-link" type="button" onclick="eliminarServicio(this)"><i class="bi bi-dash-lg"></i> Eliminar servicio</button>
-                <input type="text" class="form-control focus-ring" id="servicio${contador}" placeholder="Nombre o código del servicio" required />
-            </div>
-            <div class="col-3">
-                <label for="pesaje${contador}" class="form-label">Pesaje</label>
-                <div class="input-group flex-nowrap">
-                    <input type="number" class="form-control focus-ring" id="pesaje${contador}" min="0" placeholder="0" required />
-                    <span class="input-group-text" id="addon-wrapping">Kg</span>
-                </div>
-            </div>
-        </div>
-    `;
-
-    contador++;
-    serviciosNum.innerText = contador;
-}
-
-function eliminarServicio(btn) {
-    const serviciosNum = document.getElementById("serviciosNum");
-    var contador = serviciosNum.innerText;
-
-    btn.parentElement.parentElement.remove();
-
-    contador--;
-    serviciosNum.innerText = contador;
 }

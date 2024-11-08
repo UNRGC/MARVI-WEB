@@ -4,8 +4,8 @@ setTimeout(() => {
 
 function muestras() {
     //obtiene el color primario y secundario del local storage
-    const colorPrimario = localStorage.getItem("colorPrimario");
-    const colorSecundario = localStorage.getItem("colorSecundario");
+    const colorPrimario = "#dd5746";
+    const colorSecundario = "#ffe1c0";
 
     // Gráfico de Área
     const areaCtx = document.getElementById("areaChart").getContext("2d");
@@ -17,7 +17,7 @@ function muestras() {
         labels: ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado", "Domingo"],
         datasets: [
             {
-                label: "Pedidos por día",
+                label: "Pedidos",
                 data: [12, 19, 3, 5, 2, 3, 7], // Datos para cada día
                 backgroundColor: degradado,
                 borderColor: colorPrimario,
@@ -49,7 +49,7 @@ function muestras() {
         labels: ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado", "Domingo"],
         datasets: [
             {
-                label: "Ingresos por día",
+                label: "Ingresos",
                 data: [1000, 589, 307, 1430, 2000, 1300, 2005], // Datos para cada día
                 backgroundColor: degradado,
                 borderColor: colorPrimario,

@@ -42,7 +42,7 @@ input:hover {
 input:focus {
     background: var(--fondo) !important;
     color: var(--texto) !important;
-    border: 1px solid var(--hover-borde) !important;
+    border: 1px solid var(--color-primario) !important;
 }
 input:disabled {
     background: var(--fondo-contenido) !important;
@@ -94,18 +94,29 @@ label {
     translate: -50%;
 }
 
+.input-group {
+    border: solid 1px var(--borde) !important;
+    border-radius: 8px !important;
+    overflow: hidden;
+}
+.input-group:hover {
+    border: solid 1px var(--hover-borde) !important;
+}
+.input-group:hover:has(input:disabled) {
+    border: solid 1px var(--borde) !important;
+}
+.input-group:focus-within {
+    border: solid 1px var(--color-primario) !important;
+}
+.input-group input {
+    border: none !important;
+}
+
 .mostrar input {
     border-radius: 8px 0 0 8px !important;
 }
 .mostrar .btn {
     background: var(--fondo) !important;
-    border: 1px solid var(--borde) !important;
-}
-.mostrar .btn:hover {
-    border: 1px solid var(--hover-borde) !important;
-}
-.mostrar .btn:active {
-    border: 1px solid var(--color-primario) !important;
 }
 .mostrar .btn:disabled {
     background: var(--fondo-contenido) !important;
@@ -118,7 +129,6 @@ label {
 }
 .mostrar .btn:active {
     color: var(--color-primario) !important;
-    border-color: var(--color-primario) !important;
 }
 
 .modal-content {

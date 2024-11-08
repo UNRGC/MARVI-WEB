@@ -43,4 +43,5 @@ document.addEventListener("DOMContentLoaded", () => {
 
     modoOscuro(sModoOscuro);
     document.documentElement.style.display = "block";
+    document.querySelector("body").classList.add("visible");
 });

@@ -4,7 +4,7 @@ function modoOscuroEvent(checked) {
     else window.parent.postMessage("claro", "*");
 }
 
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", () => {
     const sModoOscuro = localStorage.getItem("modoOscuro");
 
     if (sModoOscuro === "true") {
@@ -20,17 +20,19 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 function mostrarContrasena(id) {
-    var input = document.getElementById(id);
+    const input = document.getElementById(id);
+    const eye = document.getElementById("eye");
     if (input.type === "password") {
+        eye.innerHTML = "<i class='bi bi-eye'></i>";
         input.type = "text";
     } else {
+        eye.innerHTML = "<i class='bi bi-eye-slash'></i>";
         input.type = "password";
     }
 }
 
 function editar(activo) {
     const foto = document.getElementById("foto");
-    const nombre = document.getElementById("nombre");
     const correo = document.getElementById("correo");
     const contrasena = document.getElementById("contrasena");
     const eye = document.getElementById("eye");
@@ -40,7 +42,6 @@ function editar(activo) {
 
     if (activo) {
         foto.disabled = false;
-        nombre.disabled = false;
         correo.disabled = false;
         contrasena.disabled = false;
         eye.disabled = false;
@@ -49,7 +50,6 @@ function editar(activo) {
         modificar.classList.add("d-none");
     } else {
         foto.disabled = true;
-        nombre.disabled = true;
         correo.disabled = true;
         contrasena.disabled = true;
         contrasena.type = "password";
@@ -71,6 +71,8 @@ function cambiarFoto(ruta) {
 window.addEventListener("message", function (event) {
     if (event.data === "cambiosAceptados") {
         this.localStorage.setItem("foto", document.getElementById("img").value);
-        window.parent.postMessage("salirDelSistema", "*");
+        setTimeout(() => {
+            window.parent.postMessage("recargar", "*");
+        }, 2000);
     }
 });

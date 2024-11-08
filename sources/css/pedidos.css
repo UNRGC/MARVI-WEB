@@ -12,67 +12,9 @@
     margin: 0px;
 }
 
-.filtro {
+.action {
     background: var(--fondo);
     color: var(--texto);
-    font-size: 14px;
-
-    padding: 10px 16px;
-    border: 1px solid var(--borde);
-    border-radius: 8px;
-    cursor: pointer;
-}
-
-.ordenar {
-    background: var(--fondo);
-    color: var(--texto);
-    font-size: 14px;
-
-    padding: 10px 16px;
-    border: 1px solid var(--borde);
-    border-radius: 8px;
-    cursor: pointer;
-}
-
-.opcion {
-    background: none;
-    color: var(--texto);
-    padding: 1px 10px;
-    border: none;
-    cursor: pointer;
-}
-
-.table {
-    width: 100%; /* Ajusta el ancho de la tabla al 100% del contenedor */
-    border-collapse: separate; /* Cambia a 'separate' para permitir el espaciado entre celdas */
-    border-spacing: 0 4px; /* Añade espacio entre las filas */
-    margin: 20px 0; /* Añade un margen superior e inferior */
-    font-size: 15px; /* Ajusta el tamaño de la fuente */
-    text-align: left; /* Alinea el texto a la izquierda */
-    border-radius: 10px;
-    overflow: auto;
-    background-color: var(--fondo-contenido); /* Cambia el color de fondo de la tabla */
-}
-
-.table th,
-.table td {
-    color: var(--texto);
-    padding: 12px 15px; /* Añade relleno a las celdas */
-    background-color: var(--fondo); /* Cambia el color de fondo de las celdas */
-    border-color: transparent;
-}
-
-.table th {
-    font-weight: bold; /* Hace el texto de los encabezados en negrita */
-}
-
-.table tr:nth-child(even) {
-    background-color: var(--fondo); /* Cambia el color de fondo de las filas pares */
-}
-
-.delete-button {
-    background: var(--fondo);
-    color: var(--color-primario);
     font-size: 14px;
     padding: 10px 16px;
     border: 1px solid var(--borde);
@@ -80,8 +22,84 @@
     cursor: pointer;
     transition: background-color 0.2s ease;
 }
-
-.delete-button:hover {
+.action:hover {
     background-color: var(--color-primario);
     color: var(--texto-primario);
+}
+.options {
+    background: none;
+    color: var(--texto);
+    border: none;
+    cursor: pointer;
+}
+.delete {
+    color: var(--color-primario);
+}
+
+.table-container {
+    background: var(--fondo);
+    height: calc(100vh - 59px);
+    margin-top: 16px;
+    border-radius: 8px;
+    overflow: auto;
+    align-content: space-between;
+}
+.table-expand {
+    overflow: auto;
+    height: calc(100vh - 134px);
+}
+
+table {
+    width: 100%;
+    margin: 0 !important;
+}
+thead {
+    box-shadow: 0 1px 1px var(--fondo-contenido);
+    position: sticky;
+    top: 0;
+}
+th,
+td {
+    background: var(--fondo) !important;
+    color: var(--texto) !important;
+    font-size: 15px;
+    padding: 16px 24px !important;
+    border-color: var(--fondo-contenido);
+}
+input[type="checkbox"] {
+    cursor: pointer;
+    accent-color: var(--color-primario);
+}
+
+footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 24px;
+    background: var(--fondo);
+}
+footer p {
+    margin: 0;
+    color: var(--placeholder);
+}
+
+.en-proceso {
+    background: rgba(255, 225, 0, 0.3);
+    padding: 4px 12px;
+    border-radius: 16px;
+}
+.pagado {
+    background: rgba(0, 255, 106, 0.3);
+    padding: 4px 12px;
+    border-radius: 16px;
+}
+.entregado {
+    background: rgba(0, 149, 255, 0.3);
+    padding: 4px 12px;
+    border-radius: 16px;
+}
+.cancelado {
+    background: rgba(255, 25, 0, 0.3);
+    padding: 4px 12px;
+    border-radius: 16px;
 }

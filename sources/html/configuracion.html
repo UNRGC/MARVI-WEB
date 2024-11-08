@@ -23,7 +23,7 @@
         <form class="info">
             <div class="text-center mb-4">
                 <label for="img" class="form-label">Foto de perfil</label>
-                <input type="text" class="visually-hidden" id="img" class="form-control" value="../img/perfil/Perfil8.jpg" disabled />
+                <input type="text" class="visually-hidden form-control" id="img" value="../img/perfil/Perfil8.jpg" disabled />
                 <div class="perfil">
                     <img src="../img/perfil/Perfil8.jpg" alt="Perfil" id="img-perfil" />
                     <button type="button" class="btn aplicar foto" id="foto" data-bs-toggle="modal" data-bs-target="#fotosPerfil" disabled>
@@ -37,21 +37,29 @@
                     <input type="text" id="nombre" class="form-control focus-ring" value="Andres" required disabled />
                 </div>
                 <div class="col">
-                    <label for="correo" class="form-label">Correo</label>
-                    <input type="email" id="correo" class="form-control focus-ring" value="andres1234@gmail.com" required disabled />
+                    <label for="apellidoP" class="form-label">Apellido Paterno</label>
+                    <input type="text" id="apellidoP" class="form-control focus-ring" value="Gamboa" required disabled />
+                </div>
+                <div class="col">
+                    <label for="apellidoM" class="form-label">Apellido Materno</label>
+                    <input type="text" id="apellidoM" class="form-control focus-ring" value="Garay" required disabled />
                 </div>
             </div>
             <div class="row align-items-end">
+                <div class="col">
+                    <label for="correo" class="form-label">Correo</label>
+                    <input type="email" id="correo" class="form-control focus-ring" value="andres1234@gmail.com" required disabled />
+                </div>
                 <div class="col mostrar">
                     <label for="contrasena" class="form-label">Contraseña</label>
                     <div class="input-group">
                         <input type="password" class="form-control focus-ring" id="contrasena" placeholder="Escribe tu contraseña" value="andres1234" required disabled />
                         <button type="button" class="btn border-secondary border-opacity-25" id="eye" onclick="mostrarContrasena('contrasena')" disabled>
-                            <i class="bi bi-eye"></i>
+                            <i class="bi bi-eye-slash"></i>
                         </button>
                     </div>
                 </div>
-                <div class="col d-flex gap-3 justify-content-end">
+                <div class="col d-flex gap-3 justify-content-center">
                     <button type="button" class="btn restablecer d-none" id="cancelar" onclick="editar(false)">Cancelar</button>
                     <button type="button" class="btn aplicar d-none" id="guardar" onclick="window.parent.postMessage('guardarRegistro', '*');">Guardar cambios</button>
                     <button type="button" class="btn aplicar" id="modificar" onclick="editar(true)">Modificar información</button>

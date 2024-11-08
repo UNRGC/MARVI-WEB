@@ -19,7 +19,7 @@
     <body>
         <!-- Barra de navegación superior -->
         <nav class="n-superior container-fluid align-content-center px-5">
-            <div class="row row-cols-md-3 row-cols-sm-1">
+            <div class="row row-cols-3">
                 <div class="col">
                     <svg class="svg-icon" version="1.1" id="svg1" height="40" viewBox="0 0 528 177" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
                         <defs id="defs1" />
@@ -32,28 +32,21 @@
                     </svg>
                 </div>
                 <div class="col align-content-center">
-                    <div class="input-group">
+                    <div class="input-group visually-hidden" id="searchBar">
                         <button type="button" class="btn">
                             <i class="bi-search"></i>
                             <span class="visually-hidden">Button</span>
                         </button>
-                        <input list="suggestions" type="text" class="form-control focus-ring focus-ring" id="busqueda" placeholder="Busca en el sistema" />
-                        <datalist id="suggestions">
-                            <option value="Pedidos"></option>
-                            <option value="Clientes"></option>
-                            <option value="Ventas"></option>
-                            <option value="Compras"></option>
-                            <option value="Configuración"></option>
-                        </datalist>
+                        <input type="search" class="form-control focus-ring focus-ring" id="searchBarInput" />
                     </div>
                 </div>
                 <div class="contacto col text-end">
-                    <button type="button" class="bell btn rounded-5" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRightNotify" aria-controls="offcanvasRightNotify">
+                    <button type="button" class="bell btn rounded-5" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNotify" aria-controls="offcanvasNotify">
                         <i class="bi-bell"></i>
 
                         <span class="position-absolute top-0 start-100 translate-middle p-2 bg-danger rounded-circle" id="aviso"> </span>
                     </button>
-                    <button type="button" class="pedido btn" id="crear-pedido" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
+                    <button type="button" class="pedido btn" id="crear-pedido" data-bs-toggle="offcanvas" data-bs-target="#offcanvasPedidos" aria-controls="offcanvasPedidos" onclick="calcularFecha()">
                         <i class="bi-plus-lg"></i>
                         Crear pedido
                     </button>
@@ -63,20 +56,20 @@
 
         <!-- Secciones de la izquierda -->
         <nav class="n-izquierda">
-            <div class="row">
+            <div class="row row-cols-1">
                 <div class="col align-self-start">
                     <ul class="list-unstyled">
                         <li class="activo" id="inicio" onclick="cargarPagina(this.id)"><i class="bi bi-house"></i>Inicio</li>
                         <li id="pedidos" onclick="cargarPagina(this.id)"><i class="bi bi-journal-text"></i>Pedidos</li>
                         <li id="clientes" onclick="cargarPagina(this.id)"><i class="bi bi-people"></i>Clientes</li>
-                        <li id="compras" onclick="cargarPagina(this.id)"><i class="bi bi-bag-dash"></i>Compras</li>
                         <li id="servicios" onclick="cargarPagina(this.id)"><i class="bi bi-book"></i>Servicios</li>
-                        <li id="usuarios" onclick="cargarPagina(this.id)"><i class="bi bi-person-circle"></i>Usuarios</li>
+                        <li id="compras" onclick="cargarPagina(this.id)"><i class="bi bi-cart4"></i>Compras</li>
+                        <li id="usuarios" onclick="cargarPagina(this.id)"><i class="bi bi-person"></i>Usuarios</li>
                     </ul>
                 </div>
                 <div class="col align-self-end">
                     <ul class="list-unstyled">
-                        <li id="configuracion" onclick="cargarPagina(this.id)"><i class="bi bi-gear"></i>Configuración</li>
+                        <li id="configuracion" onclick="cargarPagina(this.id)"><i class="bi bi-person-gear"></i>Configuración</li>
                     </ul>
                     <div class="hr"></div>
                     <button type="button" class="btn p-0" onclick="window.parent.postMessage('salir', '*');">
@@ -84,7 +77,7 @@
                             <img src="../img/perfil/Perfil8.jpg" alt="Perfil" width="44px" height="44px" class="object-fit-cover rounded-5" id="img-perfil" />
                             <div>
                                 <p class="m-0" style="font-size: 14px">Andres</p>
-                                <p class="m-0" style="font-size: 12px">andres1234@gmail.com</p>
+                                <p class="m-0" style="font-size: 12px">Gamboa Garay</p>
                             </div>
                             <i class="bi bi-box-arrow-right m-0" style="font-size: 24px"></i>
                         </div>
@@ -99,10 +92,10 @@
         </div>
 
         <!-- Aquí se mostraran las notificaciones -->
-        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRightNotify" aria-labelledby="offcanvasRightNotifyLabel">
+        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNotify" aria-labelledby="offcanvasNotifyLabel">
             <div class="offcanvas-header">
                 <button type="button" class="btn" data-bs-dismiss="offcanvas" aria-label="Close"><i class="bi bi-x-lg"></i></button>
-                <p class="offcanvas-title" id="offcanvasRightNotifyLabel">Notificaciones</p>
+                <p class="offcanvas-title" id="offcanvasNotifyLabel">Notificaciones</p>
             </div>
             <div class="offcanvas-body">
                 <p class="m-0 visually-hidden" id="msjN">No hay notificaciones que mostrar</p>
@@ -119,51 +112,60 @@
         </div>
 
         <!-- Aquí se muestra el formulario para la creación del pedido -->
-        <div class="offcanvas form-pedido offcanvas-end" data-bs-backdrop="static" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
-            <div class="offcanvas-header">
+        <div class="offcanvas form-pedido offcanvas-end" data-bs-backdrop="static" tabindex="-1" id="offcanvasPedidos" aria-labelledby="offcanvasPedidosLabel">
+            <div class="offcanvas-header d-flex justify-content-between">
                 <button type="button" class="btn" data-bs-dismiss="offcanvas" aria-label="Close" onclick="cancelarPedido()"><i class="bi bi-x-lg"></i></button>
-                <p class="offcanvas-title" id="offcanvasRightLabel">Crear nuevo pedido</p>
+                <p class="offcanvas-title" id="offcanvasPedidosLabel">Pedidos</p>
+                <button type="button" class="edit" id="editPedido" onclick="editPedido();" disabled><i class="bi bi-pencil-square"></i></button>
             </div>
             <div class="offcanvas-body">
                 <p>En esta sección vamos a crear y actualizar los pedidos, a continuación llena la información solicitada* para crear o actualizar el pedido.</p>
                 <form action="">
                     <div class="row align-items-end">
-                        <div class="col-3">
-                            <label for="clienteSl" class="form-label">Cliente*</label>
-                            <button type="button" class="btn bell" id="clienteSl"><i class="bi bi-search"></i></button>
+                        <div class="col-8">
+                            <label for="cliente" class="form-label">Cliente*</label>
+                            <div class="input-group">
+                                <input type="text" class="form-control focus-ring" id="cliente" placeholder="Nombre o ID del cliente" required />
+                                <button class="btn search" type="button" id="searchCliente"><i class="bi bi-search"></i></button>
+                            </div>
                         </div>
-                        <div class="col">
-                            <label for="cliente" class="form-label visually-hidden">Cliente</label>
-                            <input type="text" class="form-control focus-ring" id="cliente" placeholder="Nombre o ID del cliente" required />
-                        </div>
-
-                        <div class="col-3">
-                            <button type="button" class="btn pedido">Nuevo cliente</button>
+                        <div class="col-4">
+                            <button type="button" class="btn pedido" id="nuevoCliente">Nuevo cliente</button>
                         </div>
                     </div>
                     <div class="row align-items-end">
-                        <div class="col-3">
-                            <label for="servicioSl" class="form-label">Servicio*</label>
-                            <button type="button" class="btn bell">Selección</button>
-                        </div>
-                        <div class="col text-center">
-                            <label for="servicio" class="form-label visually-hidden">Servicio</label>
-                            <button class="btn btn-link" type="button" onclick="agregarServicio()"><i class="bi bi-plus-lg"></i> Agregar otro servicio</button>
-                            <input type="text" class="form-control focus-ring" id="servicio" placeholder="Nombre o código del servicio" required />
-                        </div>
-                        <div class="col-3">
-                            <label for="pesaje" class="form-label">Pesaje*</label>
-                            <div class="input-group flex-nowrap">
-                                <input type="number" class="form-control focus-ring" id="pesaje" min="0" placeholder="0" required />
-                                <span class="input-group-text" id="addon-wrapping">Kg</span>
+                        <div class="col-5">
+                            <label for="servicio" class="form-label">Servicio*</label>
+                            <div class="input-group">
+                                <input type="text" class="form-control focus-ring" id="servicio" placeholder="Nombre o ID del servicio" />
+                                <button class="btn search" type="button" id="searchServicio"><i class="bi bi-search"></i></button>
                             </div>
                         </div>
+                        <div class="col">
+                            <label for="pesaje" class="form-label">Pesaje*</label>
+                            <div class="input-group flex-nowrap">
+                                <input type="number" class="form-control focus-ring" id="pesaje" min="1" placeholder="0" onchange="calcularCosto()" />
+                                <span class="input-group-text p-2" id="addon-wrapping">Kg</span>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <label for="costo" class="form-label">Costo*</label>
+                            <div class="input-group flex-nowrap">
+                                <span class="input-group-text p-2" id="addon-wrapping">$</span>
+                                <input type="number" class="form-control focus-ring" id="costo" min="1" placeholder="0" />
+                            </div>
+                        </div>
+                        <div class="col-auto">
+                            <button type="button" class="btn search add" id="addServicio" onclick="agregarServicio()"><i class="bi bi-plus-lg"></i></button>
+                        </div>
                     </div>
-                    <div id="masServicios"></div>
+                    <table>
+                        <tbody id="masServicios"></tbody>
+                    </table>
                     <div class="row">
                         <div class="col">
                             <label for="detalles" class="form-label">Observaciones</label>
-                            <textarea class="form-control focus-ring" id="detalles" rows="3" placeholder="Escribe aquí las observaciones del pedido"></textarea>
+                            <textarea class="form-control focus-ring" id="detalles" rows="2" placeholder="Escribe aquí las observaciones del pedido"></textarea>
                         </div>
                     </div>
                     <div class="row">
@@ -186,7 +188,7 @@
                             <label for="detalles" class="form-label">Resumen del pedido</label>
                             <div class="text-center d-flex justify-content-center gap-3">
                                 <p class="m-0">
-                                    Servicios: <b><span style="color: var(--color-primario)" id="serviciosNum">1</span></b>
+                                    Servicios: <b><span style="color: var(--color-primario)" id="serviciosNum">0</span></b>
                                 </p>
                                 <p class="m-0">
                                     Total a cobrar: <b style="color: var(--color-primario)">$ <span style="color: var(--color-primario)" id="total">0.00</span></b>
@@ -207,10 +209,10 @@
         </div>
 
         <!-- FORMULARIO PARA REGISTRO Y EDICION DEL CLIENTE-->
-        <div class="offcanvas form-registrar offcanvas-end" data-bs-backdrop="static" tabindex="-1" id="offcanvasRegistrarCliente" aria-labelledby="offcanvasRegistrarClienteLabel">
+        <div class="offcanvas form-registrar offcanvas-end" data-bs-backdrop="static" tabindex="-1" id="offcanvasClientes" aria-labelledby="offcanvasClientesLabel">
             <div class="offcanvas-header">
                 <button type="button" class="btn" data-bs-dismiss="offcanvas" aria-label="Close" onclick="cancelarCliente()"><i class="bi bi-x-lg"></i></button>
-                <p class="offcanvas-title" id="offcanvasRegistrarClienteLabel">Clientes</p>
+                <p class="offcanvas-title" id="offcanvasClientesLabel">Clientes</p>
             </div>
             <div class="offcanvas-body">
                 <p>En esta sección vamos a registrar y editar los clientes, a continuación llena la información solicitada* para registrar o editar el cliente.</p>
@@ -219,37 +221,37 @@
                         <div class="col">
                             <label for="nombre" class="form-label">Nombre(s)*</label>
                             <div class="input-group flex-nowrap">
-                                <input type="text" class="form-control focus-ring" id="nombre" placeholder="Argelia Mariel" required />
+                                <input type="text" class="form-control focus-ring" id="nombre" placeholder="Nombres del cliente" required />
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col">
-                            <label for="apellidoP" class="form-label">Apellido Paterno*</label>
+                            <label for="apellidoP" class="form-label">Apellido paterno*</label>
                             <div class="input-group flex-nowrap">
-                                <input type="text" class="form-control focus-ring" id="apellidoP" placeholder="Espinoza" required />
+                                <input type="text" class="form-control focus-ring" id="apellidoP" placeholder="Apellido paterno del cliente" required />
                             </div>
                         </div>
                         <div class="col">
-                            <label for="apellidoM" class="form-label">Apellido Materno</label>
+                            <label for="apellidoM" class="form-label">Apellido materno</label>
                             <div class="input-group flex-nowrap">
-                                <input type="text" class="form-control focus-ring" id="apellidoM" placeholder="Gamboa" required />
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col">
-                            <label for="correo" class="form-label">Correo Electrónico</label>
-                            <div class="input-group flex-nowrap">
-                                <input type="email" class="form-control focus-ring" id="correo" placeholder="nombre@example.com" required />
+                                <input type="text" class="form-control focus-ring" id="apellidoM" placeholder="Apellido materno del cliente" required />
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col">
-                            <label for="telefono" class="form-label">Teléfono*</label>
+                            <label for="correo" class="form-label">Correo electrónico</label>
                             <div class="input-group flex-nowrap">
-                                <input type="tel" class="form-control focus-ring" id="telefono" placeholder="8001234567" required />
+                                <input type="email" class="form-control focus-ring" id="correo" placeholder="Correo electrónico del cliente" required />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <label for="telefono" class="form-label">Número de teléfono*</label>
+                            <div class="input-group flex-nowrap">
+                                <input type="tel" class="form-control focus-ring" id="telefono" placeholder="Número de teléfono del cliente" required />
                             </div>
                         </div>
                     </div>
@@ -265,16 +267,14 @@
             </div>
         </div>
 
-
-
-   <!--FORMULARIO PARA REGISTRAR LAS COMPRAS-->
-        <div class="offcanvas  offcanvas-end" data-bs-backdrop="static" tabindex="-1" id="offcanvasCompra" aria-labelledby="offcanvasCompraLabel">
+        <!--FORMULARIO PARA REGISTRAR LAS COMPRAS-->
+        <div class="offcanvas offcanvas-end" data-bs-backdrop="static" tabindex="-1" id="offcanvasCompras" aria-labelledby="offcanvasComprasLabel">
             <div class="offcanvas-header">
                 <button type="button" class="btn" data-bs-dismiss="offcanvas" aria-label="Close" onclick="cancelarCliente()"><i class="bi bi-x-lg"></i></button>
-                <p class="offcanvas-title" id="offcanvasCompraLabel">Productos</p>
+                <p class="offcanvas-title" id="offcanvasComprasLabel">Compras</p>
             </div>
             <div class="offcanvas-body">
-                <p>Seccion destinada al registro y actualización del catalogo del producto</p>
+                <p>En esta sección vamos a registrar y editar las compras, a continuación llena la información solicitada* para registrar o editar la compra.</p>
                 <form action="">
                     <div class="row">
                         <div class="col">
@@ -288,11 +288,10 @@
                         <div class="col">
                             <label for="apellidoP" class="form-label">Cantidad</label>
                             <div class="input-group flex-nowrap">
-                                <input type="number" class="form-control focus-ring" id="pesaje" min="0" placeholder="0" required />
+                                <input type="number" class="form-control focus-ring" id="cantidad" min="0" placeholder="0" required />
                                 <span class="input-group-text" id="addon-wrapping">Kg</span>
                             </div>
                         </div>
-                       
                     </div>
                     <div class="row">
                         <div class="col">
@@ -323,12 +322,8 @@
             </div>
         </div>
 
-
-
-
-
         <!--FORMULARIO PARA REGISTRAR LOS SERVICIOS-->
-        <div class="offcanvas  offcanvas-end" data-bs-backdrop="static" tabindex="-1" id="offcanvasServicios" aria-labelledby="offcanvasServiciosLabel">
+        <div class="offcanvas offcanvas-end" data-bs-backdrop="static" tabindex="-1" id="offcanvasServicios" aria-labelledby="offcanvasServiciosLabel">
             <div class="offcanvas-header">
                 <button type="button" class="btn" data-bs-dismiss="offcanvas" aria-label="Close" onclick="cancelarCliente()"><i class="bi bi-x-lg"></i></button>
                 <p class="offcanvas-title" id="offcanvasServiciosLabel">Servicios</p>
@@ -348,21 +343,20 @@
                         <div class="col">
                             <label for="apellidoP" class="form-label">Detalles</label>
                             <div class="input-group flex-nowrap">
-                                <input type="text" class="form-control focus-ring" id="detalles"  placeholder="detalles del servicio" required />
+                                <input type="text" class="form-control focus-ring" id="detallesS" placeholder="detalles del servicio" required />
                             </div>
                         </div>
-                       
                     </div>
                     <div class="row">
                         <div class="col">
                             <label for="correo" class="form-label">Precio</label>
                             <div class="input-group flex-nowrap">
-                                <input type="number" class="form-control focus-ring" id="correo"  min="0" placeholder="$17" required />
+                                <input type="number" class="form-control focus-ring" id="correo" min="0" placeholder="$17" required />
                                 <span class="input-group-text" id="addon-wrapping">$</span>
                             </div>
                         </div>
                     </div>
-                    
+
                     <div class="row m-0">
                         <div class="col">
                             <button class="btn bell" type="button" data-bs-dismiss="offcanvas" onclick="cancelarCliente()">Cancelar</button>
@@ -375,13 +369,11 @@
             </div>
         </div>
 
-
-
         <!--FORMULARIO PARA REGISTRAR USUARIOS-->
-        <div class="offcanvas form-registrar offcanvas-end" data-bs-backdrop="static" tabindex="-1" id="offcanvasRegistrarUsuarios" aria-labelledby="offcanvasRegistrarUsuariosLabel">
+        <div class="offcanvas form-registrar offcanvas-end" data-bs-backdrop="static" tabindex="-1" id="offcanvasUsuarios" aria-labelledby="offcanvasUsuariosLabel">
             <div class="offcanvas-header">
                 <button type="button" class="btn" data-bs-dismiss="offcanvas" aria-label="Close" onclick="cancelarCliente()"><i class="bi bi-x-lg"></i></button>
-                <p class="offcanvas-title" id="offcanvasRegistrarUsuariosLabel">Usuarios</p>
+                <p class="offcanvas-title" id="offcanvasUsuariosLabel">Usuarios</p>
             </div>
             <div class="offcanvas-body">
                 <p>En esta sección vamos a registrar a los nuevos usuarios con acceso al sistema</p>
@@ -444,10 +436,10 @@
             </div>
         </div>
 
-
-
         <!-- Script de todo el dashboard-->
         <script src="../js/dasboard.js"></script>
+        <!-- Script para crear alertas-->
+        <script src="../js/alertas.js"></script>
         <!-- Scripts de bootstrap -->
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>

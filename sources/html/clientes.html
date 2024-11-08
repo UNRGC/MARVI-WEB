@@ -22,10 +22,10 @@
                 <button type="button" id="eliminar" class="visually-hidden delete-button" onclick="window.parent.postMessage('mostrarEliminarCliente', '*');"><i class="bi bi-trash"></i> Eliminar</button>
 
                 <!-- boton para registrar un nuevo cliente -->
-                
+
                 <button class="filtro" type="button" onclick="Filtros()"><i class="bi bi-filter"></i> Filtros</button>
                 <button class="ordenar" onclick="Ordenar()"><i class="bi bi-arrow-down-up"></i> Ordenar por</button>
-                <button class="btn-registrar-cliente" type="button" onclick="window.parent.postMessage('mostrarRegistrarCliente', '*');"><i class="bi bi-plus-lg"></i> Registrar cliente</button>
+                <button class="btn-registrar-cliente" type="button" onclick="window.parent.postMessage('mostrarClientes', '*');"><i class="bi bi-plus-lg"></i> Registrar cliente</button>
             </div>
         </div>
 
@@ -39,7 +39,7 @@
                         <th scope="col">Apellido P.</th>
                         <th scope="col">Apellido M.</th>
                         <th scope="col">Correo</th>
-                        <th scope="col">Telefono</th>
+                        <th scope="col">Teléfono</th>
                         <th scope="col">Opciones</th>
                     </tr>
                     <tr>
@@ -58,7 +58,7 @@
                                 <i class="bi bi-three-dots-vertical"></i>
                             </button>
                             <ul class="dropdown-menu">
-                                <li><button class="dropdown-item" onclick="window.parent.postMessage('mostrarRegistrarCliente', '*');">Ver Detalles</button></li>
+                                <li><button class="dropdown-item" onclick="window.parent.postMessage('mostrarClientes', '*');">Ver Detalles</button></li>
                                 <li><button class="dropdown-item" onclick="window.parent.postMessage('mostrarEliminarCliente', '*');">Eliminar</button></li>
                             </ul>
                         </td>
@@ -78,28 +78,7 @@
                                 <i class="bi bi-three-dots-vertical"></i>
                             </button>
                             <ul class="dropdown-menu">
-                                <li><button class="dropdown-item" onclick="window.parent.postMessage('mostrarRegistrarCliente', '*');">Ver Detalles</button></li>
-                                <li><button class="dropdown-item" onclick="window.parent.postMessage('mostrarEliminarCliente', '*');">Eliminar</button></li>
-                            </ul>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
-                            <input type="checkbox" class="select-checkbox" onclick="mostrar()" />
-                        </th>
-                        <td>2324324</td>
-                        <td>Ulises</td>
-                        <td>Gomez</td>
-                        <td>Aguilar</td>
-                        <td>ulisesgo@gmail.com</td>
-                        <td>2293614861</td>
-
-                        <td>
-                            <button class="opcion" type="button" data-bs-toggle="dropdown">
-                                <i class="bi bi-three-dots-vertical"></i>
-                            </button>
-                            <ul class="dropdown-menu">
-                                <li><button class="dropdown-item" onclick="window.parent.postMessage('mostrarRegistrarCliente', '*');">Ver Detalles</button></li>
+                                <li><button class="dropdown-item" onclick="window.parent.postMessage('mostrarClientes', '*');">Ver Detalles</button></li>
                                 <li><button class="dropdown-item" onclick="window.parent.postMessage('mostrarEliminarCliente', '*');">Eliminar</button></li>
                             </ul>
                         </td>
@@ -120,7 +99,7 @@
                                 <i class="bi bi-three-dots-vertical"></i>
                             </button>
                             <ul class="dropdown-menu">
-                                <li><button class="dropdown-item" onclick="window.parent.postMessage('mostrarRegistrarCliente', '*');">Ver Detalles</button></li>
+                                <li><button class="dropdown-item" onclick="window.parent.postMessage('mostrarClientes', '*');">Ver Detalles</button></li>
                                 <li><button class="dropdown-item" onclick="window.parent.postMessage('mostrarEliminarCliente', '*');">Eliminar</button></li>
                             </ul>
                         </td>
@@ -141,8 +120,30 @@
                                 <i class="bi bi-three-dots-vertical"></i>
                             </button>
                             <ul class="dropdown-menu">
-                                <li><button class="dropdown-item" onclick="window.parent.postMessage('mostrarRegistrarCliente', '*');">Ver Detalles</button></li>
+                                <li><button class="dropdown-item" onclick="window.parent.postMessage('mostrarClientes', '*');">Ver Detalles</button></li>
                                 <li><button class="dropdown-item" onclick="window.parent.postMessage('mostrarEliminarCliente', '*');">Eliminar</button></li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            <input type="checkbox" class="select-checkbox" onclick="mostrar()" />
+                        </th>
+                        <td>2324324</td>
+                        <td>Ulises</td>
+                        <td>Gomez</td>
+                        <td>Aguilar</td>
+                        <td>ulisesgo@gmail.com</td>
+                        <td>2293614861</td>
+
+                        <td>
+                            <button class="opcion" type="button" data-bs-toggle="dropdown">
+                                <i class="bi bi-three-dots-vertical"></i>
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><button class="dropdown-item" onclick="window.parent.postMessage('mostrarClientes', '*');">Ver Detalles</button></li>
+                                <li><button class="dropdown-item" onclick="window.parent.postMessage('mostrarEliminarCliente', '*');">Eliminar</button></li>
+                            </ul>
                         </td>
                     </tr>
                 </tbody>
