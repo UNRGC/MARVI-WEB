@@ -1,3 +1,11 @@
+/* ------------- Variables ------------- */
+:root {
+    --titulo: 2.5rem;
+    --texto: 1.25rem;
+    --medio: 1.1rem;
+}
+
+/* ------------- Generales ------------- */
 * {
     font-family: "Inter", sans-serif;
     scrollbar-width: thin;
@@ -7,59 +15,6 @@ html,
 body {
     background: #ffe1c0;
     scroll-behavior: smooth;
-}
-.fondo-inicio {
-    background: #fbecdc;
-}
-nav {
-    height: 64px;
-    border-bottom: 1px solid #deb8b4;
-    background: rgba(0, 0, 0, 0.05);
-    backdrop-filter: blur(50px);
-}
-nav a {
-    text-decoration: none;
-    color: #dd5746;
-    font-size: 18px;
-    font-weight: 700;
-}
-nav a:hover {
-    color: #ff6f50;
-}
-.offcanvas {
-    width: 594px !important;
-    padding: 24px 32px !important;
-    background: rgba(255, 255, 255, 0.7);
-    box-shadow: -16px 0px 40px 0px rgba(0, 0, 0, 0.06);
-    backdrop-filter: blur(50px);
-}
-.offcanvas h2 {
-    color: #dd5746;
-    font-size: 24px;
-    font-weight: 700;
-    margin-bottom: 24px;
-}
-.offcanvas a {
-    text-decoration: none;
-    color: #dd5746;
-    font-size: 18px;
-}
-.offcanvas p {
-    color: #dd5746;
-    font-size: 18px;
-    margin-bottom: 48px;
-}
-.offcanvas i {
-    cursor: pointer;
-    color: #dd5746;
-    font-size: 24px;
-}
-.offcanvas .btn,
-.offcanvas .btn:hover,
-.offcanvas .btn:active {
-    padding: 0px;
-    background: transparent !important;
-    border: none !important;
 }
 .btn {
     background: #dd5746;
@@ -83,8 +38,94 @@ nav a:hover {
     border: solid 1px #dd5746;
     color: #dd5746;
 }
+.col {
+    align-content: center;
+}
+
+/* ------------- Botones fixed ------------- */
+.contacto {
+    display: none;
+    position: fixed;
+    bottom: 0px;
+    right: 0px;
+    z-index: 3;
+}
+.inicio {
+    opacity: 0;
+    width: max-content;
+    position: fixed;
+    bottom: 0px;
+    right: 0px;
+    z-index: 3;
+    transition: opacity 0.5s;
+}
+.contacto button,
+.inicio button {
+    font-size: var(--medio);
+    width: calc(var(--medio) + 32px) !important;
+    height: calc(var(--medio) + 32px) !important;
+}
+
+/* ------------- Navegador ------------- */
+nav {
+    height: 64px;
+    border-bottom: 1px solid #deb8b4;
+    background: rgba(0, 0, 0, 0.05);
+    backdrop-filter: blur(50px);
+}
+nav a {
+    text-decoration: none;
+    color: #dd5746;
+    font-size: var(--medio);
+    font-weight: 700;
+}
+nav a:hover {
+    color: #ff6f50;
+}
+
+/* ------------- Area de contacto ------------- */
+.offcanvas {
+    width: 594px !important;
+    padding: 24px 32px !important;
+    background: rgba(255, 255, 255, 0.7);
+    box-shadow: -16px 0px 40px 0px rgba(0, 0, 0, 0.06);
+    backdrop-filter: blur(50px);
+}
+.offcanvas h2 {
+    color: #dd5746;
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin-bottom: 24px;
+}
+.offcanvas a {
+    text-decoration: none;
+    color: #dd5746;
+    font-size: var(--texto);
+}
+.offcanvas p {
+    color: #dd5746;
+    font-size: var(--texto);
+    margin-bottom: 48px;
+}
+.offcanvas i {
+    cursor: pointer;
+    color: #dd5746;
+    font-size: 24px;
+}
+.offcanvas .btn,
+.offcanvas .btn:hover,
+.offcanvas .btn:active {
+    padding: 0px;
+    background: transparent !important;
+    border: none !important;
+}
+
+/* ------------- Presentación ------------- */
+.fondo-inicio {
+    background: #fbecdc;
+}
 .header {
-    padding: 32px !important;
+    padding: 32px;
 }
 .img-header {
     width: 100%;
@@ -99,45 +140,43 @@ nav a:hover {
 }
 .row-header {
     padding: 80px 32px;
-    gap: 80px;
 }
 .row-header h1 {
-    font-size: 40px;
+    font-size: var(--titulo);
     font-weight: 900;
     color: #dd5746;
+    margin: 0px;
 }
 .row-header p {
-    font-size: 20px;
+    font-size: var(--texto);
     color: #dd5746;
     font-weight: 400;
-    margin-bottom: 32px;
+    margin: 0px;
 }
 
+/* ------------- Divisor diagonal ------------- */
 .triangulo {
     width: 100%;
     height: 85px;
     background: linear-gradient(to right bottom, #fbecdc 50%, #ffe1c0 50%);
 }
 
+/* ------------- Nosotros ------------- */
 .nosotros {
     padding: 120px 64px !important;
 }
 .row-nosotros {
-    gap: 40px;
-    margin-bottom: 120px;
+    margin-bottom: 64px;
 }
 .row-nosotros h1 {
     color: #dd5746;
-    font-size: 32px;
+    font-size: var(--titulo);
     font-weight: 900;
 }
 .row-nosotros p {
     color: #dd5746;
-    font-size: 18px;
+    font-size: var(--texto);
     font-weight: 400;
-}
-.row-n-bloques {
-    gap: 64px;
 }
 .row-n-bloques .col {
     background: #ffe8cf;
@@ -146,22 +185,16 @@ nav a:hover {
 }
 .row-n-bloques h2 {
     color: #dd5746;
-    font-size: 48px;
+    font-size: var(--titulo);
     font-weight: 900;
 }
 .row-n-bloques p {
     color: #dd5746;
-    font-size: 18px;
-    margin-top: 56px;
+    font-size: var(--texto);
+    margin-top: 16px;
 }
 
-.regreso {
-    position: sticky;
-    top: calc(100vh - 67px);
-    left: calc(100vw - 24px);
-    z-index: 3 !important;
-}
-
+/* ------------- Imagen alusiva ------------- */
 .estatico {
     padding: 160px 0px;
     height: 100vh;
@@ -170,12 +203,11 @@ nav a:hover {
     z-index: 1;
 }
 .estatico .text-center {
-    width: 50%;
+    width: 80%;
     color: #dd5746;
-    font-size: 32px;
+    font-size: var(--titulo);
     font-weight: 900;
 }
-
 .frame {
     width: 100%;
     padding: 64px;
@@ -188,6 +220,7 @@ nav a:hover {
     height: 100%;
 }
 
+/* ------------- Divisor diagonal ------------- */
 .triangulo2 {
     width: 100%;
     height: 85px;
@@ -196,65 +229,51 @@ nav a:hover {
     z-index: 2;
 }
 
+/* ------------- Valores ------------- */
 .valores {
-    padding: 120px 64px 160px 64px;
+    padding: 120px 64px;
     background: #fcd8da;
     position: relative;
     z-index: 2;
-    overflow: hidden;
+    overflow-x: hidden;
+    cursor: grab;
 }
 .valores h1 {
+    position: sticky;
+    left: 0px;
     color: #dd5746;
-    font-size: 32px;
+    font-size: var(--titulo);
     font-weight: 900;
-    margin: 0px 0px 64px 0px;
-}
-.valores img {
-    width: 75px;
+    margin-bottom: 64px;
 }
 .valores .row {
-    width: 300vw !important;
-    gap: 48px;
+    width: 2200px !important;
+    flex-wrap: nowrap;
 }
 .valores .col {
+    align-content: start;
     text-align: center;
     background: #ffe4e5;
     padding: 100px 48px 32px 48px !important;
-    height: 500px !important;
-    width: 45% !important;
     border-radius: 15px !important;
-    animation: muestra 30s linear infinite;
+}
+.valores .bi {
+    font-size: 3rem;
+    color: #dd5746;
 }
 .valores h2 {
     color: #dd5746;
-    font-size: 32px;
+    font-size: var(--titulo);
     font-weight: 900;
-    padding-top: 64px !important;
+    padding-top: 16px !important;
     padding-bottom: 16px !important;
 }
 .valores p {
     color: #dd5746;
-    font-size: 18px;
-}
-.carrousel-btn {
-    position: absolute;
-    top: 50%;
-    width: calc(100vw - 128px);
-    height: 100%;
-    z-index: 2;
-}
-.carrousel-btn li {
-    cursor: pointer;
-    font-size: 2.5rem;
-    text-align: center;
-    color: #ffffff20;
-    cursor: pointer;
-}
-.carrousel-btn li:hover {
-    color: #dd58464f;
-    transform: scale(1.1);
+    font-size: var(--texto);
 }
 
+/* ------------- Divisor diagonal ------------- */
 .triangulo3 {
     width: 100%;
     height: 85px;
@@ -263,103 +282,79 @@ nav a:hover {
     z-index: 2;
 }
 
+/* ------------- Servicios ------------- */
 .servicios {
     background: #e4e7ec !important;
     padding: 100px 64px 180px 64px !important;
     position: relative;
     z-index: 2;
 }
-.servicios .msj {
-    width: 80%;
-    margin: 0 auto;
-}
 .servicios h1 {
     color: #dd5746;
-    font-size: 32px;
+    font-size: var(--titulo);
     font-weight: 900;
     margin-bottom: 32px;
 }
 .servicios p {
     color: #dd5746;
-    font-size: 18px;
-    margin-bottom: 80px;
-}
-.servicios .row {
-    gap: 48px;
+    font-size: var(--texto);
+    margin-bottom: 64px;
 }
 .servicios .col {
-    background: #cbd2dc;
+    background: rgba(255, 255, 255, 0.5);
     padding: 40px 32px;
     border-radius: 15px;
 }
 .servicios h2 {
     color: #dd5746;
-    font-size: 20px;
-    margin-bottom: 40px;
+    font-weight: bold;
+    font-size: var(--titulo);
+    margin-bottom: 32px;
 }
 .servicios img {
-    width: 80px;
-    height: 80px;
+    width: 100px;
 }
 
-.fila1,
-.fila2,
-.fila3 {
+/* ------------- Marquee ------------- */
+.marquee {
     overflow: hidden;
-    white-space: nowrap;
-    box-sizing: border-box;
     color: #dd5746;
     font-size: 120px;
     font-weight: 800;
     position: relative;
     z-index: 2;
 }
-.fila1 {
+.marquee div {
+    width: max-content;
+}
+.marquee > :nth-child(1) {
     background: #fcd8da;
+    animation: marquee 10s linear infinite;
 }
-.fila2 {
+.marquee > :nth-child(2) {
     background: #ffe1c0;
+    animation: marquee 10s linear reverse infinite;
 }
-.fila3 {
+.marquee > :nth-child(3) {
     background: #e4e7ec;
-}
-.li-izq {
-    animation: marquee 4s linear infinite;
-}
-.li-der {
-    animation: marquee 4s linear infinite reverse;
-}
-.li-izq li,
-.li-der li {
-    margin-right: 130px;
-    padding: 40px 0px;
+    animation: marquee 10s linear infinite;
 }
 
+/* ------------- footer ------------- */
 .contacto-info {
     background: #f7f2de;
-    padding: 32px 64px 32px 64px;
+    padding: 32px 64px;
     position: relative;
     z-index: 2;
-}
-.contacto-info h2 {
-    color: #dd5746;
-    font-size: 24px;
-    font-weight: 700;
-    margin-bottom: 40px !important;
 }
 .contacto-info p {
     color: #dd5746;
     font-size: 14px;
-    margin-bottom: 16px;
 }
 .contacto-info i {
     cursor: pointer;
     color: #dd5746;
     font-size: 32px;
-}
-.contacto-info li {
-    cursor: pointer;
-    margin-bottom: 24px !important;
 }
 .contacto-info a {
     text-decoration: none;
@@ -373,52 +368,41 @@ nav a:hover {
     margin-top: 16px;
 }
 
-.regreso {
-    width: 52px !important;
-    background: #dd5746;
-    border-radius: 50%;
-    color: white;
-    font-size: 24px;
-    padding: 8px;
-    cursor: pointer;
-    z-index: 2;
-}
-.regreso:hover {
-    background: #ff6f50;
-    transform: scale(1.1);
-}
-
+/* ------------- Animaciones ------------- */
 @keyframes marquee {
-    0% {
+    from {
         transform: translate(0, 0);
     }
-    100% {
-        transform: translate(-1467.88px, 0);
+    to {
+        transform: translate(-50.4%, 0);
     }
 }
 
-@keyframes muestra {
-    0% {
-        transform: translate(0, 0);
+/* ------------- Para pantallas de 991px ------------- */
+@media screen and (max-width: 991px) {
+    :root {
+        --titulo: 1.6rem;
+        --texto: 1.1rem;
+        --medio: 1rem;
     }
-    100% {
-        transform: translate(calc(-150vw - 24px), 0);
-    }
-}
 
-/* ------------- Para pantallas de 768px ------------- */
-@media screen and (max-width: 768px) {
+    .contacto {
+        display: block;
+    }
+    .inicio {
+        bottom: 64px;
+    }
+
     nav {
         top: -56px !important;
-        height: auto;
+        height: max-content;
         padding-top: 16px;
-        padding-bottom: 16px;
         text-align: center;
     }
     nav .row {
         gap: 16px;
     }
-    .contacto {
+    .btn-contacto {
         display: none;
     }
     .img-header {
@@ -426,42 +410,51 @@ nav a:hover {
         height: 200px;
         object-fit: cover;
     }
-    .row-header {
-        padding-top: 32px;
-        padding-bottom: 0px;
-        padding-left: 0px;
-        padding-right: 0px;
-        gap: 32px;
+}
+
+/* ------------- Para pantallas de 768px ------------- */
+@media screen and (max-width: 768px) {
+    .offcanvas {
+        padding: 16px !important;
     }
-    .row-header h1 {
-        font-size: 24px;
+    .offcanvas-body {
+        align-content: center;
     }
-    .nosotros {
-        padding: 32px !important;
+    .offcanvas h2 {
+        margin-bottom: 16px;
     }
-    .row-nosotros {
-        gap: 32px;
+    .offcanvas p {
         margin-bottom: 32px;
     }
-    .row-nosotros h1 {
-        font-size: 24px;
+
+    .valores .row {
+        width: auto !important;
+        flex-wrap: wrap;
     }
-    .row-nosotros p {
-        font-size: 20px;
+
+    .row-header {
+        padding: 64px 0px;
     }
-    .row-n-bloques {
-        gap: 32px;
+
+    .nosotros,
+    .valores,
+    .servicios {
+        padding: 64px 32px !important;
+    }
+
+    .frame {
         padding: 16px;
     }
-    .row-n-bloques .col {
-        padding: 32px;
+
+    .valores h1 {
+        margin-bottom: 40px;
     }
-    .row-n-bloques h2 {
-        font-size: 32px;
+
+    .contacto-info {
+        padding: 32px 32px;
     }
-    .row-n-bloques p {
-        font-size: 20px;
-        margin-top: 16px;
+
+    .marquee {
+        font-size: 60px;
     }
 }
-/* ------------- Para pantallas de 768px ------------- */
