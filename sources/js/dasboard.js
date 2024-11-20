@@ -1,9 +1,16 @@
+/* global alertConfirm */
+/* global alertToast */
+/* global alertMessage */
+
 const searchBar = document.getElementById("searchBar");
 const searchBarInput = document.getElementById("searchBarInput");
 const iframe = document.getElementById("iframe");
 let paginaActiva = "inicio";
 
 document.addEventListener("DOMContentLoaded", () => {
+    if (!sessionStorage.getItem("token")) {
+        window.location.href = "login.html";
+    }
     const sFoto = localStorage.getItem("foto");
     if (sFoto) {
         document.getElementById("img-perfil").src = sFoto;
@@ -166,7 +173,7 @@ function agregarServicio() {
 
     serviciosNum.innerText = contador;
 
-    let totales = document.getElementsByName("total");
+    const totales = document.getElementsByName("total");
     for (let i = 0; i < totales.length; i++) {
         total += parseFloat(totales[i].innerText.replace("$", ""));
     }
@@ -177,15 +184,7 @@ function eliminarServicio(btn) {
     let contador = serviciosNum.innerText;
     let total = 0;
 
-    swal.fire({
-        title: "¿Estás seguro?",
-        text: "No podrás revertir esto.",
-        icon: "warning",
-        iconColor: "#dd5746",
-        showCancelButton: true,
-        confirmButtonText: "Sí, eliminar",
-        cancelButtonText: "Cancelar",
-    }).then((result) => {
+    alertConfirm("¿Estás seguro?", "¿Deseas eliminar el servicio?", "warning").then((result) => {
         if (result.isConfirmed) {
             btn.parentElement.parentElement.remove();
 
@@ -205,6 +204,74 @@ function calcularCosto() {
     costoInput.value = (18 * pesajeInput.value).toFixed(2);
 }
 /* ------- Formulario de pedidos ------- */
+
+/* ------- Formulario de usuarios ------- */
+const editUsuario = document.getElementById("editUsuarios");
+const usuarioInput = document.getElementById("usuario");
+const nombreInput = document.getElementById("nombreUsuario");
+const apellidoInput = document.getElementById("apellidoPaternoU");
+const apellidoMInput = document.getElementById("apellidoMaternoU");
+const correoInput = document.getElementById("correoUsuario");
+const telInput = document.getElementById("telUsuario");
+const rolInput = document.getElementById("rolUsuario");
+
+function desactivarUsuarios() {
+    editUsuario.disabled = true;
+    usuarioInput.disabled = true;
+    nombreInput.disabled = true;
+    apellidoInput.disabled = true;
+    apellidoMInput.disabled = true;
+    correoInput.disabled = true;
+    telInput.disabled = true;
+    rolInput.disabled = true;
+}
+
+function activarUsuarios() {
+    editUsuario.disabled = false;
+    usuarioInput.disabled = false;
+    nombreInput.disabled = false;
+    apellidoInput.disabled = false;
+    apellidoMInput.disabled = false;
+    correoInput.disabled = false;
+    telInput.disabled = false;
+    rolInput.disabled = false;
+}
+
+function limpiarUsuarios() {
+    usuarioInput.value = "";
+    nombreInput.value = "";
+    apellidoInput.value = "";
+    apellidoMInput.value = "";
+    correoInput.value = "";
+    telInput.value = "";
+    rolInput.value = "admin";
+}
+
+function llenarUsuarios(usuario, nombre, apellido, apellidoM, correo, tel, rol) {
+    usuarioInput.value = usuario;
+    nombreInput.value = nombre;
+    apellidoInput.value = apellido;
+    apellidoMInput.value = apellidoM;
+    correoInput.value = correo;
+    telInput.value = tel;
+    rolInput.value = rol;
+}
+
+function editUsuarios() {
+    nombreInput.disabled = false;
+    apellidoInput.disabled = false;
+    apellidoMInput.disabled = false;
+    correoInput.disabled = false;
+    telInput.disabled = false;
+    rolInput.disabled = false;
+    editUsuario.disabled = true;
+}
+
+function cancelarUsuarios() {
+    limpiarUsuarios();
+    activarUsuarios();
+    editUsuario.disabled = true;
+}
 
 /* ------- Función para mostrar el offcanvas ------- */
 function mostrarOffcanvas(id) {
@@ -234,6 +301,16 @@ function mostrarOffcanvas(id) {
 
 /* ------- Función para escuchar el mensaje ------- */
 window.addEventListener("message", (event) => {
+    try {
+        const data = JSON.parse(event.data);
+        if (data._id) {
+            document.getElementById("nombreUsuario").textContent = data.user.firstName;
+            document.getElementById("apellidosUsuario").textContent = `${data.user.lastName} ${data.user.motherLastName}`;
+        }
+    } catch (error) {
+        console.error(error);
+    }
+
     switch (event.data) {
         case "mostrarPedidos":
             mostrarOffcanvas("offcanvasPedidos");
@@ -252,24 +329,54 @@ window.addEventListener("message", (event) => {
             break;
         case "mostrarEliminarPedido":
         case "mostrarEliminarCliente":
-            eliminarRegistro();
+            alertConfirm("¿Estás seguro?", "No podrás revertir esto.", "warning").then((result) => {
+                if (result.isConfirmed) {
+                    alertToast("El registro ha sido eliminado", false, "success", 2000).then(() => {
+                        location.reload();
+                    });
+                }
+            });
             break;
         case "cancelarPedido":
-            cancelarRegistro();
+            alertConfirm("¿Estás seguro?", "¿Deseas cancelar el pedido?", "warning").then((result) => {
+                if (result.isConfirmed) {
+                    alertToast("El pedido ha sido cancelado", false, "success", 2000).then(() => {
+                        location.reload();
+                    });
+                }
+            });
             break;
         case "salir":
-            salir();
+            alertConfirm("¿Estás seguro?", "¿Deseas cerrar sesión?", "warning").then((result) => {
+                if (result.isConfirmed) {
+                    alertToast("Finalizando sesión", false, "success", 2000).then(() => {
+                        setTimeout(() => {
+                            sessionStorage.clear();
+                            window.location.href = "login.html";
+                        }, 200);
+                    });
+                }
+            });
             break;
         case "guardarRegistro":
-            guardarRegistro();
-            break;
-        case "salirDelSistema":
-            salirDelSistema();
+            alertConfirm("¿Estás seguro?", "¿Deseas guardar los cambios?", "warning").then((result) => {
+                if (result.isConfirmed) {
+                    alertToast("Los cambios han sido guardados", false, "success", 2000).then(() => {
+                        location.reload();
+                    });
+                }
+            });
             break;
         case "recargar":
             location.reload();
             break;
         default:
+            if (event.data._id) {
+                llenarUsuarios(event.data.email, event.data.firstName, event.data.lastName, event.data.motherLastName, event.data.email, event.data.phone, event.data.role);
+                desactivarUsuarios();
+                editUsuario.disabled = false;
+                mostrarOffcanvas("offcanvasUsuarios");
+            }
             break;
     }
 });
@@ -282,4 +389,8 @@ function limpiarNotify(id) {
 
     mensaje.classList.remove("visually-hidden");
     aviso.remove();
+}
+
+function buscarValor(v) {
+    iframe.contentWindow.postMessage(JSON.stringify({ buscar: v }), "*");
 }

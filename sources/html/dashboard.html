@@ -13,7 +13,7 @@
         <link rel="stylesheet" href="../css/dashboard.css" />
         <!-- Script del tema -->
         <script src="../js/temas.js"></script>
-        <!-- Script para mostrar alertas -->
+        <!-- Script sweetAlert -->
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     </head>
     <body>
@@ -33,11 +33,8 @@
                 </div>
                 <div class="col align-content-center">
                     <div class="input-group visually-hidden" id="searchBar">
-                        <button type="button" class="btn">
-                            <i class="bi-search"></i>
-                            <span class="visually-hidden">Button</span>
-                        </button>
-                        <input type="search" class="form-control focus-ring focus-ring" id="searchBarInput" />
+                        <span class="input-group-text" id="basic-addon1"><i class="bi-search"></i></span>
+                        <input type="search" class="form-control focus-ring focus-ring" id="searchBarInput" oninput="buscarValor(this.value)" />
                     </div>
                 </div>
                 <div class="contacto col text-end">
@@ -76,8 +73,8 @@
                         <div class="d-flex align-items-center justify-content-around">
                             <img src="../img/perfil/Perfil8.jpg" alt="Perfil" width="44px" height="44px" class="object-fit-cover rounded-5" id="img-perfil" />
                             <div>
-                                <p class="m-0" style="font-size: 14px">Andres</p>
-                                <p class="m-0" style="font-size: 12px">Gamboa Garay</p>
+                                <p class="m-0" style="font-size: 14px" id="nombreUsuario">Andres</p>
+                                <p class="m-0" style="font-size: 12px" id="apellidosUsuario">Gamboa Garay</p>
                             </div>
                             <i class="bi bi-box-arrow-right m-0" style="font-size: 24px"></i>
                         </div>
@@ -369,67 +366,75 @@
             </div>
         </div>
 
-        <!--FORMULARIO PARA REGISTRAR USUARIOS-->
+        <!-- Formulario de usuarios -->
         <div class="offcanvas form-registrar offcanvas-end" data-bs-backdrop="static" tabindex="-1" id="offcanvasUsuarios" aria-labelledby="offcanvasUsuariosLabel">
-            <div class="offcanvas-header">
-                <button type="button" class="btn" data-bs-dismiss="offcanvas" aria-label="Close" onclick="cancelarCliente()"><i class="bi bi-x-lg"></i></button>
+            <div class="offcanvas-header d-flex justify-content-between">
+                <button type="button" class="btn" data-bs-dismiss="offcanvas" aria-label="Close" onclick="cancelarPedido()"><i class="bi bi-x-lg"></i></button>
                 <p class="offcanvas-title" id="offcanvasUsuariosLabel">Usuarios</p>
+                <button type="button" class="edit" id="editUsuarios" onclick="editUsuarios();" disabled><i class="bi bi-pencil-square"></i></button>
             </div>
             <div class="offcanvas-body">
-                <p>En esta sección vamos a registrar a los nuevos usuarios con acceso al sistema</p>
-                <form action="">
+                <p>En esta sección vamos a crear y actualizar los usuarios del sistema, a continuación llena la información solicitada* para crear o actualizar el usuario.</p>
+                <form id="formUsers">
                     <div class="row">
                         <div class="col">
-                            <label for="nombre" class="form-label">Nombre de usuasio</label>
+                            <label for="usuario" class="form-label">Usuario*</label>
                             <div class="input-group flex-nowrap">
-                                <input type="text" class="form-control focus-ring" id="nombre" placeholder="GHOSTREX" required />
+                                <input type="text" class="form-control focus-ring" id="usuario" placeholder="Nombre del usuario" required />
+                            </div>
+                        </div>
+                        <div class="col">
+                            <label for="nombreUsuario" class="form-label">Nombre*</label>
+                            <div class="input-group flex-nowrap">
+                                <input type="text" class="form-control focus-ring" id="nombreUsuario" placeholder="Nombre del usuario" required />
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col">
-                            <label for="nombre" class="form-label">Nombre(s)</label>
+                            <label for="apellidoPaternoU" class="form-label">Apellido paterno*</label>
                             <div class="input-group flex-nowrap">
-                                <input type="text" class="form-control focus-ring" id="nombre" placeholder="Manuel" required />
+                                <input type="text" class="form-control focus-ring" id="apellidoPaternoU" placeholder="Nombre del usuario" required />
+                            </div>
+                        </div>
+                        <div class="col">
+                            <label for="apellidoMaternoU" class="form-label">Apellido materno*</label>
+                            <div class="input-group flex-nowrap">
+                                <input type="text" class="form-control focus-ring" id="apellidoMaternoU" placeholder="Nombre del usuario" required />
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col">
-                            <label for="apellidoP" class="form-label">Apellido Paterno*</label>
+                            <label for="correoUsuario" class="form-label">Correo electrónico</label>
                             <div class="input-group flex-nowrap">
-                                <input type="text" class="form-control focus-ring" id="apellidoP" placeholder="Espinoza" required />
-                            </div>
-                        </div>
-                        <div class="col">
-                            <label for="apellidoM" class="form-label">Apellido Materno</label>
-                            <div class="input-group flex-nowrap">
-                                <input type="text" class="form-control focus-ring" id="apellidoM" placeholder="Gamboa" required />
+                                <input type="email" class="form-control focus-ring" id="correoUsuario" placeholder="Correo electrónico del usuario" required />
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col">
-                            <label for="correo" class="form-label">Correo Electrónico</label>
+                            <label for="telUsuario" class="form-label">Número de teléfono*</label>
                             <div class="input-group flex-nowrap">
-                                <input type="email" class="form-control focus-ring" id="correo" placeholder="nombre@example.com" required />
+                                <input type="tel" class="form-control focus-ring" id="telUsuario" placeholder="Número de teléfono del usuario" required />
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col">
-                            <label for="telefono" class="form-label">Teléfono*</label>
-                            <div class="input-group flex-nowrap">
-                                <input type="tel" class="form-control focus-ring" id="telefono" placeholder="8001234567" required />
-                            </div>
+                            <label for="rolUsuario" class="form-label">Rol*</label>
+                            <select class="form-select focus-ring" id="rolUsuario" aria-label="Default select example" required>
+                                <option value="admin" selected>Admin</option>
+                                <option value="user">User</option>
+                            </select>
                         </div>
                     </div>
                     <div class="row m-0">
                         <div class="col">
-                            <button class="btn bell" type="button" data-bs-dismiss="offcanvas" onclick="cancelarCliente()">Cancelar</button>
+                            <button class="btn bell" type="button" data-bs-dismiss="offcanvas" onclick="cancelarUsuarios()">Cancelar</button>
                         </div>
                         <div class="col">
-                            <button class="btn pedido" type="submit">Guardar Usuario</button>
+                            <button class="btn pedido" type="submit">Guardar usuario</button>
                         </div>
                     </div>
                 </form>
@@ -438,7 +443,7 @@
 
         <!-- Script de todo el dashboard-->
         <script src="../js/dasboard.js"></script>
-        <!-- Script para crear alertas-->
+        <!-- Script de sweetAlert-->
         <script src="../js/alertas.js"></script>
         <!-- Scripts de bootstrap -->
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
