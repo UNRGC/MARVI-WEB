@@ -1,78 +1,127 @@
+/* global modoOscuro */
+/* global localModoOscuro */
+const switchTema = document.getElementById("switchTema");
+const usuarioActual = sessionStorage.getItem("usuario");
+
+const usuario = document.getElementById("usuario");
+const nombre = document.getElementById("nombre");
+const apellidoP = document.getElementById("apellidoPaterno");
+const apellidoM = document.getElementById("apellidoMaterno");
+const correo = document.getElementById("correo");
+const tel = document.getElementById("tel");
+const rol = document.getElementById("rol");
+const password = document.getElementById("password");
+const eye = document.getElementById("eye");
+
+const perfilBtn = document.getElementById("perfil");
+const cancelarBtn = document.getElementById("cancelar");
+const modificarBtn = document.getElementById("modificar");
+const guardarBtn = document.getElementById("guardar");
+
+const fotoPerfil = document.getElementById("fotoPerfil");
+
+if (localModoOscuro === "true") {
+    document.getElementById("switchTema").checked = true;
+    modoOscuroEvent(true);
+} else modoOscuroEvent(false);
+
 function modoOscuroEvent(checked) {
     modoOscuro(checked);
-    if (checked === true) window.parent.postMessage("oscuro", "*");
-    else window.parent.postMessage("claro", "*");
+
+    if (checked === true) {
+        window.parent.postMessage("oscuro", "*");
+        switchTema.parentElement.children[1].innerHTML = "<i class='bi bi-cloud-moon-fill'></i> Modo Oscuro";
+    } else {
+        window.parent.postMessage("claro", "*");
+        switchTema.parentElement.children[1].innerHTML = "<i class='bi bi-cloud-sun-fill'></i> Modo Oscuro";
+    }
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-    const sModoOscuro = localStorage.getItem("modoOscuro");
+function fade() {
+    document.querySelector(".container-fluid").style.transition = "none";
+    document.querySelector(".container-fluid").style.opacity = 0;
+    setTimeout(() => {
+        document.querySelector(".container-fluid").style.transition = "opacity 0.5s";
+        document.querySelector(".container-fluid").style.opacity = 1;
+    }, 50);
+}
 
-    if (sModoOscuro === "true") {
-        document.getElementById("mOscuro").checked = true;
-    }
-
-    modoOscuro(sModoOscuro);
-
-    const sFoto = localStorage.getItem("foto");
-    if (sFoto) {
-        document.getElementById("img-perfil").src = sFoto;
-    }
-});
-
-function mostrarContrasena(id) {
-    const input = document.getElementById(id);
-    const eye = document.getElementById("eye");
-    if (input.type === "password") {
-        eye.innerHTML = "<i class='bi bi-eye'></i>";
-        input.type = "text";
-    } else {
+function viewPassword() {
+    if (password.type === "password") {
+        password.type = "text";
         eye.innerHTML = "<i class='bi bi-eye-slash'></i>";
-        input.type = "password";
-    }
-}
-
-function editar(activo) {
-    const foto = document.getElementById("foto");
-    const correo = document.getElementById("correo");
-    const contrasena = document.getElementById("contrasena");
-    const eye = document.getElementById("eye");
-    const cancelar = document.getElementById("cancelar");
-    const guardar = document.getElementById("guardar");
-    const modificar = document.getElementById("modificar");
-
-    if (activo) {
-        foto.disabled = false;
-        correo.disabled = false;
-        contrasena.disabled = false;
-        eye.disabled = false;
-        cancelar.classList.remove("d-none");
-        guardar.classList.remove("d-none");
-        modificar.classList.add("d-none");
     } else {
-        foto.disabled = true;
+        password.type = "password";
+        eye.innerHTML = "<i class='bi bi-eye'></i>";
+    }
+}
+
+function llenarUsuario(u) {
+    usuario.value = u.email;
+    nombre.value = u.firstName;
+    apellidoP.value = u.lastName;
+    apellidoM.value = u.motherLastName;
+    correo.value = u.email;
+    tel.value = u.phone;
+    rol.value = u.role;
+    password.value = u.password;
+}
+
+llenarUsuario(JSON.parse(usuarioActual));
+
+function modificarPerfil(b) {
+    if (b === true) {
+        perfilBtn.disabled = false;
+        usuario.disabled = false;
+        nombre.disabled = false;
+        apellidoP.disabled = false;
+        apellidoM.disabled = false;
+        correo.disabled = false;
+        tel.disabled = false;
+        rol.disabled = false;
+        password.disabled = false;
+        password.value = "";
+        eye.disabled = false;
+        guardarBtn.disabled = false;
+        modificarBtn.classList.add("d-none");
+        cancelarBtn.classList.remove("d-none");
+    } else {
+        llenarUsuario(JSON.parse(usuarioActual));
+        perfilBtn.disabled = true;
+        usuario.disabled = true;
+        nombre.disabled = true;
+        apellidoP.disabled = true;
+        apellidoM.disabled = true;
         correo.disabled = true;
-        contrasena.disabled = true;
-        contrasena.type = "password";
+        tel.disabled = true;
+        rol.disabled = true;
+        password.disabled = true;
         eye.disabled = true;
-        cancelar.classList.add("d-none");
-        guardar.classList.add("d-none");
-        document.getElementById("modificar").classList.remove("d-none");
-        document.getElementById("img-perfil").src = localStorage.getItem("foto");
+        guardarBtn.disabled = true;
+        modificarBtn.classList.remove("d-none");
+        cancelarBtn.classList.add("d-none");
+        fotoPerfil.src = localStorage.getItem("foto");
     }
 }
 
-function cambiarFoto(ruta) {
-    const foto = document.getElementById("img");
-    const rutaCompleta = `../img/perfil/${ruta}.jpg`;
-    foto.value = rutaCompleta;
-    document.getElementById("img-perfil").src = rutaCompleta;
-}
-
-window.addEventListener("message", function (event) {
-    if (event.data === "cambiosAceptados") {
-        this.localStorage.setItem("foto", document.getElementById("img").value);
-        setTimeout(() => {
-            window.parent.postMessage("recargar", "*");
-        }, 2000);
-    }
+const formUsuario = document.getElementById("formUsuario").addEventListener("submit", (e) => {
+    e.preventDefault();
+    window.parent.postMessage(
+        JSON.stringify({
+            firstName: nombre.value,
+            lastName: apellidoP.value,
+            motherLastName: apellidoM.value,
+            email: correo.value,
+            password: password.value,
+            phone: tel.value,
+            role: rol.value,
+        }),
+        "*"
+    );
 });
+
+function cambiarFoto(src) {
+    const modal = bootstrap.Modal.getInstance(document.getElementById("fotosPerfil"));
+    fotoPerfil.src = src;
+    modal.hide();
+}

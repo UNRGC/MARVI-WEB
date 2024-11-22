@@ -10,10 +10,11 @@ let paginaActiva = "inicio";
 document.addEventListener("DOMContentLoaded", () => {
     if (!sessionStorage.getItem("token")) {
         window.location.href = "login.html";
-    }
-    const sFoto = localStorage.getItem("foto");
-    if (sFoto) {
-        document.getElementById("img-perfil").src = sFoto;
+    } else {
+        const user = sessionStorage.getItem("usuario");
+        localStorage.setItem("foto", document.getElementById("fotoPerfilAct").src);
+        document.getElementById("nombreUsuarioAct").textContent = JSON.parse(user).firstName;
+        document.getElementById("apellidosUsuario").textContent = `${JSON.parse(user).lastName} ${JSON.parse(user).motherLastName}`;
     }
 });
 
@@ -307,8 +308,16 @@ window.addEventListener("message", (event) => {
             document.getElementById("nombreUsuario").textContent = data.user.firstName;
             document.getElementById("apellidosUsuario").textContent = `${data.user.lastName} ${data.user.motherLastName}`;
         }
+        if (data.firstName) {
+            alertConfirm("¿Estás seguro?", "¿Deseas guardar los cambios?", "warning").then(async (result) => {
+                if (result.isConfirmed) {
+                    if (await actualizarUsuario(data)) alertToast("Los cambios han sido guardados", false, "success", 2000);
+                    else alertToast("No se pudieron guardar los cambios", false, "error", 2000);
+                }
+            });
+        }
     } catch (error) {
-        console.error(error);
+        console.log(error);
     }
 
     switch (event.data) {

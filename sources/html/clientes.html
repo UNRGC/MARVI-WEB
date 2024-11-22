@@ -14,10 +14,8 @@
     </head>
 
     <body>
-        <div class="header justify-content-between">
-            <div class="d-flex gap-3 align-items-center">
-                <p>Lista de clientes</p>
-            </div>
+        <div class="header">
+            <p>Lista de clientes</p>
             <div class="d-flex gap-3">
                 <button type="button" id="eliminar" class="visually-hidden action delete" onclick="window.parent.postMessage('mostrarEliminarPedido', '*');"><i class="bi bi-trash3"></i> Eliminar</button>
                 <button class="action" type="button" id="filtro" data-bs-toggle="dropdown"><i class="bi bi-filter"></i> Filtros</button>
@@ -40,6 +38,7 @@
                 </ul>
 
                 <button class="action" id="orden" onclick="_orden()"><i class="bi bi-arrow-down-up"></i> Ordenar por</button>
+                <button class="btn-registrar-cliente" type="button" onclick="window.parent.postMessage('mostrarClientes', '*');"><i class="bi bi-plus-lg"></i> Registrar cliente</button>
             </div>
         </div>
 

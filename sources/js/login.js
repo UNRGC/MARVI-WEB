@@ -60,6 +60,19 @@ function validateEmail() {
     }
 }
 
+function authUsuario(u) {
+    const usuario = async () => {
+        const response = await fetch(`https://api-sandbox-f3ei.onrender.com/users/${u}`, {
+            method: "GET",
+            headers: { "Content-Type": "application/json" },
+        });
+        const data = await response.json();
+        sessionStorage.setItem("usuario", JSON.stringify(data));
+    };
+
+    usuario();
+}
+
 login.addEventListener("submit", async (e) => {
     e.preventDefault();
     const emailAuth = user.value;
@@ -74,6 +87,7 @@ login.addEventListener("submit", async (e) => {
     });
     const data = await response.json();
     if (data.access_token) {
+        authUsuario(emailAuth);
         sessionStorage.setItem("token", data.access_token);
         alertMessage("¡Inicio de sesión exitoso!", "Has iniciado sesión correctamente, abriendo el sistema...", "success", 2000, false).then((res) => {
             if (res) {
