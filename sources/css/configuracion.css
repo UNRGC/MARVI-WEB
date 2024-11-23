@@ -1,90 +1,30 @@
 @import url(variables.css); /* Importa las variables de colores */
 
-body,
-html {
-    background: transparent;
-}
-
-.header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-.header p {
-    font-size: 16px;
+h2 {
+    color: var(--color-primario);
     font-weight: bold;
-    color: var(--texto);
-    margin: 0px;
+    margin: 0;
 }
-
-.container-fluid {
-    background: var(--fondo);
-    border-radius: 10px;
-    padding: 64px;
-    margin-top: 16px;
+#mOscuro {
+    border: 1px solid var(--borde);
+    accent-color: var(--color-primario);
 }
-
-.form-check {
-    width: max-content;
-    font-size: 1.3rem;
-    border-radius: 8px;
+#mOscuro:hover {
+    border: 1px solid var(--hover-borde);
+    transform: scale(1.05);
 }
-.form-check-input {
-    --bs-focus-ring-color: transparent;
-    background-color: var(--fondo-contenido);
-    border: 1px solid var(--borde) !important;
+#mOscuro:focus {
+    border: 1px solid var(--hover-borde);
 }
-.form-check-input:checked {
-    background-color: var(--color-primario) !important;
-    border-color: var(--color-primario) !important;
+.perfil {
+    position: relative;
 }
-.form-check-input:hover:not(:checked) {
-    border-color: var(--hover-borde) !important;
-}
-.form-check-input:focus:not(:checked) {
-    border-color: var(--hover-borde) !important;
-}
-.form-check-input:checked::before {
-    background-color: var(--color-primario) !important;
-    border-color: var(--color-primario) !important;
-}
-.form-switch .form-check-input:focus:not(:checked) {
-    /* prettier-ignore */
-    --bs-form-switch-bg:url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'><circle r='3' fill='rgba%280, 0, 0, 0.25%29'/></svg>");
-}
-
-.col-auto img {
-    width: 250px;
+.perfil img {
+    width: 200px;
     border-radius: 50%;
 }
-.edit {
-    position: absolute;
-    bottom: 16px;
-    right: 16px;
-    background: var(--color-primario);
-    border: none;
-    color: white;
-    border-radius: 50%;
-    width: 54px;
-    height: 54px;
-    font-size: 1.5rem;
-}
-.edit:hover {
-    background: var(--hover-color-p);
-    color: white;
-}
-.edit:active {
-    background: var(--color-primario) !important;
-    color: white !important;
-    transform: scale(0.9);
-}
-.edit:disabled {
-    background: var(--borde) !important;
-}
 
-input:not([type="checkbox"]),
-select,
-textarea {
+input {
     background: var(--fondo) !important;
     color: var(--texto) !important;
     border-radius: 8px !important;
@@ -93,134 +33,115 @@ textarea {
     padding: 12px !important;
     --bs-focus-ring-color: transparent;
 }
-input::placeholder,
-select::placeholder,
-textarea::placeholder {
+input::placeholder {
     color: var(--placeholder) !important;
 }
-input:hover:not([type="checkbox"]),
-select:hover,
-textarea:hover {
-    border-color: var(--hover-borde) !important;
+input:hover {
+    border: 1px solid var(--hover-borde) !important;
 }
-input:focus:not([type="checkbox"]),
-select:focus,
-textarea:focus {
+input:focus {
     background: var(--fondo) !important;
     color: var(--texto) !important;
-    border-color: var(--color-primario) !important;
+    border: 1px solid var(--color-primario) !important;
 }
-input:disabled:not([type="checkbox"]),
-select:disabled,
-textarea:disabled {
+input:disabled {
     background: var(--fondo-contenido) !important;
+    color: var(--placeholder) !important;
+    border: 1px solid var(--borde) !important;
 }
-label:not(.form-check-label) {
+label {
     font-size: 14px;
+    color: var(--texto);
+}
+.mOscuro label {
+    font-size: 18px;
+}
+.btn {
+    border: none;
+    border-radius: 8px;
+    padding: 10px 20px;
+}
+.aplicar {
+    background-color: var(--color-primario);
+    color: var(--texto-primario);
+}
+.aplicar:hover {
+    background-color: var(--hover-color-p);
+    color: var(--texto-primario);
+}
+.aplicar:active {
+    background-color: var(--color-primario) !important;
+    color: var(--texto-primario) !important;
+}
+.restablecer {
+    background-color: var(--color-secundario);
+    color: var(--color-primario);
+}
+.restablecer:hover {
+    background-color: var(--hover-color-s);
+    color: var(--color-primario);
+}
+.restablecer:active {
+    background-color: var(--color-secundario) !important;
+    color: var(--color-primario) !important;
+}
+.foto {
+    position: absolute;
+    left: calc(50% + 100px);
+    top: calc(100% - 46px);
+    padding: 15px;
+    border-radius: 50% !important;
+    translate: -50%;
 }
 
 .input-group {
-    background: var(--fondo);
-    border-radius: 8px;
-    border: 1px solid var(--borde);
+    border: solid 1px var(--borde) !important;
+    border-radius: 8px !important;
     overflow: hidden;
 }
 .input-group:hover {
-    border: 1px solid var(--hover-borde);
+    border: solid 1px var(--hover-borde) !important;
+}
+.input-group:hover:has(input:disabled) {
+    border: solid 1px var(--borde) !important;
 }
 .input-group:focus-within {
-    border: 1px solid var(--color-primario);
+    border: solid 1px var(--color-primario) !important;
 }
-.input-group:has(input:disabled) {
-    background: var(--fondo-contenido);
-}
-.input-group input,
-.input-group button {
+.input-group input {
     border: none !important;
-    background: transparent !important;
 }
 
-.eye {
-    background: transparent;
-    border: none;
-    color: var(--texto);
-    font-size: 1.2rem;
-    padding: 0 12px;
+.mostrar input {
+    border-radius: 8px 0 0 8px !important;
 }
-.eye:hover {
-    background: transparent;
+.mostrar .btn {
+    background: var(--fondo) !important;
+}
+.mostrar .btn:disabled {
+    background: var(--fondo-contenido) !important;
+}
+.mostrar i {
+    color: var(--texto) !important;
+}
+.mostrar .btn:hover i {
     color: var(--color-primario) !important;
 }
-
-.aplicar {
-    background: var(--color-primario);
-    border: none;
-    color: white;
-    border-radius: 8px;
-    padding: 8px 20px;
-}
-.aplicar:hover {
-    background: var(--hover-color-p);
-    color: white;
-}
-.aplicar:active {
-    background: var(--color-primario) !important;
-    color: white !important;
-    transform: scale(0.98);
-}
-.aplicar:disabled {
-    background: var(--borde) !important;
-}
-
-.cancelar {
-    background: var(--color-secundario);
-    border: none;
-    color: var(--color-primario);
-    border-radius: 8px;
-    padding: 8px 20px;
-}
-.cancelar:hover {
-    background: var(--hover-color-s);
-    color: var(--color-primario);
-}
-.cancelar:active {
-    background: var(--color-secundario) !important;
+.mostrar .btn:active {
     color: var(--color-primario) !important;
-    transform: scale(0.98);
-}
-.cancelar:disabled {
-    background: var(--borde) !important;
-    color: white !important;
 }
 
 .modal-content {
-    background: var(--fondo) !important;
-    border-radius: 8px !important;
-    border-left: solid 32px var(--fondo) !important;
-    border-right: solid 32px var(--fondo) !important;
-}
-.modal-body {
     background: var(--fondo-contenido) !important;
-    border-radius: 8px !important;
-    padding: 32px !important;
-    scrollbar-width: none;
 }
 .modal-header,
 .modal-footer {
-    border: none !important;
+    border-color: var(--borde) !important;
 }
-.modal-backdrop {
-    background-color: transparent !important;
+.modal-body button {
+    border: none;
+    background: transparent;
 }
-.modal-content h3 {
-    font-weight: bold;
-    margin: 0;
-}
-.modal-content img {
-    cursor: pointer;
-    border-radius: 8px;
-    transition: all 0.2s;
-}
-.modal-content img:hover {
+.modal-body button:hover {
     transform: scale(1.02);
 }

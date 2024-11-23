@@ -1,5 +1,3 @@
-const localModoOscuro = localStorage.getItem("modoOscuro");
-
 function modoOscuro(activo) {
     if (activo == "true" || activo === true) {
         document.documentElement.style.setProperty("--fondo", "var(--fondo-oscuro)");
@@ -41,7 +39,9 @@ window.addEventListener("message", (event) => {
 
 // Carga los colores guardados en el localStorage
 document.addEventListener("DOMContentLoaded", () => {
-    modoOscuro(localModoOscuro);
+    const sModoOscuro = localStorage.getItem("modoOscuro");
+
+    modoOscuro(sModoOscuro);
     document.documentElement.style.display = "block";
     document.querySelector("body").classList.add("visible");
 });

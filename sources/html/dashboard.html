@@ -13,7 +13,7 @@
         <link rel="stylesheet" href="../css/dashboard.css" />
         <!-- Script del tema -->
         <script src="../js/temas.js"></script>
-        <!-- Script sweetAlert -->
+        <!-- Script para mostrar alertas -->
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     </head>
     <body>
@@ -33,8 +33,11 @@
                 </div>
                 <div class="col align-content-center">
                     <div class="input-group visually-hidden" id="searchBar">
-                        <span class="input-group-text" id="basic-addon1"><i class="bi-search"></i></span>
-                        <input type="search" class="form-control focus-ring focus-ring" id="searchBarInput" oninput="buscarValor(this.value)" />
+                        <button type="button" class="btn">
+                            <i class="bi-search"></i>
+                            <span class="visually-hidden">Button</span>
+                        </button>
+                        <input type="search" class="form-control focus-ring focus-ring" id="searchBarInput" />
                     </div>
                 </div>
                 <div class="contacto col text-end">
@@ -71,10 +74,10 @@
                     <div class="hr"></div>
                     <button type="button" class="btn p-0" onclick="window.parent.postMessage('salir', '*');">
                         <div class="d-flex align-items-center justify-content-around">
-                            <img src="../img/perfil/Perfil8.jpg" alt="Perfil" width="44px" height="44px" class="object-fit-cover rounded-5" id="fotoPerfilAct" />
+                            <img src="../img/perfil/Perfil8.jpg" alt="Perfil" width="44px" height="44px" class="object-fit-cover rounded-5" id="img-perfil" />
                             <div>
-                                <p class="m-0" style="font-size: 14px" id="nombreUsuarioAct"></p>
-                                <p class="m-0" style="font-size: 12px" id="apellidosUsuario"></p>
+                                <p class="m-0" style="font-size: 14px">Andres</p>
+                                <p class="m-0" style="font-size: 12px">Gamboa Garay</p>
                             </div>
                             <i class="bi bi-box-arrow-right m-0" style="font-size: 24px"></i>
                         </div>
@@ -322,7 +325,7 @@
         <!--FORMULARIO PARA REGISTRAR LOS SERVICIOS-->
         <div class="offcanvas offcanvas-end" data-bs-backdrop="static" tabindex="-1" id="offcanvasServicios" aria-labelledby="offcanvasServiciosLabel">
             <div class="offcanvas-header">
-                <button type="button" class="btn" data-bs-dismiss="offcanvas" aria-label="Close" onclick="cancelarUsuarios()"><i class="bi bi-x-lg"></i></button>
+                <button type="button" class="btn" data-bs-dismiss="offcanvas" aria-label="Close" onclick="cancelarCliente()"><i class="bi bi-x-lg"></i></button>
                 <p class="offcanvas-title" id="offcanvasServiciosLabel">Servicios</p>
             </div>
             <div class="offcanvas-body">
@@ -366,89 +369,77 @@
             </div>
         </div>
 
-        <!-- Formulario de usuarios -->
+        <!--FORMULARIO PARA REGISTRAR USUARIOS-->
         <div class="offcanvas form-registrar offcanvas-end" data-bs-backdrop="static" tabindex="-1" id="offcanvasUsuarios" aria-labelledby="offcanvasUsuariosLabel">
-            <div class="offcanvas-header d-flex justify-content-between">
-                <button type="button" class="btn" data-bs-dismiss="offcanvas" aria-label="Close" onclick="cancelarPedido()"><i class="bi bi-x-lg"></i></button>
+            <div class="offcanvas-header">
+                <button type="button" class="btn" data-bs-dismiss="offcanvas" aria-label="Close" onclick="cancelarCliente()"><i class="bi bi-x-lg"></i></button>
                 <p class="offcanvas-title" id="offcanvasUsuariosLabel">Usuarios</p>
-                <button type="button" class="edit" id="editUsuarios" disabled><i class="bi bi-pencil-square"></i></button>
             </div>
             <div class="offcanvas-body">
-                <p>En esta sección vamos a crear y actualizar los usuarios del sistema, a continuación llena la información solicitada* para crear o actualizar el usuario.</p>
-                <form id="formUsuarios">
+                <p>En esta sección vamos a registrar a los nuevos usuarios con acceso al sistema</p>
+                <form action="">
                     <div class="row">
                         <div class="col">
-                            <label for="usuario" class="form-label">Usuario*</label>
+                            <label for="nombre" class="form-label">Nombre de usuasio</label>
                             <div class="input-group flex-nowrap">
-                                <input type="text" class="form-control focus-ring" id="usuario" placeholder="Nombre del usuario" required />
-                            </div>
-                        </div>
-                        <div class="col">
-                            <label for="nombreUsuario" class="form-label">Nombre*</label>
-                            <div class="input-group flex-nowrap">
-                                <input type="text" class="form-control focus-ring" id="nombreUsuario" placeholder="Nombre del usuario" required />
+                                <input type="text" class="form-control focus-ring" id="nombre" placeholder="GHOSTREX" required />
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col">
-                            <label for="apellidoPaternoU" class="form-label">Apellido paterno*</label>
+                            <label for="nombre" class="form-label">Nombre(s)</label>
                             <div class="input-group flex-nowrap">
-                                <input type="text" class="form-control focus-ring" id="apellidoPaternoU" placeholder="Nombre del usuario" required />
-                            </div>
-                        </div>
-                        <div class="col">
-                            <label for="apellidoMaternoU" class="form-label">Apellido materno*</label>
-                            <div class="input-group flex-nowrap">
-                                <input type="text" class="form-control focus-ring" id="apellidoMaternoU" placeholder="Nombre del usuario" required />
+                                <input type="text" class="form-control focus-ring" id="nombre" placeholder="Manuel" required />
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col">
-                            <label for="correoUsuario" class="form-label">Correo electrónico</label>
+                            <label for="apellidoP" class="form-label">Apellido Paterno*</label>
                             <div class="input-group flex-nowrap">
-                                <input type="email" class="form-control focus-ring" id="correoUsuario" placeholder="Correo electrónico del usuario" required />
+                                <input type="text" class="form-control focus-ring" id="apellidoP" placeholder="Espinoza" required />
+                            </div>
+                        </div>
+                        <div class="col">
+                            <label for="apellidoM" class="form-label">Apellido Materno</label>
+                            <div class="input-group flex-nowrap">
+                                <input type="text" class="form-control focus-ring" id="apellidoM" placeholder="Gamboa" required />
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col">
-                            <label for="telUsuario" class="form-label">Número de teléfono*</label>
+                            <label for="correo" class="form-label">Correo Electrónico</label>
                             <div class="input-group flex-nowrap">
-                                <input type="tel" class="form-control focus-ring" id="telUsuario" placeholder="Número de teléfono del usuario" required />
+                                <input type="email" class="form-control focus-ring" id="correo" placeholder="nombre@example.com" required />
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col">
-                            <label for="rolUsuario" class="form-label">Rol*</label>
-                            <select class="form-select focus-ring" id="rolUsuario" aria-label="Default select example" required>
-                                <option value="admin" selected>Admin</option>
-                                <option value="user">User</option>
-                            </select>
+                            <label for="telefono" class="form-label">Teléfono*</label>
+                            <div class="input-group flex-nowrap">
+                                <input type="tel" class="form-control focus-ring" id="telefono" placeholder="8001234567" required />
+                            </div>
                         </div>
                     </div>
                     <div class="row m-0">
                         <div class="col">
-                            <button class="btn bell" type="button" data-bs-dismiss="offcanvas" onclick="cancelarUsuarios()">Cancelar</button>
+                            <button class="btn bell" type="button" data-bs-dismiss="offcanvas" onclick="cancelarCliente()">Cancelar</button>
                         </div>
                         <div class="col">
-                            <button class="btn pedido" id="guardarUsuario" type="submit">Guardar usuario</button>
+                            <button class="btn pedido" type="submit">Guardar Usuario</button>
                         </div>
                     </div>
                 </form>
             </div>
         </div>
 
-        <!-- Script de bcrypt-->
-        <script src="../js/bcrypt.js"></script>
         <!-- Script de todo el dashboard-->
         <script src="../js/dasboard.js"></script>
-        <!-- Script de sweetAlert-->
+        <!-- Script para crear alertas-->
         <script src="../js/alertas.js"></script>
-        <!-- Script de API-->
-        <script src="../js/api.js"></script>
         <!-- Scripts de bootstrap -->
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>

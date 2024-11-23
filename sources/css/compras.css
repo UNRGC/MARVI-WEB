@@ -1,0 +1,101 @@
+@import url(variables.css);
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.header p {
+    font-size: 16px;
+    font-weight: bold;
+    color: var(--texto);
+    margin: 0px;
+}
+
+.btn-registrar-cliente {
+    background: var(--fondo);
+    color: var(--color-primario);
+    font-size: 14px;
+    padding: 10px 16px;
+    border: 1px solid var(--borde);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+.btn-registrar-cliente:hover {
+    background-color: var(--color-primario);
+    color: var(--texto-primario);
+}
+
+.filtro {
+    background: var(--fondo);
+    color: var(--texto);
+    font-size: 14px;
+
+    padding: 10px 16px;
+    border: 1px solid var(--borde);
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.ordenar {
+    background: var(--fondo);
+    color: var(--texto);
+    font-size: 14px;
+
+    padding: 10px 16px;
+    border: 1px solid var(--borde);
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.opcion {
+    background: none;
+    color: var(--texto);
+    padding: 1px 10px;
+    border: none;
+    cursor: pointer;
+}
+
+.table {
+    width: 100%; /* Ajusta el ancho de la tabla al 100% del contenedor */
+    border-collapse: separate; /* Cambia a 'separate' para permitir el espaciado entre celdas */
+    border-spacing: 0 4px; /* Añade espacio entre las filas */
+    margin: 20px 0; /* Añade un margen superior e inferior */
+    font-size: 15px; /* Ajusta el tamaño de la fuente */
+    text-align: left; /* Alinea el texto a la izquierda */
+    border-radius: 10px;
+    overflow: hidden;
+    background-color: var(--fondo-contenido); /* Cambia el color de fondo de la tabla */
+}
+
+.table th,
+.table td {
+    color: var(--texto);
+    padding: 12px 15px; /* Añade relleno a las celdas */
+    background-color: var(--fondo); /* Cambia el color de fondo de las celdas */
+    border-color: transparent;
+}
+
+.table th {
+    font-weight: bold; /* Hace el texto de los encabezados en negrita */
+}
+
+.table tr:nth-child(even) {
+    background-color: var(--fondo); /* Cambia el color de fondo de las filas pares */
+}
+
+.delete-button {
+    background: var(--fondo);
+    color: var(--color-primario);
+    font-size: 14px;
+    padding: 10px 16px;
+    border: 1px solid var(--borde);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.delete-button:hover {
+    background-color: var(--color-primario);
+    color: var(--texto-primario);
+}

@@ -22,6 +22,35 @@ iframe {
     padding: 24px 32px;
 }
 
+.swal2-popup {
+    background: var(--fondo) !important;
+    border: solid 1px var(--borde) !important;
+    color: var(--texto) !important;
+}
+.swal2-popup h2 {
+    color: var(--color-primario) !important;
+}
+.swal2-confirm {
+    background: var(--color-primario) !important;
+    color: var(--texto-primario) !important;
+    box-shadow: none !important; /* Elimina el borde semi-transparente */
+    border-radius: 8px !important;
+}
+.swal2-confirm:hover {
+    background: var(--hover-color-p) !important;
+    color: var(--texto-primario) !important;
+}
+.swal2-cancel {
+    background: var(--color-secundario) !important;
+    color: var(--texto-secundario) !important;
+    box-shadow: none !important; /* Elimina el borde semi-transparente */
+    border-radius: 8px !important;
+}
+.swal2-cancel:hover {
+    background: var(--hover-color-s) !important;
+    color: var(--texto-secundario) !important;
+}
+
 .card {
     cursor: pointer;
     background: var(--fondo);
@@ -66,7 +95,6 @@ iframe {
 .input-group {
     border: solid 1px var(--borde);
     border-radius: 8px;
-    overflow: hidden;
 }
 .input-group:hover {
     border: solid 1px var(--hover-borde);
@@ -83,12 +111,10 @@ iframe {
     color: var(--placeholder);
 }
 .input-group input,
-.input-group button,
-.input-group span {
+.input-group button {
     color: var(--texto) !important;
     padding: 10px 16px;
     border: none;
-    background: transparent;
 }
 .input-group input {
     --bs-focus-ring-color: transparent;
@@ -368,4 +394,13 @@ iframe {
 /* ------------- Registrar Cliente ------------- */
 .form-registrar {
     width: 690px !important;
+}
+
+/*------------- Alerta para eliminar pedido -------------*/
+.eliminar {
+    align-items: center;
+    width: 30% !important;
+    margin: 0 auto;
+    border-radius: 16px;
+    border: 2px solid var(--color-primario);
 }
