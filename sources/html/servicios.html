@@ -14,124 +14,94 @@
         <script src="../js/temas.js"></script>
     </head>
     <body>
-
-
         <div class="header">
             <div class="d-flex gap-3 align-items-center">
                 <p>Lista de Servicios</p>
             </div>
             <div class="d-flex gap-3">
-                <button type="button" id="eliminar" class="visually-hidden delete-button" onclick="window.parent.postMessage('mostrarEliminarCliente', '*');"><i class="bi bi-trash"></i> Eliminar</button>
+                <button type="button" id="eliminar" class="visually-hidden action delete" onclick="window.parent.postMessage('mostrarEliminarPedido', '*');"><i class="bi bi-trash3"></i> Eliminar</button>
+                <button class="action" type="button" id="filtro" data-bs-toggle="dropdown"><i class="bi bi-filter"></i> Filtros</button>
+                <ul class="dropdown-menu">
+                    <li>
+                        <button class="dropdown-item" onclick="_filtro('identificador')"><i class="bi bi-filter-left"></i> Pedido</button>
+                    </li>
+                    <li>
+                        <button class="dropdown-item" onclick="_filtro('fecha')"><i class="bi bi-filter-left"></i> Fecha</button>
+                    </li>
+                    <li>
+                        <button class="dropdown-item" onclick="_filtro('cliente')"><i class="bi bi-filter-left"></i> Cliente</button>
+                    </li>
+                    <li>
+                        <button class="dropdown-item" onclick="_filtro('peso')"><i class="bi bi-filter-left"></i> Peso</button>
+                    </li>
+                    <li>
+                        <button class="dropdown-item" onclick="_filtro('costo')"><i class="bi bi-filter-left"></i> Costo</button>
+                    </li>
+                </ul>
 
-                <!-- boton para registrar un nuevo cliente -->
-                
-                <button class="filtro" type="button" onclick="Filtros()"><i class="bi bi-filter"></i> Filtros</button>
-                <button class="ordenar" onclick="Ordenar()"><i class="bi bi-arrow-down-up"></i> Ordenar por</button>
+                <button class="action" id="orden" onclick="_orden()"><i class="bi bi-arrow-down-up"></i> Ordenar por</button>
                 <button class="btn-registrar-cliente" type="button" onclick="window.parent.postMessage('mostrarServicios', '*');"><i class="bi bi-plus-lg"></i>Agregar Servicio</button>
             </div>
         </div>
 
         <div class="table-container">
-            <table class="table">
-                <tbody>
-                    <tr>
-                        <th></th>
-                        <th scope="col">ID</th>
-                        <th scope="col">Nombre</th>
-                        <th scope="col">Detalles</th>
-                        <th scope="col">Precio</th>
-                        <th scope="col">Opciones</th>
-                    </tr>
-                    <tr>
-                        <th>
-                            <input type="checkbox" class="select-checkbox" onclick="mostrar()" />
-                        </th>
-                        <td>10122024</td>
-                        <td>Lavado</td>
-                        <td>lavado de ropa comun</td>
-                        <td>$ 17</td>
-                        <td>
-                            <button class="opcion" type="button" data-bs-toggle="dropdown">
-                                <i class="bi bi-three-dots-vertical"></i>
-                            </button>
-                            <ul class="dropdown-menu">
-                                <li><button class="dropdown-item" onclick="window.parent.postMessage('mostrarServicios', '*');">Ver Detalles</button></li>
-                                <li><button class="dropdown-item" onclick="window.parent.postMessage('mostrarEliminarCliente', '*');">Eliminar</button></li>
-                            </ul>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
-                            <input type="checkbox" class="select-checkbox" onclick="mostrar()" />
-                        </th>
-                        <td>10122024</td>
-                        <td>Lavado</td>
-                        <td>lavado de ropa comun</td>
-                        <td>$ 17</td>
-                        <td>
-                            <button class="opcion" type="button" data-bs-toggle="dropdown">
-                                <i class="bi bi-three-dots-vertical"></i>
-                            </button>
-                            <ul class="dropdown-menu">
-                                <li><button class="dropdown-item" onclick="window.parent.postMessage('mostrarServicios', '*');">Ver Detalles</button></li>
-                                <li><button class="dropdown-item" onclick="window.parent.postMessage('mostrarEliminarCliente', '*');">Eliminar</button></li>
-                            </ul>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
-                            <input type="checkbox" class="select-checkbox" onclick="mostrar()" />
-                        </th>
-                        <td>10122024</td>
-                        <td>Lavado</td>
-                        <td>lavado de ropa comun</td>
-                        <td>$ 17</td>
-                        <td>
-                            <button class="opcion" type="button" data-bs-toggle="dropdown">
-                                <i class="bi bi-three-dots-vertical"></i>
-                            </button>
-                            <ul class="dropdown-menu">
-                                <li><button class="dropdown-item" onclick="window.parent.postMessage('mostrarServicios', '*');">Ver Detalles</button></li>
-                                <li><button class="dropdown-item" onclick="window.parent.postMessage('mostrarEliminarCliente', '*');">Eliminar</button></li>
-                            </ul>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
-                            <input type="checkbox" class="select-checkbox" onclick="mostrar()" />
-                        </th>
-                        <td>10122024</td>
-                        <td>Lavado</td>
-                        <td>lavado de ropa comun</td>
-                        <td>$ 17</td>
-                        <td>
-                            <button class="opcion" type="button" data-bs-toggle="dropdown">
-                                <i class="bi bi-three-dots-vertical"></i>
-                            </button>
-                            <ul class="dropdown-menu">
-                                <li><button class="dropdown-item" onclick="window.parent.postMessage('mostrarServicios', '*');">Ver Detalles</button></li>
-                                <li><button class="dropdown-item" onclick="window.parent.postMessage('mostrarEliminarCliente', '*');">Eliminar</button></li>
-                    </tr>
-                    <tr>
-                        <th>
-                            <input type="checkbox" class="select-checkbox" onclick="mostrar()" />
-                        </th>
-                        <td>10122024</td>
-                        <td>Lavado</td>
-                        <td>lavado de ropa comun</td>
-                        <td>$ 17</td>
-                        <td>
-                            <button class="opcion" type="button" data-bs-toggle="dropdown">
-                                <i class="bi bi-three-dots-vertical"></i>
-                            </button>
-                            <ul class="dropdown-menu">
-                                <li><button class="dropdown-item" onclick="window.parent.postMessage('mostrarServicios', '*');">Ver Detalles</button></li>
-                                <li><button class="dropdown-item" onclick="window.parent.postMessage('mostrarEliminarCliente', '*');">Eliminar</button></li>
-                            </ul>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+            <div class="table-expand">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th scope="col" class="text-center"><i class="bi bi-check-square"></i></th>
+                            <th scope="col">ID</th>
+                            <th scope="col">Nombre</th>
+                            <th scope="col">Detalles</th>
+                            <th scope="col">Costos</th>
+                            <th scope="col" class="text-center"><i class="bi bi-nut"></i></th>
+                        </tr>
+                        <tr>
+                            <th scope="col" class="text-center"><i class="bi bi-check-square"></i></th>
+                            <th scope="col">0001</th>
+                            <th scope="col">Lavado</th>
+                            <th scope="col">Lavado de ropa blanca</th>
+                            <th scope="col">$342</th>
+                            <th scope="col" class="text-center"><i class="bi bi-nut"></i></th>
+                        </tr>
+                        <tr>
+                            <th scope="col" class="text-center"><i class="bi bi-check-square"></i></th>
+                            <th scope="col">0002</th>
+                            <th scope="col">Secado</th>
+                            <th scope="col">Secado de cobertor</th>
+                            <th scope="col">$212</th>
+                            <th scope="col" class="text-center"><i class="bi bi-nut"></i></th>
+                        </tr>
+                        <tr>
+                            <th scope="col" class="text-center"><i class="bi bi-check-square"></i></th>
+                            <th scope="col">0003</th>
+                            <th scope="col">Planchado</th>
+                            <th scope="col">Planchado de camisas de vestir</th>
+                            <th scope="col">$150</th>
+                            <th scope="col" class="text-center"><i class="bi bi-nut"></i></th>
+                        </tr>
+                        <tr>
+                            <th scope="col" class="text-center"><i class="bi bi-check-square"></i></th>
+                            <th scope="col">0004</th>
+                            <th scope="col">Secado</th>
+                            <th scope="col">Secado de sabanas</th>
+                            <th scope="col">$50</th>
+                            <th scope="col" class="text-center"><i class="bi bi-nut"></i></th>
+                        </tr>
+                    </thead>
+                    <tbody id="tbody"></tbody>
+                </table>
+            </div>
+            <footer>
+                <p><span id="filasSelectNum">0</span> de <span id="filasTotalesNum">0</span> filas seleccionadas</p>
+                <div class="d-flex gap-3 align-items-center">
+                    <p>Página <span id="pagActNum">1</span> de <span id="pagTotalesNum">1</span></p>
+                    <button class="action" id="pagStart"><i class="bi bi-chevron-double-left"></i></button>
+                    <button class="action" id="pagAnt"><i class="bi bi-chevron-left"></i></button>
+                    <button class="action" id="pagSig"><i class="bi bi-chevron-right"></i></button>
+                    <button class="action" id="pagEnd"><i class="bi bi-chevron-double-right"></i></button>
+                </div>
+            </footer>
         </div>
 
         <script>

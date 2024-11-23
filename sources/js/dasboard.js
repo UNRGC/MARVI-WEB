@@ -1,12 +1,24 @@
+/* global alertConfirm */
+/* global alertToast */
+/* global alertMessage */
+
 const searchBar = document.getElementById("searchBar");
 const searchBarInput = document.getElementById("searchBarInput");
 const iframe = document.getElementById("iframe");
 let paginaActiva = "inicio";
 
 document.addEventListener("DOMContentLoaded", () => {
-    const sFoto = localStorage.getItem("foto");
-    if (sFoto) {
-        document.getElementById("img-perfil").src = sFoto;
+    if (!sessionStorage.getItem("token")) {
+        window.location.href = "login.html";
+    } else {
+        const user = sessionStorage.getItem("usuario");
+        try {
+            document.getElementById("fotoPerfilAct").src = localStorage.getItem("foto");
+        } catch (error) {
+            console.log(error);
+        }
+        document.getElementById("nombreUsuarioAct").textContent = JSON.parse(user).firstName;
+        document.getElementById("apellidosUsuario").textContent = `${JSON.parse(user).lastName} ${JSON.parse(user).motherLastName}`;
     }
 });
 
