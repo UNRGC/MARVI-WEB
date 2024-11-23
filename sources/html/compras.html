@@ -53,49 +53,160 @@
                             <th scope="col">ID usuario</th>
                             <th scope="col">ID provedor</th>
                             <th scope="col" class="text-center"><i class="bi bi-nut"></i></th>
-                        </tr>
-                        <tr>
-                            <th scope="col" class="text-center"><i class="bi bi-check-square"></i></th>
-                            <th scope="col">34452-1</th>
-                            <th scope="col">11/10/2024</th>
-                            <th scope="col">1234</th>
-                            <th scope="col">2222</th>
-                            <th scope="col" class="text-center"><i class="bi bi-nut"></i></th>
-                        </tr>
-                        <tr>
-                            <th scope="col" class="text-center"><i class="bi bi-check-square"></i></th>
-                            <th scope="col">46452-1</th>
-                            <th scope="col">01/10/2024</th>
-                            <th scope="col">1234</th>
-                            <th scope="col">2222</th>
-                            <th scope="col" class="text-center"><i class="bi bi-nut"></i></th>
-                        </tr>
-                        <tr>
-                            <th scope="col" class="text-center"><i class="bi bi-check-square"></i></th>
-                            <th scope="col">34453-1</th>
-                            <th scope="col">13/11/2024</th>
-                            <th scope="col">1234</th>
-                            <th scope="col">2222</th>
-                            <th scope="col" class="text-center"><i class="bi bi-nut"></i></th>
-                        </tr>
-                        <tr>
-                            <th scope="col" class="text-center"><i class="bi bi-check-square"></i></th>
-                            <th scope="col">34453-1</th>
-                            <th scope="col">13/11/2024</th>
-                            <th scope="col">1234</th>
-                            <th scope="col">2333</th>
-                            <th scope="col" class="text-center"><i class="bi bi-nut"></i></th>
-                        </tr>
-                        <tr>
-                            <th scope="col" class="text-center"><i class="bi bi-check-square"></i></th>
-                            <th scope="col">33433-4</th>
-                            <th scope="col">03/09/2024</th>
-                            <th scope="col">2342</th>
-                            <th scope="col">2342</th>
-                            <th scope="col" class="text-center"><i class="bi bi-nut"></i></th>
-                        </tr>
+                        </tr>                        
                     </thead>
-                    <tbody id="tbody"></tbody>
+                    <tbody id="tbody">
+                        <tr>
+                            <th scope="row" class="text-center">
+                                <input type="checkbox" class="select-checkbox" onclick="_mostrar(this)" />
+                            </th>
+                            <td scope="col">34452-1</td>
+                            <td scope="col">11/10/2024</td>
+                            <td scope="col">Jorge Gómez Martínez</td>
+                            <td scope="col">Chedraui</td>
+                            <td scope="col" class="text-center"><i class="bi bi-nut"></i></td>
+                        </tr>
+                        <tr>
+                            <th scope="row" class="text-center">
+                                <input type="checkbox" class="select-checkbox" onclick="_mostrar(this)" />
+                            </th>
+                            <td scope="col">46452-1</td>
+                            <td scope="col">01/10/2024</td>
+                            <td scope="col">Alejandro Pérez</td>
+                            <td scope="col">Bodega aurrera</td>
+                            <td scope="col" class="text-center"><i class="bi bi-nut"></i></td>
+                        </tr>
+                        <tr>
+                            <th scope="row" class="text-center">
+                                <input type="checkbox" class="select-checkbox" onclick="_mostrar(this)" />
+                            </th>
+                            <td scope="col">34453-1</td>
+                            <td scope="col">13/11/2024</td>
+                            <td scope="col">Leonel Gómez</td>
+                            <td scope="col">Chedraui</td>
+                            <td scope="col" class="text-center"><i class="bi bi-nut"></i></td>
+                        </tr>
+                        <tr>
+                            <th scope="row" class="text-center">
+                                <input type="checkbox" class="select-checkbox" onclick="_mostrar(this)" />
+                            </th>
+                            <td scope="col">34453-1</td>
+                            <td scope="col">13/11/2024</td>
+                            <td scope="col">Juan Escutia</td>
+                            <td scope="col">Bodega aurrera</td>
+                            <td scope="col" class="text-center"><i class="bi bi-nut"></i></td>
+                        </tr>
+                        <tr>
+                            <th scope="row" class="text-center">
+                                <input type="checkbox" class="select-checkbox" onclick="_mostrar(this)" />
+                            </th>
+                            <td scope="col">33433-4</td>
+                            <td scope="col">03/09/2024</td>
+                            <td scope="col">Rolando Mata</td>
+                            <td scope="col">Chedraui</td>
+                            <td scope="col" class="text-center"><i class="bi bi-nut"></i></td>
+                        </tr>
+                        <tr>
+                            <th scope="row" class="text-center">
+                                <input type="checkbox" class="select-checkbox" onclick="_mostrar(this)" />
+                            </th>
+                            <td scope="col">34452-1</td>
+                            <td scope="col">11/10/2024</td>
+                            <td scope="col">Jorge Gómez Martínez</td>
+                            <td scope="col">Chedraui</td>
+                            <td scope="col" class="text-center"><i class="bi bi-nut"></i></td>
+                        </tr>
+                        <tr>
+                            <th scope="row" class="text-center">
+                                <input type="checkbox" class="select-checkbox" onclick="_mostrar(this)" />
+                            </th>
+                            <td scope="col">46452-1</td>
+                            <td scope="col">01/10/2024</td>
+                            <td scope="col">Alejandro Pérez</td>
+                            <td scope="col">Bodega aurrera</td>
+                            <td scope="col" class="text-center"><i class="bi bi-nut"></i></td>
+                        </tr>
+                        <tr>
+                            <th scope="row" class="text-center">
+                                <input type="checkbox" class="select-checkbox" onclick="_mostrar(this)" />
+                            </th>
+                            <td scope="col">34453-1</td>
+                            <td scope="col">13/11/2024</td>
+                            <td scope="col">Leonel Gómez</td>
+                            <td scope="col">Chedraui</td>
+                            <td scope="col" class="text-center"><i class="bi bi-nut"></i></td>
+                        </tr>
+                        <tr>
+                            <th scope="row" class="text-center">
+                                <input type="checkbox" class="select-checkbox" onclick="_mostrar(this)" />
+                            </th>
+                            <td scope="col">34453-1</td>
+                            <td scope="col">13/11/2024</td>
+                            <td scope="col">Juan Escutia</td>
+                            <td scope="col">Bodega aurrera</td>
+                            <td scope="col" class="text-center"><i class="bi bi-nut"></i></td>
+                        </tr>
+                        <tr>
+                            <th scope="row" class="text-center">
+                                <input type="checkbox" class="select-checkbox" onclick="_mostrar(this)" />
+                            </th>
+                            <td scope="col">33433-4</td>
+                            <td scope="col">03/09/2024</td>
+                            <td scope="col">Rolando Mata</td>
+                            <td scope="col">Chedraui</td>
+                            <td scope="col" class="text-center"><i class="bi bi-nut"></i></td>
+                        </tr>
+                        <tr>
+                            <th scope="row" class="text-center">
+                                <input type="checkbox" class="select-checkbox" onclick="_mostrar(this)" />
+                            </th>
+                            <td scope="col">34452-1</td>
+                            <td scope="col">11/10/2024</td>
+                            <td scope="col">Jorge Gómez Martínez</td>
+                            <td scope="col">Chedraui</td>
+                            <td scope="col" class="text-center"><i class="bi bi-nut"></i></td>
+                        </tr>
+                        <tr>
+                            <th scope="row" class="text-center">
+                                <input type="checkbox" class="select-checkbox" onclick="_mostrar(this)" />
+                            </th>
+                            <td scope="col">46452-1</td>
+                            <td scope="col">01/10/2024</td>
+                            <td scope="col">Alejandro Pérez</td>
+                            <td scope="col">Bodega aurrera</td>
+                            <td scope="col" class="text-center"><i class="bi bi-nut"></i></td>
+                        </tr>
+                        <tr>
+                            <th scope="row" class="text-center">
+                                <input type="checkbox" class="select-checkbox" onclick="_mostrar(this)" />
+                            </th>
+                            <td scope="col">34453-1</td>
+                            <td scope="col">13/11/2024</td>
+                            <td scope="col">Leonel Gómez</td>
+                            <td scope="col">Chedraui</td>
+                            <td scope="col" class="text-center"><i class="bi bi-nut"></i></td>
+                        </tr>
+                        <tr>
+                            <th scope="row" class="text-center">
+                                <input type="checkbox" class="select-checkbox" onclick="_mostrar(this)" />
+                            </th>
+                            <td scope="col">34453-1</td>
+                            <td scope="col">13/11/2024</td>
+                            <td scope="col">Juan Escutia</td>
+                            <td scope="col">Bodega aurrera</td>
+                            <td scope="col" class="text-center"><i class="bi bi-nut"></i></td>
+                        </tr>
+                        <tr>
+                            <th scope="row" class="text-center">
+                                <input type="checkbox" class="select-checkbox" onclick="_mostrar(this)" />
+                            </th>
+                            <td scope="col">33433-4</td>
+                            <td scope="col">03/09/2024</td>
+                            <td scope="col">Rolando Mata</td>
+                            <td scope="col">Chedraui</td>
+                            <td scope="col" class="text-center"><i class="bi bi-nut"></i></td>
+                        </tr>
+                    </tbody>
                 </table>
             </div>
             <footer>
