@@ -21,24 +21,21 @@
                 <button class="action" type="button" id="filtro" data-bs-toggle="dropdown"><i class="bi bi-filter"></i> Filtros</button>
                 <ul class="dropdown-menu">
                     <li>
-                        <button class="dropdown-item" onclick="_filtro('identificador')"><i class="bi bi-filter-left"></i> Pedido</button>
+                        <button class="dropdown-item" onclick="_filtro('identificador')"><i class="bi bi-filter-left"></i> Servicio</button>
                     </li>
                     <li>
-                        <button class="dropdown-item" onclick="_filtro('fecha')"><i class="bi bi-filter-left"></i> Fecha</button>
+                        <button class="dropdown-item" onclick="_filtro('nombre')"><i class="bi bi-filter-left"></i> Nombre</button>
                     </li>
                     <li>
-                        <button class="dropdown-item" onclick="_filtro('cliente')"><i class="bi bi-filter-left"></i> Cliente</button>
+                        <button class="dropdown-item" onclick="_filtro('detalles')"><i class="bi bi-filter-left"></i> Detalles</button>
                     </li>
                     <li>
-                        <button class="dropdown-item" onclick="_filtro('peso')"><i class="bi bi-filter-left"></i> Peso</button>
-                    </li>
-                    <li>
-                        <button class="dropdown-item" onclick="_filtro('costo')"><i class="bi bi-filter-left"></i> Costo</button>
+                        <button class="dropdown-item" onclick="_filtro('costos')"><i class="bi bi-filter-left"></i> Costos</button>
                     </li>
                 </ul>
 
                 <button class="action" id="orden" onclick="_orden()"><i class="bi bi-arrow-down-up"></i> Ordenar por</button>
-                <button class="btn-registrar-cliente" type="button" onclick="window.parent.postMessage('mostrarServicios', '*');"><i class="bi bi-plus-lg"></i>Agregar Servicio</button>
+                <button class="btn-registrar-cliente" type="button" onclick="window.parent.postMessage('mostrarServicios', '*');"><i class="bi bi-plus-lg"></i> Agregar Servicio</button>
             </div>
         </div>
 
@@ -54,40 +51,97 @@
                             <th scope="col">Costos</th>
                             <th scope="col" class="text-center"><i class="bi bi-nut"></i></th>
                         </tr>
-                        <tr>
-                            <th scope="col" class="text-center"><i class="bi bi-check-square"></i></th>
-                            <th scope="col">0001</th>
-                            <th scope="col">Lavado</th>
-                            <th scope="col">Lavado de ropa blanca</th>
-                            <th scope="col">$342</th>
-                            <th scope="col" class="text-center"><i class="bi bi-nut"></i></th>
-                        </tr>
-                        <tr>
-                            <th scope="col" class="text-center"><i class="bi bi-check-square"></i></th>
-                            <th scope="col">0002</th>
-                            <th scope="col">Secado</th>
-                            <th scope="col">Secado de cobertor</th>
-                            <th scope="col">$212</th>
-                            <th scope="col" class="text-center"><i class="bi bi-nut"></i></th>
-                        </tr>
-                        <tr>
-                            <th scope="col" class="text-center"><i class="bi bi-check-square"></i></th>
-                            <th scope="col">0003</th>
-                            <th scope="col">Planchado</th>
-                            <th scope="col">Planchado de camisas de vestir</th>
-                            <th scope="col">$150</th>
-                            <th scope="col" class="text-center"><i class="bi bi-nut"></i></th>
-                        </tr>
-                        <tr>
-                            <th scope="col" class="text-center"><i class="bi bi-check-square"></i></th>
-                            <th scope="col">0004</th>
-                            <th scope="col">Secado</th>
-                            <th scope="col">Secado de sabanas</th>
-                            <th scope="col">$50</th>
-                            <th scope="col" class="text-center"><i class="bi bi-nut"></i></th>
-                        </tr>
                     </thead>
-                    <tbody id="tbody"></tbody>
+                    <tbody id="tbody">
+                        <tr>
+                            <th scope="row" class="text-center">
+                                <input type="checkbox" class="select-checkbox" onclick="_mostrar(this)" />
+                            </th>
+                            <td class="identificador">0001</td>
+                            <td class="nombre">Lavado</td>
+                            <td class="detalles">Lavado de ropa blanca</td>
+                            <td class="costos">$342</td>
+                            <td class="text-center">
+                                <button class="options" type="button" data-bs-toggle="dropdown">
+                                    <i class="bi bi-three-dots-vertical"></i>
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <button class="dropdown-item" onclick="window.parent.postMessage('mostrarPedidos', '*');"><i class="bi bi-pencil-square"></i> Ver Detalles</button>
+                                    </li>
+                                    <li>
+                                        <button class="dropdown-item" onclick="window.parent.postMessage('mostrarEliminarCliente', '*');"><i class="bi bi-trash3"></i> Eliminar servicio</button>
+                                    </li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row" class="text-center">
+                                <input type="checkbox" class="select-checkbox" onclick="_mostrar(this)" />
+                            </th>
+                            <td class="identificador">0002</td>
+                            <td class="nombre">Secado</td>
+                            <td class="detalles">Secado de cobertor</td>
+                            <td class="costos">$212</td>
+                            <td class="text-center">
+                                <button class="options" type="button" data-bs-toggle="dropdown">
+                                    <i class="bi bi-three-dots-vertical"></i>
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <button class="dropdown-item" onclick="window.parent.postMessage('mostrarPedidos', '*');"><i class="bi bi-pencil-square"></i> Ver Detalles</button>
+                                    </li>
+                                    <li>
+                                        <button class="dropdown-item" onclick="window.parent.postMessage('mostrarEliminarCliente', '*');"><i class="bi bi-trash3"></i> Eliminar servicio</button>
+                                    </li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row" class="text-center">
+                                <input type="checkbox" class="select-checkbox" onclick="_mostrar(this)" />
+                            </th>
+                            <td class="identificador">0003</td>
+                            <td class="nombre">Planchado</td>
+                            <td class="detalles">Planchado de camisas de vestir</td>
+                            <td class="costos">$150</td>
+                            <td class="text-center">
+                                <button class="options" type="button" data-bs-toggle="dropdown">
+                                    <i class="bi bi-three-dots-vertical"></i>
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <button class="dropdown-item" onclick="window.parent.postMessage('mostrarPedidos', '*');"><i class="bi bi-pencil-square"></i> Ver Detalles</button>
+                                    </li>
+                                    <li>
+                                        <button class="dropdown-item" onclick="window.parent.postMessage('mostrarEliminarCliente', '*');"><i class="bi bi-trash3"></i> Eliminar servicio</button>
+                                    </li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row" class="text-center">
+                                <input type="checkbox" class="select-checkbox" onclick="_mostrar(this)" />
+                            </th>
+                            <td class="identificador">0004</td>
+                            <td class="nombre">Secado</td>
+                            <td class="detalles">Secado de sabanas</td>
+                            <td class="costos">$50</td>
+                            <td class="text-center">
+                                <button class="options" type="button" data-bs-toggle="dropdown">
+                                    <i class="bi bi-three-dots-vertical"></i>
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <button class="dropdown-item" onclick="window.parent.postMessage('mostrarPedidos', '*');"><i class="bi bi-pencil-square"></i> Ver Detalles</button>
+                                    </li>
+                                    <li>
+                                        <button class="dropdown-item" onclick="window.parent.postMessage('mostrarEliminarCliente', '*');"><i class="bi bi-trash3"></i> Eliminar servicio</button>
+                                    </li>
+                                </ul>
+                            </td>
+                        </tr>
+                    </tbody>
                 </table>
             </div>
             <footer>

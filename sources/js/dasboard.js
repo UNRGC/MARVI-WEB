@@ -1,6 +1,7 @@
 /* global alertConfirm */
 /* global alertToast */
 /* global alertMessage */
+const bcrypt = dcodeIO.bcrypt;
 
 const searchBar = document.getElementById("searchBar");
 const searchBarInput = document.getElementById("searchBarInput");
@@ -19,6 +20,14 @@ document.addEventListener("DOMContentLoaded", () => {
         }
         document.getElementById("nombreUsuarioAct").textContent = JSON.parse(user).firstName;
         document.getElementById("apellidosUsuario").textContent = `${JSON.parse(user).lastName} ${JSON.parse(user).motherLastName}`;
+
+        if (bcrypt.compareSync("123456", JSON.parse(user).password)) {
+            alertConfirm("¡Revisa tu información personal!", "Por tu seguridad, te recomendamos cambiar tu contraseña. ¿Te gustaría verificarla ahora?", "warning").then((result) => {
+                if (result.isConfirmed) {
+                    cargarPagina("configuracion");
+                }
+            });
+        }
     }
 });
 
