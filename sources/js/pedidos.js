@@ -1,4 +1,4 @@
-const estados = document.getElementsByName("estado");
+    const estados = document.getElementsByName("estado");
 let ordenActual = "asc";
 let filtroActual = "pd";
 

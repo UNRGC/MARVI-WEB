@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <title>Inicio</title>
+        <link rel="stylesheet" href="../css/Menu.css" />
+        <link rel="stylesheet" href="../css/pedidos.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    </head>
+<body>  
+    
+        <nav>
+            <ul>
+
+                <div class="top-bar">
+                    <div class="logo">
+                        <a href="Menu.html"><img src="../img/logo.png" alt="Logo" style="height: 60px;"></a>
+                    </div>
+                <br>
+                <a href="Menu.html">
+                <li class="active"> <i class="fa fa-home"></i> &nbsp&nbsp Inicio </li>
+                </a>
+                <a href="pedidos.html">
+                <li> <i class="fa fa-file-text-o"></i> &nbsp&nbsp Pedidos </li>
+                </a>
+                <a href="clientes.html">
+                <li> <i class="fa fa-user-o"></i>  &nbsp&nbsp Clientes </li>
+                </a>
+                <a href="ventas.html">
+                <li> <i class="fa fa-cart-plus"></i> &nbsp&nbsp Ventas </li>
+                </a>
+                <a href="compras.html">
+                <li> <i class="fa fa-briefcase"></i> &nbsp&nbsp Compras/Insumos </li>
+                </a>
+                
+                <br><br><br><br><br><br><br><br><br><br><br><br>
+                <a href="configuracion.html">
+                <li> <i class="fa fa-cog"></i> &nbsp&nbsp Configuracion </li>
+                </a>
+
+                <table>
+                    <tr>
+                        <td>
+                            <li class="user-info" id="siuu">  
+                                <img src="../img/Andres.jpeg" alt="User Image" style="width: 40px; height: 40px; border-radius:50%; vertical-align:middle; position:relative; left:50%; top:50%; transform:translate(-217%, 1%);">
+                                <i></i> Andres
+                               andres@gmail.com
+                                <a href="logout.html" class="logout"></a>
+                            </li>
+                        </td>
+
+                        <td>
+                            <li id="salir" >
+                                <a href="login.html">
+                                <i class="fa fa-sign-out"></i>
+                                </a>
+                            </li>
+                        </td>
+
+                    </tr>
+                </table>
+                
+            </ul>
+        </nav>
+ 
+
+<div class="contenido">
+
+    <table>
+        <tbody class="search-table">
+            <tr>
+                <td colspan="3">
+                    <div class="search-bar">
+                        <input type="text" placeholder="Buscar en el sistema">
+                        <button type="submit"><i class="fa fa-search"></i></button>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <table>
+        <tbody class="notificacion-tabla">
+            <tr>
+                <td>
+                    <button type="button" class="notificacion-boton" onclick="toggleNotificationBar()">
+                        <i class="fa fa-bell"></i>
+                    </button>
+
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <table>
+        <tbody class="crearpedido-tabla">
+            <tr>
+                <td>
+                    <button type="button" class="añadir-boton">
+                            <i class="fa fa-plus"></i> &nbsp&nbsp Crear Pedido
+                    </button>
+                </td>
+            </tr>
+                <td>
+                        <div class="formulario-pedido"  >
+                            <form action="submit_pedido.html" method="post">
+                                <button type="button" class="cancelar-boton" onclick="document.querySelector('.formulario-pedido').style.display='none'">✖</button> 
+                                <div>
+                                    <h1 class="encabezado">CREAR UN NUEVO PEDIDO</h1>
+                                    <p class="descripcion">En esta seccion vamos a crear un pedido nuevo, a continuacion llena la informacion solicitada para crear el pedido.</p>
+                                </div>
+                                
+
+                                <div class="formulario-label">
+                                    <label for="kilo">Costo por kilo:</label>
+                                    <input type="text" id="kilo" name="kilo" placeholder="$ 17.00" style="width: 50%;" required><br>
+                                </div>
+                            
+                            <div class="formulario-label">
+                                <label for="pesaje">Pesaje:</label>
+                                <input type="text" id="pesaje" name="pesaje" placeholder="7 kg." style="width: 50%;" required><br>
+                            </div>
+                                
+                            <div class="formulario-label">
+                                <label for="observaciones">detalles del pedido:</label>
+                                <textarea id="observaciones" name="observaciones" placeholder="ropa de algodon, delicado, etc."  rows="4" cols="50"></textarea><br>
+                            </div>
+                                
+                            <div  class="formulario-label">
+                                <label for="tipo-servicio">Tipo de Servicio:</label>
+                                <select id="tipo-servicio" name="tipo-servicio" style="width: 50%;" required>
+                                    <option value="lavado">Lavado</option>
+                                    <option value="planchado">Planchado</option>
+                                    <option value="lavado-planchado">Lavado y Planchado</option>
+                                </select><br>
+                            </div>
+                                
+                                <div class="formulario-label">
+                                    <label for="fecha">Fecha:</label>
+                                    <input type="date" id="fecha" name="fecha" style="width: 50%;" required><br>
+                                </div>
+                        
+                            <div class="formulario-label">
+                                <label for="cliente">Cliente:</label>
+                                <input type="text" id="cliente" name="cliente" placeholder="Manuel Garay" style="width: 50%;" required><br><br>
+                            </div>
+                                
+                        
+                                <button type="submit" class="submit-boton">Crear Pedido</button>
+                            </form>
+                        </div>
+                </td>
+            </tr>
+            
+            <script>
+                document.addEventListener('DOMContentLoaded', function() {
+                    const form = document.querySelector('.formulario-pedido');
+                    const createButton = document.querySelector('.añadir-boton');
+                    
+                    createButton.addEventListener('click', function() {
+                        form.style.display = 'block';
+                        setTimeout(() => {
+                            form.classList.add('active');
+                        }, 1000); // Adjust the delay as needed
+                    });
+                });
+            </script>
+        </tbody>
+    </table>
+    <br>
+    <br>
+    <br>
+    <br>
+   
+<div id="notificationBar" style="display: none;">
+    <p>No hay nuevas notificaciones.</p>
+</div>
+
+<script>
+    function toggleNotificationBar() {
+        var notificationBar = document.getElementById('notificationBar');
+        if (notificationBar.style.display === 'none') {
+            notificationBar.style.display = 'block';
+        } else {
+            notificationBar.style.display = 'none';
+        }
+    }
+   
+</script>
+
+
+
+
+    
+
+    <div class="grafica-ventas">
+        <canvas id="salesChart"></canvas>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        var ctx = document.getElementById('salesChart').getContext('2d');
+        var salesChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio'],
+                datasets: [{
+                    label: 'Ventas',
+                    data: [120, 150, 180, 200, 170, 210],
+                    backgroundColor: [
+                        'rgba(255, 159, 64, 0.2)',
+                        'rgba(255, 159, 64, 0.2)',
+                        'rgba(255, 159, 64, 0.2)',
+                        'rgba(255, 159, 64, 0.2)',
+                        'rgba(255, 159, 64, 0.2)',
+                        'rgba(255, 159, 64, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(255, 159, 64, 1)',
+                        'rgba(255, 159, 64, 1)',
+                        'rgba(255, 159, 64, 1)',
+                        'rgba(255, 159, 64, 1)',
+                        'rgba(255, 159, 64, 1)',
+                        'rgba(255, 159, 64, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    </script>
+   
+   
+
+</div>
+</body>
+</html>   
