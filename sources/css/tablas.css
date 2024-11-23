@@ -36,6 +36,21 @@
     color: var(--color-primario);
 }
 
+.btn-registrar-cliente {
+    background: var(--fondo);
+    color: var(--color-primario);
+    font-size: 14px;
+    padding: 10px 16px;
+    border: 1px solid var(--borde);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+.btn-registrar-cliente:hover {
+    background-color: var(--color-primario);
+    color: var(--texto-primario);
+}
+
 .table-container {
     background: var(--fondo);
     height: calc(100vh - 59px);
