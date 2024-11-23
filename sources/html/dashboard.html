@@ -322,7 +322,7 @@
         <!--FORMULARIO PARA REGISTRAR LOS SERVICIOS-->
         <div class="offcanvas offcanvas-end" data-bs-backdrop="static" tabindex="-1" id="offcanvasServicios" aria-labelledby="offcanvasServiciosLabel">
             <div class="offcanvas-header">
-                <button type="button" class="btn" data-bs-dismiss="offcanvas" aria-label="Close" onclick="cancelarCliente()"><i class="bi bi-x-lg"></i></button>
+                <button type="button" class="btn" data-bs-dismiss="offcanvas" aria-label="Close" onclick="cancelarUsuarios()"><i class="bi bi-x-lg"></i></button>
                 <p class="offcanvas-title" id="offcanvasServiciosLabel">Servicios</p>
             </div>
             <div class="offcanvas-body">
@@ -371,11 +371,11 @@
             <div class="offcanvas-header d-flex justify-content-between">
                 <button type="button" class="btn" data-bs-dismiss="offcanvas" aria-label="Close" onclick="cancelarPedido()"><i class="bi bi-x-lg"></i></button>
                 <p class="offcanvas-title" id="offcanvasUsuariosLabel">Usuarios</p>
-                <button type="button" class="edit" id="editUsuarios" onclick="editUsuarios();" disabled><i class="bi bi-pencil-square"></i></button>
+                <button type="button" class="edit" id="editUsuarios" disabled><i class="bi bi-pencil-square"></i></button>
             </div>
             <div class="offcanvas-body">
                 <p>En esta sección vamos a crear y actualizar los usuarios del sistema, a continuación llena la información solicitada* para crear o actualizar el usuario.</p>
-                <form id="formUsers">
+                <form id="formUsuarios">
                     <div class="row">
                         <div class="col">
                             <label for="usuario" class="form-label">Usuario*</label>
@@ -434,7 +434,7 @@
                             <button class="btn bell" type="button" data-bs-dismiss="offcanvas" onclick="cancelarUsuarios()">Cancelar</button>
                         </div>
                         <div class="col">
-                            <button class="btn pedido" type="submit">Guardar usuario</button>
+                            <button class="btn pedido" id="guardarUsuario" type="submit">Guardar usuario</button>
                         </div>
                     </div>
                 </form>

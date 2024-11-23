@@ -12,7 +12,11 @@ document.addEventListener("DOMContentLoaded", () => {
         window.location.href = "login.html";
     } else {
         const user = sessionStorage.getItem("usuario");
-        localStorage.setItem("foto", document.getElementById("fotoPerfilAct").src);
+        try {
+            document.getElementById("fotoPerfilAct").src = localStorage.getItem("foto");
+        } catch (error) {
+            console.log(error);
+        }
         document.getElementById("nombreUsuarioAct").textContent = JSON.parse(user).firstName;
         document.getElementById("apellidosUsuario").textContent = `${JSON.parse(user).lastName} ${JSON.parse(user).motherLastName}`;
     }
@@ -207,6 +211,7 @@ function calcularCosto() {
 /* ------- Formulario de pedidos ------- */
 
 /* ------- Formulario de usuarios ------- */
+const formUsuarios = document.getElementById("formUsuarios");
 const editUsuario = document.getElementById("editUsuarios");
 const usuarioInput = document.getElementById("usuario");
 const nombreInput = document.getElementById("nombreUsuario");
@@ -215,6 +220,7 @@ const apellidoMInput = document.getElementById("apellidoMaternoU");
 const correoInput = document.getElementById("correoUsuario");
 const telInput = document.getElementById("telUsuario");
 const rolInput = document.getElementById("rolUsuario");
+const guardarUsuarioBtn = document.getElementById("guardarUsuario");
 
 function desactivarUsuarios() {
     editUsuario.disabled = true;
@@ -225,6 +231,7 @@ function desactivarUsuarios() {
     correoInput.disabled = true;
     telInput.disabled = true;
     rolInput.disabled = true;
+    guardarUsuarioBtn.disabled = true;
 }
 
 function activarUsuarios() {
@@ -274,6 +281,33 @@ function cancelarUsuarios() {
     editUsuario.disabled = true;
 }
 
+formUsuarios.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const data = {
+        firstName: nombreInput.value,
+        lastName: apellidoInput.value,
+        motherLastName: apellidoMInput.value,
+        email: correoInput.value,
+        password: "123456",
+        phone: telInput.value,
+        role: rolInput.value,
+    };
+
+    alertConfirm("¿Estás seguro?", "¿Deseas guardar los cambios?", "warning").then(async (result) => {
+        if (result.isConfirmed) {
+            const res = await crearUsuario(data);
+            if (res._id) {
+                const offcanvas = bootstrap.Offcanvas.getInstance(document.getElementById("offcanvasUsuarios"));
+                offcanvas.hide();
+                limpiarUsuarios();
+                alertToast("El usuario fue creado correctamente", false, "success", 2000).then(() => {
+                    window.parent.postMessage("verificar", "*");
+                });
+            } else alertToast("No se pudo crear el usuario", res.error, "error", 2000);
+        }
+    });
+});
+
 /* ------- Función para mostrar el offcanvas ------- */
 function mostrarOffcanvas(id) {
     const offcanvasElement = document.getElementById(id);
@@ -307,12 +341,61 @@ window.addEventListener("message", (event) => {
         if (data._id) {
             document.getElementById("nombreUsuario").textContent = data.user.firstName;
             document.getElementById("apellidosUsuario").textContent = `${data.user.lastName} ${data.user.motherLastName}`;
-        }
-        if (data.firstName) {
+        } else if (data.eliminarUsuario) {
+            const usuario = async () => {
+                const response = await fetch(`https://api-sandbox-f3ei.onrender.com/users/${data.eliminarUsuario}`, {
+                    method: "DELETE",
+                    headers: { "Content-Type": "application/json" },
+                });
+                const res = response.status;
+                if (res === 200) {
+                    alertToast("El usuario ha sido eliminado", false, "success", 2000).then(() => {
+                        iframe.contentWindow.postMessage("verificar", "*");
+                    });
+                } else alertToast("No se pudo eliminar el usuario", false, "error", 2000);
+            };
+
+            alertConfirm("¿Estás seguro?", "No podrás revertir esto.", "warning").then((result) => {
+                if (result.isConfirmed) {
+                    if (data.eliminarUsuario === JSON.parse(sessionStorage.getItem("usuario"))._id) {
+                        alertToast("No puedes eliminar un usuario activo", false, "error", 2000);
+                    } else usuario();
+                }
+            });
+        } else if (data.eliminarUsuarios) {
+            const usuarios = async (id) => {
+                const response = await fetch(`https://api-sandbox-f3ei.onrender.com/users/${id}`, {
+                    method: "DELETE",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(data.eliminarUsuarios),
+                });
+                const res = response.status;
+                if (res === 200) {
+                    alertToast("Los usuarios han sido eliminados", false, "success", 2000).then(() => {
+                        iframe.contentWindow.postMessage("verificar", "*");
+                    });
+                } else alertToast("No se pudieron eliminar los usuarios", false, "error", 2000);
+            };
+
+            alertConfirm("¿Estás seguro?", "No podrás revertir esto.", "warning").then((result) => {
+                if (result.isConfirmed) {
+                    data.eliminarUsuarios.forEach((id) => {
+                        if (id === JSON.parse(sessionStorage.getItem("usuario"))._id) {
+                            alertToast("No puedes eliminar un usuario activo", false, "error", 2000);
+                        } else usuarios(id);
+                    });
+                }
+            });
+        } else if (data.firstName) {
             alertConfirm("¿Estás seguro?", "¿Deseas guardar los cambios?", "warning").then(async (result) => {
                 if (result.isConfirmed) {
-                    if (await actualizarUsuario(data)) alertToast("Los cambios han sido guardados", false, "success", 2000);
-                    else alertToast("No se pudieron guardar los cambios", false, "error", 2000);
+                    const res = await actualizarUsuario(data);
+                    if (res._id) {
+                        alertToast("Los cambios han sido guardados", false, "success", 2000).then(() => {
+                            location.reload();
+                        });
+                        sessionStorage.setItem("usuario", JSON.stringify(res));
+                    } else alertToast("No se pudieron guardar los cambios", false, "error", 2000);
                 }
             });
         }
@@ -383,7 +466,6 @@ window.addEventListener("message", (event) => {
             if (event.data._id) {
                 llenarUsuarios(event.data.email, event.data.firstName, event.data.lastName, event.data.motherLastName, event.data.email, event.data.phone, event.data.role);
                 desactivarUsuarios();
-                editUsuario.disabled = false;
                 mostrarOffcanvas("offcanvasUsuarios");
             }
             break;

@@ -85,8 +85,12 @@ function buscarTabla(buscar) {
 }
 
 window.addEventListener("message", (event) => {
-    const data = JSON.parse(event.data);
-    buscarTabla(data.buscar);
+    try {
+        const data = JSON.parse(event.data);
+        buscarTabla(data.buscar);
+    } catch (error) {
+        console.log(error);
+    }
 });
 
 function _mostrar(row) {

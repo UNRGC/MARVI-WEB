@@ -1,4 +1,5 @@
 /* global filasTotalesNum */
+/* global filasNum */
 /* global tabla */
 
 async function cargarUsuarios() {
@@ -29,10 +30,7 @@ async function cargarUsuarios() {
                         <button class="dropdown-item" onclick="mostrarUsuario(this)"><i class="bi bi-pencil-square"></i> Ver Detalles</button>
                     </li>
                     <li>
-                        <button class="dropdown-item" onclick="window.parent.postMessage('cancelarPedido', '*');"><i class="bi bi-x-square"></i> Cancelar pedido</button>
-                    </li>
-                    <li>
-                        <button class="dropdown-item" onclick="window.parent.postMessage('mostrarEliminarCliente', '*');"><i class="bi bi-trash3"></i> Eliminar pedido</button>
+                        <button class="dropdown-item" onclick="eliminarUsuario(this)"><i class="bi bi-trash3"></i> Eliminar usuario</button>
                     </li>
                 </ul>
             </td>
@@ -40,6 +38,7 @@ async function cargarUsuarios() {
         document.getElementById("tbody").appendChild(tr);
     }
 
+    filasNum.textContent = "0";
     filasTotalesNum.textContent = tabla.rows.length;
 }
 
@@ -57,5 +56,31 @@ mostrarUsuario = (row) => {
 
     usuario();
 };
+
+eliminarUsuario = (row) => {
+    const id = row.parentElement.parentElement.parentElement.parentElement.children[1].textContent;
+
+    window.parent.postMessage(JSON.stringify({ eliminarUsuario: id }), "*");
+};
+
+eliminarUsuarios = () => {
+    const checkboxes = document.getElementsByClassName("select-checkbox");
+    const ids = [];
+
+    for (let i = 0; i < checkboxes.length; i++) {
+        if (checkboxes[i].checked) {
+            ids.push(checkboxes[i].parentElement.parentElement.children[1].textContent);
+        }
+    }
+
+    window.parent.postMessage(JSON.stringify({ eliminarUsuarios: ids }), "*");
+};
+
+window.addEventListener("message", (event) => {
+    if (event.data === "verificar") {
+        document.getElementById("tbody").innerHTML = "";
+        cargarUsuarios();
+    }
+});
 
 cargarUsuarios();

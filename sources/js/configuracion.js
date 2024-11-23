@@ -68,6 +68,11 @@ function llenarUsuario(u) {
 }
 
 llenarUsuario(JSON.parse(usuarioActual));
+try {
+    fotoPerfil.src = localStorage.getItem("foto");
+} catch (error) {
+    console.log(error);
+}
 
 function modificarPerfil(b) {
     if (b === true) {
@@ -106,6 +111,7 @@ function modificarPerfil(b) {
 
 const formUsuario = document.getElementById("formUsuario").addEventListener("submit", (e) => {
     e.preventDefault();
+    localStorage.setItem("foto", fotoPerfil.src);
     window.parent.postMessage(
         JSON.stringify({
             firstName: nombre.value,
