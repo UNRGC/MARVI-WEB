@@ -1,30 +1,90 @@
 @import url(variables.css); /* Importa las variables de colores */
 
-h2 {
-    color: var(--color-primario);
-    font-weight: bold;
-    margin: 0;
-}
-#mOscuro {
-    border: 1px solid var(--borde);
-    accent-color: var(--color-primario);
-}
-#mOscuro:hover {
-    border: 1px solid var(--hover-borde);
-    transform: scale(1.05);
-}
-#mOscuro:focus {
-    border: 1px solid var(--hover-borde);
-}
-.perfil {
-    position: relative;
-}
-.perfil img {
-    width: 200px;
-    border-radius: 50%;
+body,
+html {
+    background: transparent;
 }
 
-input {
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.header p {
+    font-size: 16px;
+    font-weight: bold;
+    color: var(--texto);
+    margin: 0px;
+}
+
+.container-fluid {
+    background: var(--fondo);
+    border-radius: 10px;
+    padding: 64px;
+    margin-top: 16px;
+}
+
+.form-check {
+    width: max-content;
+    font-size: 1.3rem;
+    border-radius: 8px;
+}
+.form-check-input {
+    --bs-focus-ring-color: transparent;
+    background-color: var(--fondo-contenido);
+    border: 1px solid var(--borde) !important;
+}
+.form-check-input:checked {
+    background-color: var(--color-primario) !important;
+    border-color: var(--color-primario) !important;
+}
+.form-check-input:hover:not(:checked) {
+    border-color: var(--hover-borde) !important;
+}
+.form-check-input:focus:not(:checked) {
+    border-color: var(--hover-borde) !important;
+}
+.form-check-input:checked::before {
+    background-color: var(--color-primario) !important;
+    border-color: var(--color-primario) !important;
+}
+.form-switch .form-check-input:focus:not(:checked) {
+    /* prettier-ignore */
+    --bs-form-switch-bg:url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'><circle r='3' fill='rgba%280, 0, 0, 0.25%29'/></svg>");
+}
+
+.col-auto img {
+    width: 250px;
+    border-radius: 50%;
+}
+.edit {
+    position: absolute;
+    bottom: 16px;
+    right: 16px;
+    background: var(--color-primario);
+    border: none;
+    color: white;
+    border-radius: 50%;
+    width: 54px;
+    height: 54px;
+    font-size: 1.5rem;
+}
+.edit:hover {
+    background: var(--hover-color-p);
+    color: white;
+}
+.edit:active {
+    background: var(--color-primario) !important;
+    color: white !important;
+    transform: scale(0.9);
+}
+.edit:disabled {
+    background: var(--borde) !important;
+}
+
+input:not([type="checkbox"]),
+select,
+textarea {
     background: var(--fondo) !important;
     color: var(--texto) !important;
     border-radius: 8px !important;
@@ -33,115 +93,134 @@ input {
     padding: 12px !important;
     --bs-focus-ring-color: transparent;
 }
-input::placeholder {
+input::placeholder,
+select::placeholder,
+textarea::placeholder {
     color: var(--placeholder) !important;
 }
-input:hover {
-    border: 1px solid var(--hover-borde) !important;
+input:hover:not([type="checkbox"]),
+select:hover,
+textarea:hover {
+    border-color: var(--hover-borde) !important;
 }
-input:focus {
+input:focus:not([type="checkbox"]),
+select:focus,
+textarea:focus {
     background: var(--fondo) !important;
     color: var(--texto) !important;
-    border: 1px solid var(--color-primario) !important;
+    border-color: var(--color-primario) !important;
 }
-input:disabled {
+input:disabled:not([type="checkbox"]),
+select:disabled,
+textarea:disabled {
     background: var(--fondo-contenido) !important;
-    color: var(--placeholder) !important;
-    border: 1px solid var(--borde) !important;
 }
-label {
+label:not(.form-check-label) {
     font-size: 14px;
-    color: var(--texto);
-}
-.mOscuro label {
-    font-size: 18px;
-}
-.btn {
-    border: none;
-    border-radius: 8px;
-    padding: 10px 20px;
-}
-.aplicar {
-    background-color: var(--color-primario);
-    color: var(--texto-primario);
-}
-.aplicar:hover {
-    background-color: var(--hover-color-p);
-    color: var(--texto-primario);
-}
-.aplicar:active {
-    background-color: var(--color-primario) !important;
-    color: var(--texto-primario) !important;
-}
-.restablecer {
-    background-color: var(--color-secundario);
-    color: var(--color-primario);
-}
-.restablecer:hover {
-    background-color: var(--hover-color-s);
-    color: var(--color-primario);
-}
-.restablecer:active {
-    background-color: var(--color-secundario) !important;
-    color: var(--color-primario) !important;
-}
-.foto {
-    position: absolute;
-    left: calc(50% + 100px);
-    top: calc(100% - 46px);
-    padding: 15px;
-    border-radius: 50% !important;
-    translate: -50%;
 }
 
 .input-group {
-    border: solid 1px var(--borde) !important;
-    border-radius: 8px !important;
+    background: var(--fondo);
+    border-radius: 8px;
+    border: 1px solid var(--borde);
     overflow: hidden;
 }
 .input-group:hover {
-    border: solid 1px var(--hover-borde) !important;
-}
-.input-group:hover:has(input:disabled) {
-    border: solid 1px var(--borde) !important;
+    border: 1px solid var(--hover-borde);
 }
 .input-group:focus-within {
-    border: solid 1px var(--color-primario) !important;
+    border: 1px solid var(--color-primario);
 }
-.input-group input {
+.input-group:has(input:disabled) {
+    background: var(--fondo-contenido);
+}
+.input-group input,
+.input-group button {
     border: none !important;
+    background: transparent !important;
 }
 
-.mostrar input {
-    border-radius: 8px 0 0 8px !important;
+.eye {
+    background: transparent;
+    border: none;
+    color: var(--texto);
+    font-size: 1.2rem;
+    padding: 0 12px;
 }
-.mostrar .btn {
-    background: var(--fondo) !important;
-}
-.mostrar .btn:disabled {
-    background: var(--fondo-contenido) !important;
-}
-.mostrar i {
-    color: var(--texto) !important;
-}
-.mostrar .btn:hover i {
+.eye:hover {
+    background: transparent;
     color: var(--color-primario) !important;
 }
-.mostrar .btn:active {
+
+.aplicar {
+    background: var(--color-primario);
+    border: none;
+    color: white;
+    border-radius: 8px;
+    padding: 8px 20px;
+}
+.aplicar:hover {
+    background: var(--hover-color-p);
+    color: white;
+}
+.aplicar:active {
+    background: var(--color-primario) !important;
+    color: white !important;
+    transform: scale(0.98);
+}
+.aplicar:disabled {
+    background: var(--borde) !important;
+}
+
+.cancelar {
+    background: var(--color-secundario);
+    border: none;
+    color: var(--color-primario);
+    border-radius: 8px;
+    padding: 8px 20px;
+}
+.cancelar:hover {
+    background: var(--hover-color-s);
+    color: var(--color-primario);
+}
+.cancelar:active {
+    background: var(--color-secundario) !important;
     color: var(--color-primario) !important;
+    transform: scale(0.98);
+}
+.cancelar:disabled {
+    background: var(--borde) !important;
+    color: white !important;
 }
 
 .modal-content {
+    background: var(--fondo) !important;
+    border-radius: 8px !important;
+    border-left: solid 32px var(--fondo) !important;
+    border-right: solid 32px var(--fondo) !important;
+}
+.modal-body {
     background: var(--fondo-contenido) !important;
+    border-radius: 8px !important;
+    padding: 32px !important;
+    scrollbar-width: none;
 }
 .modal-header,
 .modal-footer {
-    border-color: var(--borde) !important;
+    border: none !important;
 }
-.modal-body button {
-    border: none;
-    background: transparent;
+.modal-backdrop {
+    background-color: transparent !important;
 }
-.modal-body button:hover {
+.modal-content h3 {
+    font-weight: bold;
+    margin: 0;
+}
+.modal-content img {
+    cursor: pointer;
+    border-radius: 8px;
+    transition: all 0.2s;
+}
+.modal-content img:hover {
     transform: scale(1.02);
 }
