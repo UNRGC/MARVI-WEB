@@ -310,7 +310,7 @@ formUsuarios.addEventListener("submit", (e) => {
                 offcanvas.hide();
                 limpiarUsuarios();
                 alertToast("El usuario fue creado correctamente", false, "success", 2000).then(() => {
-                    window.parent.postMessage("verificar", "*");
+                    iframe.contentWindow.postMessage("verificar", "*");
                 });
             } else alertToast("No se pudo crear el usuario", res.error, "error", 2000);
         }
